@@ -11,6 +11,8 @@ import Then
 
 class FirstViewController: UIViewController {
     
+    var verified = false
+    
     let dictionaryImage = UIImageView().then{
         $0.image = UIImage(named: "dictionaryImage")
     }
@@ -34,11 +36,10 @@ class FirstViewController: UIViewController {
     
     @objc func webMailBtnTapped(){
         print("toNextView")
+        var childVC = VerificationViewController()
         
-        let childVC =  MissionViewController()
     
         childVC.modalPresentationStyle = .fullScreen
-            
         self.present(childVC, animated: true, completion: nil)
     }
     
@@ -60,14 +61,3 @@ class FirstViewController: UIViewController {
     }
 }
 
-extension UIButton {
-    func setUnderline() {
-        guard let title = title(for: .normal) else { return }
-        let attributedString = NSMutableAttributedString(string: title)
-        attributedString.addAttribute(.underlineStyle,
-                                      value: NSUnderlineStyle.single.rawValue,
-                                      range: NSRange(location: 0, length: title.count)
-        )
-        setAttributedTitle(attributedString, for: .normal)
-    }
-}

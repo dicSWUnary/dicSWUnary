@@ -11,12 +11,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    var verified = false
+    
+    var theVC = UIViewController()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
           
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = FirstViewController() // Your initial view controller.
+        
+        if verified == true { //인증이 완료된 사용자
+            theVC =  MissionViewController()
+            print("verified")
+        }
+        else { //인증이 완료되지 않은 사용자
+            theVC =  FirstViewController()
+        }
+        window.rootViewController = theVC// Your initial view controller.
         window.makeKeyAndVisible()
         self.window = window
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A112D27E4E53200E4CCFC /* VerificationViewController.swift */; };
 		30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30700FE227E1CC36006736E5 /* FirstViewController.swift */; };
 		30700FE627E1D321006736E5 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30700FE527E1D321006736E5 /* UILabel.swift */; };
 		30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B5473827E1A53200F26AA0 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		01964AD4BEA1BE73AF014813 /* Pods-dicSWUnary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.release.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.release.xcconfig"; sourceTree = "<group>"; };
 		0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dicSWUnary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		301A112D27E4E53200E4CCFC /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		30700FE227E1CC36006736E5 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		30700FE527E1D321006736E5 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		30B5473527E1A53200F26AA0 /* dicSWUnary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dicSWUnary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 				30700FE227E1CC36006736E5 /* FirstViewController.swift */,
 				30B5473C27E1A53200F26AA0 /* ViewController.swift */,
 				E17870A427E1C5A700A93524 /* MissionViewController.swift */,
+				301A112D27E4E53200E4CCFC /* VerificationViewController.swift */,
 				30B5473E27E1A53200F26AA0 /* Main.storyboard */,
 				30B5474127E1A53400F26AA0 /* Assets.xcassets */,
 				30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */,
@@ -228,6 +231,7 @@
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
 				30700FE627E1D321006736E5 /* UILabel.swift in Sources */,
+				301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
