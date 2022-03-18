@@ -11,8 +11,6 @@ import Then
 
 class FirstViewController: UIViewController {
     
-    
-    
     let dictionaryImage = UIImageView().then{
         $0.image = UIImage(named: "dictionaryImage")
     }
@@ -36,8 +34,12 @@ class FirstViewController: UIViewController {
     
     @objc func webMailBtnTapped(){
         print("toNextView")
-        MissionViewController().modalPresentationStyle = .fullScreen
-        self.present(MissionViewController(), animated: true)
+        
+        let childVC =  MissionViewController()
+    
+        childVC.modalPresentationStyle = .fullScreen
+            
+        self.present(childVC, animated: true, completion: nil)
     }
     
     func allLayout(){
