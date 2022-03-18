@@ -48,6 +48,8 @@ class VerificationViewController: UIViewController {
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 10.0)
         $0.setTitleColor(.black, for: .normal)
         $0.backgroundColor = .white
+        $0.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
+        
     }
     
     override func viewDidLoad() {
@@ -56,6 +58,15 @@ class VerificationViewController: UIViewController {
         self.view.backgroundColor = .yellow
         loadComponents(me: self.view)
         allLayout()
+    }
+
+    
+    @objc func verifyButtonTapped(){
+        print("toNextView")
+        let childVC = ViewController()
+        
+        childVC.modalPresentationStyle = .fullScreen
+        self.present(childVC, animated: true, completion: nil)
     }
     
     func loadComponents(me : UIView){
