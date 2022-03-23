@@ -32,6 +32,7 @@ class VerificationViewController: UIViewController {
     }
     
     let sendButton = UIButton().then{
+//        $0.titleLabel.text = "sibal"
         $0.setTitle("인증 링크 받기", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 10.0)
         $0.setTitleColor(.black, for: .normal)
