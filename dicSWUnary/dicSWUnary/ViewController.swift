@@ -10,14 +10,9 @@ import SnapKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var toMissionBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
-    @IBAction func tapMissionBtn(_ sender: Any) {
-        print("toMissionVC")
-        
     }
     
 

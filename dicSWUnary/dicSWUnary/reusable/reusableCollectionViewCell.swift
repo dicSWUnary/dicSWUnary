@@ -7,7 +7,7 @@
 
 import UIKit
 
-class reusableTableViewCell: UITableViewCell {
+class reusableCollectionViewCell: UICollectionViewCell {
     var backGroundImage = UIImage()
     
     let stepLabel = UILabel()
@@ -22,11 +22,11 @@ class reusableTableViewCell: UITableViewCell {
     func stackCellLayout(stackViewCell: UIView){
         stepLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(8)
+            $0.top.equalToSuperview().offset(3)
         }
         stepBtn.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(stepLabel).offset(8)
+            $0.bottom.equalToSuperview().offset(-8)
         }
                             
     }
@@ -41,9 +41,6 @@ class reusableTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-    }
 
 }

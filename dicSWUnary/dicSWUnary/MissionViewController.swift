@@ -7,12 +7,28 @@
 
 import UIKit
 
-class MissionViewController: UIViewController, UITableViewDelegate {
+class MissionViewController: UIViewController{
 
+    let completeList = [0,1,2,3,4]
+    var now = 5
+    
     let degreeLabel = UILabel()
     
-    let questTableView = UITableView()
-
+//    var questCollectionView = UICollectionView()
+    
+    let questCollectionView : UICollectionView = {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .horizontal
+        
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .none
+        cv.isScrollEnabled = false
+        return cv
+    }()
+    
     let locationLabel = UILabel()
     
     let detailLocationLabel = UILabel()
@@ -45,7 +61,11 @@ class MissionViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Mission view load")
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.itemSize = CGSize(width: 111, height: 111)
+
+//        questCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         self.view.backgroundColor = .green
         subViews(thisView: self.view)
         addArrangedSubView()
@@ -53,8 +73,13 @@ class MissionViewController: UIViewController, UITableViewDelegate {
         determineMissionImage(questNum: 1)
         suggestLocation(questNum: 1)
         allLayout()
-        questTableView.delegate = self
-        questTableView.dataSource = self
+        
+        self.questCollectionView.register(reusableCollectionViewCell.self,
+                                          forCellWithReuseIdentifier: "reusableCollectionViewCell")
+        self.questCollectionView.setCollectionViewLayout(layout, animated: true)
+        self.questCollectionView.delegate = self
+        self.questCollectionView.dataSource = self
+        
     }
 
     func addArrangedSubView(){
@@ -82,15 +107,16 @@ class MissionViewController: UIViewController, UITableViewDelegate {
     func suggestLocation(questNum : Int){
         locationLabel.text = "중앙도서관"
     }
-
+    
     func subViews(thisView : UIView){
         thisView.addSubview(degreeLabel)
-        thisView.addSubview(questTableView)
+        thisView.addSubview(questCollectionView)
         thisView.addSubview(locationLabel)
         thisView.addSubview(detailLocationLabel)
         thisView.addSubview(missionImage)
         thisView.addSubview(bottomBtnsStackView)
     }
+    
     func allLayout(){
         print(#function)
         
@@ -98,13 +124,15 @@ class MissionViewController: UIViewController, UITableViewDelegate {
             $0.leading.equalToSuperview().offset(16)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
         }
-        questTableView.snp.makeConstraints{
+        questCollectionView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
             $0.top.equalTo(degreeLabel.snp.bottom).offset(16)
+            $0.height.equalTo(90)
         }
         locationLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(questTableView.snp.bottom).offset(16)
+            $0.top.equalTo(questCollectionView.snp.bottom).offset(16)
         }
         missionImage.snp.makeConstraints{
             $0.top.equalTo(locationLabel.snp.bottom).offset(20)
@@ -123,14 +151,56 @@ class MissionViewController: UIViewController, UITableViewDelegate {
 }
 
 
-extension MissionViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reusableTableViewCell") as! reusableTableViewCell
+extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return UICollectionViewFlowLayout.automaticSize
+//    }
+    // 위 아래 간격
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 1
+        }
+
+        // 옆 간격
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+            return 1
+        }
+
+        // cell 사이즈( 옆 라인을 고려하여 설정 )
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+            let width = collectionView.frame.width / 9 - 1
+            let height = collectionView.frame.height - 20
+            let size = CGSize(width: width, height: height)
+            return size
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reusableCollectionViewCell", for: indexPath) as! reusableCollectionViewCell
+        cell.allFuncs()
+        cell.stepLabel.text = String(indexPath.row + 1)
+        if completeList.contains(indexPath.row){
+            cell.stepBtn.setImage(UIImage(named: "completeImage"), for: .normal)
+        }
+        else {
+            cell.stepBtn.setImage(UIImage(named: "notYetImage"), for: .normal)
+        }
+        if now == indexPath.row  {
+            cell.backgroundView = UIImageView(image: UIImage(named: "nowImage"))
+//            cell.backGroundImage = UIImage(named: "nowImage")!
+        }
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
 
+    
 }
