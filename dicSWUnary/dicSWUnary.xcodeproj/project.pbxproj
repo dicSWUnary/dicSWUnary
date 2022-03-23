@@ -18,7 +18,7 @@
 		30B5474527E1A53400F26AA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */; };
 		30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5527EB0D6F009E157F /* reusableBtnView.swift */; };
 		30F45E5927EB1747009E157F /* reusableStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5827EB1746009E157F /* reusableStackViewCell.swift */; };
-		30F45E5B27EB1AE7009E157F /* reusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5A27EB1AE7009E157F /* reusableTableViewCell.swift */; };
+		30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */; };
 		601FA6D18DDD8F4AC7A99F9D /* Pods_dicSWUnary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */; };
 		E1363FBE27E7797B0032584F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FBD27E7797B0032584F /* MainView.swift */; };
 		E1363FC027E780E80032584F /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FBF27E780E80032584F /* ProfileCard.swift */; };
@@ -44,7 +44,7 @@
 		30B5474627E1A53500F26AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30F45E5527EB0D6F009E157F /* reusableBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableBtnView.swift; sourceTree = "<group>"; };
 		30F45E5827EB1746009E157F /* reusableStackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableStackViewCell.swift; sourceTree = "<group>"; };
-		30F45E5A27EB1AE7009E157F /* reusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableTableViewCell.swift; sourceTree = "<group>"; };
+		30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableCollectionViewCell.swift; sourceTree = "<group>"; };
 		7541B45201AFE9D5EDFB130D /* Pods-dicSWUnary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.debug.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.debug.xcconfig"; sourceTree = "<group>"; };
 		E1363FBD27E7797B0032584F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E1363FBF27E780E80032584F /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			children = (
 				30F45E5527EB0D6F009E157F /* reusableBtnView.swift */,
 				30F45E5827EB1746009E157F /* reusableStackViewCell.swift */,
-				30F45E5A27EB1AE7009E157F /* reusableTableViewCell.swift */,
+				30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */,
 			);
 			path = reusable;
 			sourceTree = "<group>";
@@ -280,7 +280,7 @@
 				E1363FC627E7A3110032584F /* StatusCard.swift in Sources */,
 				E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
-				30F45E5B27EB1AE7009E157F /* reusableTableViewCell.swift in Sources */,
+				30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

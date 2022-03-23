@@ -19,10 +19,6 @@ class reusableStackViewCell: UIView {
         view.addSubview(stepBtn)
     }
     
-    func whichStepAmIin(nowStep: Int){
-        stepLabel.text = String(nowStep)
-    }
-    
     func stackCellLayout(stackViewCell: UIView){
         stepLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
@@ -30,7 +26,7 @@ class reusableStackViewCell: UIView {
         }
         stepBtn.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(stepLabel).offset(8)
+            $0.top.equalTo(stepLabel.snp.bottom).offset(8)
         }
                             
     }
