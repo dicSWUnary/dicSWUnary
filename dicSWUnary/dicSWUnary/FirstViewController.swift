@@ -11,7 +11,7 @@ import Then
 
 class FirstViewController: UIViewController {
     
-    var verified = false
+    var verified = false // 인증여부확인
     
     let dictionaryImage = UIImageView().then{
         $0.image = UIImage(named: "dictionaryImage")
@@ -25,7 +25,6 @@ class FirstViewController: UIViewController {
         $0.setUnderline()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -38,7 +37,6 @@ class FirstViewController: UIViewController {
         print("toNextView")
         var childVC = VerificationViewController()
         
-    
         childVC.modalPresentationStyle = .fullScreen
         self.present(childVC, animated: true, completion: nil)
     }
