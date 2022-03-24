@@ -10,40 +10,48 @@ import SnapKit
 
 class ViewController: UIViewController {
     
+    //헤더 뷰
     let headerView = UIView().then{
         $0.backgroundColor = .white
     }
     
     let welcomeLevel = UILabel().then{
-        $0.text = "삐약삐약 새내기🐥"
-//        $0.font = UIFont.systemFont(ofSize: 20.0)
+        $0.text = "삐약삐약 새내기 🐥"
+        $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
     }
     let welcomeName = UILabel().then{
         $0.text = "은빈님, 안녕하세요!"
+        $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
     }
     
+    //프로필
     let profileImage = UIImageView().then{
         $0.image = UIImage(named: "profileImage")
     }
     
     let profileName = UILabel().then{
         $0.text = "은빈"
+        $0.font = UIFont.systemFont(ofSize: 24.0, weight: .semibold)
     }
     
     let profileStatus = UILabel().then{
         $0.text = "새내기"
+        $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
+        $0.textColor = UIColor.lightGray
     }
     
     let editProfileButton = UIButton().then{
-//        $0.titleLabel.text = "sibal"
         $0.setTitle("프로필 편집", for: .normal)
-        $0.titleLabel?.font = UIFont.systemFont(ofSize: 10.0)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         $0.setTitleColor(.darkGray, for: .normal)
         $0.backgroundColor = .white
     }
     
+    
+    //재학상태
     let statusTitle = UILabel().then{
         $0.text = "재학 상태"
+        $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
     }
     
     let statusView = UIView().then{
@@ -51,19 +59,74 @@ class ViewController: UIViewController {
     }
     let nowLevel = UILabel().then{
         $0.text = "🐥\n새내기"
+        $0.font = UIFont.systemFont(ofSize: 16.0)
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 0
         $0.textAlignment = .center
     }
     let nextLevel = UILabel().then{
         $0.text = "🎓\n학사"
+        $0.font = UIFont.systemFont(ofSize: 16.0)
+        $0.lineBreakMode = .byWordWrapping
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
         $0.textAlignment = .center
     }
-    let statusProgress = UIProgressView()
+    //progress view
+    let statusProgress = UIProgressView().then{
+//        $0.progressViewStyle = .bar
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 15
+        $0.layer.sublayers![1].cornerRadius = 15
+        $0.subviews[1].clipsToBounds = true
+        $0.progress = 0.5
+    }
 
+
+    //대외활동
     let activityTitle = UILabel().then{
         $0.text = "대외 활동"
+        $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
     }
+    let activityView = UIView().then{
+        $0.backgroundColor = .white
+    }
+    let activityKind = UILabel().then{
+        $0.text = "🔥 도전! 미션 10개"
+        $0.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+    }
+    let activityImage1 = UIImageView().then{
+        $0.image = UIImage(named: "activityImage")
+    }
+    let activityImage2 = UIImageView().then{
+        $0.image = UIImage(named: "activityImage")
+    }
+    let activityImage3 = UIImageView().then{
+        $0.image = UIImage(named: "activityImage")
+    }
+    let activityImage4 = UIImageView().then{
+        $0.image = UIImage(named: "activityImage")
+    }
+    
+    //하단 뷰
+    let footerView = UIView().then{
+        $0.backgroundColor = .white
+    }
+    
+    let logoutButton = UIButton().then{
+        $0.setTitle("로그아웃", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
+        $0.setTitleColor(.darkGray, for: .normal)
+        $0.backgroundColor = .white
+    }
+    
+    let exitButton = UIButton().then{
+        $0.setTitleColor(.darkGray, for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
+        $0.setTitle("회원탈퇴", for: .normal)
+        $0.setUnderline()
+    }
+
 
 
     override func viewDidLoad() {
@@ -86,8 +149,22 @@ class ViewController: UIViewController {
         statusView.addSubview(statusProgress)
         statusView.addSubview(nextLevel)
         
+        view.addSubview(activityTitle)
+        view.addSubview(activityView)
+        activityView.addSubview(activityKind)
+        activityView.addSubview(activityImage1)
+        activityView.addSubview(activityImage2)
+        activityView.addSubview(activityImage3)
+        activityView.addSubview(activityImage4)
+        
+        view.addSubview(footerView)
+        footerView.addSubview(logoutButton)
+        footerView.addSubview(exitButton)
+        
         mainLayout()
         statusLayout()
+        activityLayout()
+        footerLayout()
         // Do any additional setup after loading the view.
     }
     
@@ -97,18 +174,19 @@ class ViewController: UIViewController {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.height.equalTo(200) // 이렇게 높이로 하지 말고, safearea의 height 가져와서 몇분의 몇 이렇게 넣기.
+            $0.height.equalToSuperview().multipliedBy(1.0 / 4.5) // 이렇게 높이로 하지 말고, safearea의 height 가져와서 몇분의 몇 이렇게 넣기.
+        }
+        
+        welcomeLevel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(20)
+            $0.bottom.equalTo(welcomeName.snp.top).offset(-5)
         }
         
         welcomeName.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(20)
-            $0.bottom.equalTo(welcomeLevel.snp.top).offset(-10)
-
-        }
-        welcomeLevel.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(20)
-//            $0.top.equalTo(welcomeName.snp.bottom).offset(10)
-            $0.bottom.equalToSuperview().offset(-20)
+//            $0.top.equalTo(welcomeLevel.snp.bottom).offset(10)
+            $0.bottom.equalToSuperview().offset(-25)
+            
         }
     }
     
@@ -129,8 +207,8 @@ class ViewController: UIViewController {
         }
         editProfileButton.snp.makeConstraints{
             $0.top.equalTo(profileImage.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(10)
-            $0.trailing.equalToSuperview().offset(-10)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
             $0.centerX.equalToSuperview()
         }
         
@@ -147,7 +225,7 @@ class ViewController: UIViewController {
             $0.top.equalTo(statusTitle.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-10)
-//            $0.height.equalTo(100) superview에 대한 비율로 표시해보기
+            $0.height.equalToSuperview().multipliedBy(1.0 / 13.0)
         }
         nowLevel.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -159,6 +237,8 @@ class ViewController: UIViewController {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(nowLevel.snp.trailing).offset(10)
             $0.trailing.equalTo(nextLevel.snp.leading).offset(-10)
+            
+            
         }
         nextLevel.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -166,6 +246,63 @@ class ViewController: UIViewController {
         }
     }
     
+    func activityLayout(){
+        activityTitle.snp.makeConstraints{
+            $0.top.equalTo(statusView.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(10)
+        }
+        activityView.snp.makeConstraints{
+            $0.top.equalTo(activityTitle.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(10)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.height.equalToSuperview().multipliedBy(1.0 / 6.0)
+        }
+        activityKind.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(10)
+            $0.leading.equalToSuperview().offset(10)
+        }
+        activityImage1.snp.makeConstraints{
+            $0.top.equalTo(activityKind.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-20)
+        }
+        activityImage2.snp.makeConstraints{
+            $0.top.equalTo(activityKind.snp.bottom).offset(10)
+            $0.leading.equalTo(activityImage1.snp.trailing).offset(15)
+        }
+        activityImage3.snp.makeConstraints{
+            $0.top.equalTo(activityKind.snp.bottom).offset(10)
+            $0.leading.equalTo(activityImage2.snp.trailing).offset(15)
+        }
+        activityImage4.snp.makeConstraints{
+            $0.top.equalTo(activityKind.snp.bottom).offset(10)
+            $0.leading.equalTo(activityImage3.snp.trailing).offset(15)
+        }
+    }
+    
+    func footerLayout(){
+        
+        footerView.snp.makeConstraints{
+            $0.bottom.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(view.snp.height).multipliedBy(1.0 / 6.5)
+        }
+        
+        logoutButton.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(40)
+            $0.trailing.equalToSuperview().offset(-40)
+            $0.top.equalToSuperview().offset(20)
+            $0.centerX.equalToSuperview()
+
+        }
+        exitButton.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(40)
+            $0.trailing.equalToSuperview().offset(-40)
+            $0.top.equalTo(logoutButton.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
+    }
     
 
 
