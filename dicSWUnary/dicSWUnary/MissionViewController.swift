@@ -13,6 +13,9 @@ class MissionViewController: UIViewController{
     var now = 5
     
     let degreeLabel = UILabel()
+//        .then{
+//        $0.font = UIFont(name: "twayair", size: 20)
+//    }
     
 //    var questCollectionView = UICollectionView()
     
@@ -61,12 +64,9 @@ class MissionViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 111, height: 111)
 
-//        questCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        self.view.backgroundColor = .green
+        self.view.backgroundColor = .clear
+        
         subViews(thisView: self.view)
         addArrangedSubView()
         determineDegree(completeCnt: 1)
@@ -76,7 +76,7 @@ class MissionViewController: UIViewController{
         
         self.questCollectionView.register(reusableCollectionViewCell.self,
                                           forCellWithReuseIdentifier: "reusableCollectionViewCell")
-        self.questCollectionView.setCollectionViewLayout(layout, animated: true)
+//        self.questCollectionView.setCollectionViewLayout(layout, animated: true)
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
         
@@ -93,14 +93,18 @@ class MissionViewController: UIViewController{
         missionImage.image = UIImage(named: "missionImage")
     }
     func determineDegree(completeCnt : Int) {
+//        for i in UIFont.familyNames{
+//            print(i)
+//        }
+        degreeLabel.font = UIFont(name: "tway_sky", size: 15)
         if completeCnt == 0{
-            degreeLabel.text = "삐약삐약 새내기"
+            degreeLabel.text = "삐약삐약 새내기🐥"
         }else if completeCnt <= 3{
-            degreeLabel.text = "에헴!나도 이제 학사"
+            degreeLabel.text = "에헴! 나도 이제 학사🎓"
         }else if completeCnt <= 6{
-            degreeLabel.text = "척척석사"
+            degreeLabel.text = "척척석사🧑🏻‍🎓"
         } else {
-            degreeLabel.text = "서울여대 박사"
+            degreeLabel.text = "서울여대 박사🧑🏻‍⚕️"
         }
     }
     
