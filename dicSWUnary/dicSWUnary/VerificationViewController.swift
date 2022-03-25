@@ -64,7 +64,7 @@ class VerificationViewController: UIViewController {
     
     @objc func verifyButtonTapped(){
         print("toNextView")
-        let childVC = ViewController()
+        let childVC = MissionViewController()
         childVC.modalPresentationStyle = .fullScreen
         self.present(childVC, animated: true, completion: nil)
     }
