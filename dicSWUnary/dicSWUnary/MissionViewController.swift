@@ -9,7 +9,7 @@ import UIKit
 
 class MissionViewController: UIViewController{
 
-    let completeList = [0,1,2,3,4]
+    let completeList = [0,1,2,3,4] //미션 완료 목록
     var now = 5
     
     let degreeLabel = UILabel()
