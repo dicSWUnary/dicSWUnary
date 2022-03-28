@@ -174,7 +174,7 @@ class ViewController: UIViewController {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(1.0 / 4.5) // 이렇게 높이로 하지 말고, safearea의 height 가져와서 몇분의 몇 이렇게 넣기.
+            $0.height.equalToSuperview().multipliedBy(1.0 / 4.5) 
         }
         
         welcomeLevel.snp.makeConstraints{
