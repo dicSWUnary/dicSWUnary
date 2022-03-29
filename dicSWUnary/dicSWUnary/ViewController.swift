@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     //헤더 뷰
     let headerView = UIView().then{
@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     }
     
     let welcomeLevel = UILabel().then{
+        $0.textColor = .black
         $0.text = "삐약삐약 새내기 🐥"
         $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
     }
@@ -41,15 +42,16 @@ class ViewController: UIViewController {
     }
     
     let editProfileButton = myButton().then{
-        $0.setTitle("프로필 편집", for: .normal)
+        $0.setTitle("미션하러 가기", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         $0.setTitleColor(.darkGray, for: .normal)
         $0.backgroundColor = .white
+        $0.addTarget(self, action: #selector(goToMission), for: .touchUpInside)
     }
-    
     
     //재학상태
     let statusTitle = UILabel().then{
+        $0.textColor = .black
         $0.text = "재학 상태"
         $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
     }
@@ -60,6 +62,7 @@ class ViewController: UIViewController {
     }
     let nowLevel = UILabel().then{
         $0.text = "🐥\n새내기"
+        $0.textColor = .black
         $0.font = UIFont.systemFont(ofSize: 16.0)
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 0
@@ -67,6 +70,7 @@ class ViewController: UIViewController {
     }
     let nextLevel = UILabel().then{
         $0.text = "🎓\n학사"
+        $0.textColor = .black
         $0.font = UIFont.systemFont(ofSize: 16.0)
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 0
@@ -84,18 +88,20 @@ class ViewController: UIViewController {
     }
     let succesMission = UILabel().then{
         $0.text = "3"
+        $0.textColor = UIColor(named: "progressBlue")
         $0.font = UIFont.systemFont(ofSize: 12.0)
     }
     let totalMission = UILabel().then{
         $0.text = "/8"
+        $0.textColor = .black
         $0.font = UIFont.systemFont(ofSize: 12.0)
-        $0.textColor = UIColor(named: "progressBlue")
-        
     }
 
 
     //대외활동
     let activityTitle = UILabel().then{
+        $0.textColor = .black
+
         $0.text = "대외 활동"
         $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
     }
@@ -104,7 +110,8 @@ class ViewController: UIViewController {
         $0.layer.cornerRadius = 4
     }
     let activityKind = UILabel().then{
-        $0.text = "🔥 도전! 미션 10개"
+        $0.textColor = .black
+        $0.text = "🔥 완료한 미션"
         $0.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
     }
     let activityImage1 = UIImageView().then{
@@ -138,9 +145,16 @@ class ViewController: UIViewController {
         $0.setTitle("회원탈퇴", for: .normal)
         $0.setUnderline()
     }
-
-
-
+    
+    //navi : 여기서 MissionViewController()으로 이동
+    @objc func goToMission(){
+        print("toMissionView")
+        let childVC = MissionViewController()
+        childVC.modalPresentationStyle = .fullScreen
+        self.present(childVC, animated: true, completion: nil)
+    }
+ 
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "graybackground")
