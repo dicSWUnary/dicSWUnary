@@ -28,6 +28,7 @@
 		E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC327E79FE20032584F /* WelcomeCard.swift */; };
 		E1363FC627E7A3110032584F /* StatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC527E7A3110032584F /* StatusCard.swift */; };
 		E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17870A427E1C5A700A93524 /* MissionViewController.swift */; };
+		E1FECB9A27F2F17200E9AACF /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FECB9927F2F17200E9AACF /* myButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E1363FC327E79FE20032584F /* WelcomeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCard.swift; sourceTree = "<group>"; };
 		E1363FC527E7A3110032584F /* StatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCard.swift; sourceTree = "<group>"; };
 		E17870A427E1C5A700A93524 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
+		E1FECB9927F2F17200E9AACF /* myButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				30B5474127E1A53400F26AA0 /* Assets.xcassets */,
 				30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */,
 				30B5474627E1A53500F26AA0 /* Info.plist */,
+				E1FECB9927F2F17200E9AACF /* myButton.swift */,
 			);
 			path = dicSWUnary;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				E1363FC027E780E80032584F /* ProfileCard.swift in Sources */,
 				30700FE627E1D321006736E5 /* UILabel.swift in Sources */,
 				301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */,
+				E1FECB9A27F2F17200E9AACF /* myButton.swift in Sources */,
 				E1363FC627E7A3110032584F /* StatusCard.swift in Sources */,
 				E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
