@@ -14,6 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var verified = false
     
     var theVC = UIViewController()
+    
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
           
@@ -28,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window.rootViewController = theVC// Your initial view controller.
         window.makeKeyAndVisible()
+
         self.window = window
     }
 
