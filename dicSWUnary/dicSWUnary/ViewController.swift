@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         $0.textColor = UIColor.lightGray
     }
     
-    let editProfileButton = UIButton().then{
+    let editProfileButton = myButton().then{
         $0.setTitle("프로필 편집", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         $0.setTitleColor(.darkGray, for: .normal)
@@ -56,6 +56,7 @@ class ViewController: UIViewController {
     
     let statusView = UIView().then{
         $0.backgroundColor = .white
+        $0.layer.cornerRadius = 4
     }
     let nowLevel = UILabel().then{
         $0.text = "🐥\n새내기"
@@ -70,16 +71,26 @@ class ViewController: UIViewController {
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 0
         $0.textAlignment = .center
-        $0.textAlignment = .center
     }
     //progress view
     let statusProgress = UIProgressView().then{
-//        $0.progressViewStyle = .bar
         $0.clipsToBounds = true
-        $0.layer.cornerRadius = 15
-        $0.layer.sublayers![1].cornerRadius = 15
+        $0.layer.cornerRadius = 10
+        $0.progressTintColor = UIColor(named: "progressBlue")
+        $0.layer.sublayers![1].cornerRadius = 10
         $0.subviews[1].clipsToBounds = true
-        $0.progress = 0.5
+        $0.progress = 0.3
+
+    }
+    let succesMission = UILabel().then{
+        $0.text = "3"
+        $0.font = UIFont.systemFont(ofSize: 12.0)
+    }
+    let totalMission = UILabel().then{
+        $0.text = "/8"
+        $0.font = UIFont.systemFont(ofSize: 12.0)
+        $0.textColor = UIColor(named: "progressBlue")
+        
     }
 
 
@@ -90,6 +101,7 @@ class ViewController: UIViewController {
     }
     let activityView = UIView().then{
         $0.backgroundColor = .white
+        $0.layer.cornerRadius = 4
     }
     let activityKind = UILabel().then{
         $0.text = "🔥 도전! 미션 10개"
@@ -113,7 +125,7 @@ class ViewController: UIViewController {
         $0.backgroundColor = .white
     }
     
-    let logoutButton = UIButton().then{
+    let logoutButton = myButton().then{
         $0.setTitle("로그아웃", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         $0.setTitleColor(.darkGray, for: .normal)
@@ -147,6 +159,8 @@ class ViewController: UIViewController {
         view.addSubview(statusView)
         statusView.addSubview(nowLevel)
         statusView.addSubview(statusProgress)
+        statusView.addSubview(succesMission)
+        statusView.addSubview(totalMission)
         statusView.addSubview(nextLevel)
         
         view.addSubview(activityTitle)
@@ -192,18 +206,17 @@ class ViewController: UIViewController {
     
     func mainLayout(){
         profileImage.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(30)
+            $0.leading.equalToSuperview().offset(20)
             $0.top.equalTo(headerView.snp.bottom).offset(20)
         }
         profileName.snp.makeConstraints{
             $0.centerY.equalTo(profileImage).offset(-10)
-            $0.leading.equalTo(profileImage.snp.trailing).offset(10)
+            $0.leading.equalTo(profileImage.snp.trailing).offset(20)
             
         }
         profileStatus.snp.makeConstraints{
-//            $0.centerY.equalTo(profileImage).offset(10)
             $0.top.equalTo(profileName.snp.bottom).offset(10)
-            $0.leading.equalTo(profileImage.snp.trailing).offset(10)
+            $0.leading.equalTo(profileImage.snp.trailing).offset(20)
         }
         editProfileButton.snp.makeConstraints{
             $0.top.equalTo(profileImage.snp.bottom).offset(20)
@@ -234,11 +247,22 @@ class ViewController: UIViewController {
 //            $0.height.equalTo(100)
         }
         statusProgress.snp.makeConstraints{
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().offset(15)
             $0.leading.equalTo(nowLevel.snp.trailing).offset(10)
             $0.trailing.equalTo(nextLevel.snp.leading).offset(-10)
+            $0.height.equalToSuperview().multipliedBy(1.0/3.5)
             
             
+        }
+        succesMission.snp.makeConstraints{
+            $0.top.equalTo(statusProgress.snp.bottom).offset(5)
+            $0.bottom.equalToSuperview().offset(-15)
+            $0.trailing.equalTo(totalMission.snp.leading).offset(-1)
+        }
+        totalMission.snp.makeConstraints{
+            $0.top.equalTo(statusProgress.snp.bottom).offset(5)
+            $0.bottom.equalToSuperview().offset(-15)
+            $0.trailing.equalTo(nextLevel.snp.leading).offset(-10)
         }
         nextLevel.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -255,7 +279,7 @@ class ViewController: UIViewController {
             $0.top.equalTo(activityTitle.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-10)
-            $0.height.equalToSuperview().multipliedBy(1.0 / 6.0)
+            $0.height.equalToSuperview().multipliedBy(1.0 / 7.0)
         }
         activityKind.snp.makeConstraints{
             $0.top.equalToSuperview().offset(10)
@@ -264,7 +288,7 @@ class ViewController: UIViewController {
         activityImage1.snp.makeConstraints{
             $0.top.equalTo(activityKind.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(10)
-            $0.bottom.equalToSuperview().offset(-20)
+//            $0.bottom.equalToSuperview().offset(-10)
         }
         activityImage2.snp.makeConstraints{
             $0.top.equalTo(activityKind.snp.bottom).offset(10)
@@ -280,6 +304,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     func footerLayout(){
         
         footerView.snp.makeConstraints{
@@ -290,8 +315,8 @@ class ViewController: UIViewController {
         }
         
         logoutButton.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(40)
-            $0.trailing.equalToSuperview().offset(-40)
+            $0.leading.equalToSuperview().offset(70)
+            $0.trailing.equalToSuperview().offset(-70)
             $0.top.equalToSuperview().offset(20)
             $0.centerX.equalToSuperview()
 
