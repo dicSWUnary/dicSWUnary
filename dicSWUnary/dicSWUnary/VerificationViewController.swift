@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class VerificationViewController: UIViewController {
 
     let dictionaryImage = UIImageView().then{

@@ -22,12 +22,12 @@
 		30F45E5927EB1747009E157F /* reusableStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5827EB1746009E157F /* reusableStackViewCell.swift */; };
 		30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */; };
 		601FA6D18DDD8F4AC7A99F9D /* Pods_dicSWUnary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */; };
-		E1363FBE27E7797B0032584F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FBD27E7797B0032584F /* MainView.swift */; };
 		E1363FC027E780E80032584F /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FBF27E780E80032584F /* ProfileCard.swift */; };
 		E1363FC227E783F90032584F /* MissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC127E783F90032584F /* MissionCard.swift */; };
 		E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC327E79FE20032584F /* WelcomeCard.swift */; };
 		E1363FC627E7A3110032584F /* StatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC527E7A3110032584F /* StatusCard.swift */; };
 		E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17870A427E1C5A700A93524 /* MissionViewController.swift */; };
+		E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189CC6727F75374007ED67A /* ActivityCell.swift */; };
 		E1FECB9A27F2F17200E9AACF /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FECB9927F2F17200E9AACF /* myButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,12 +51,12 @@
 		30F45E5827EB1746009E157F /* reusableStackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableStackViewCell.swift; sourceTree = "<group>"; };
 		30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableCollectionViewCell.swift; sourceTree = "<group>"; };
 		7541B45201AFE9D5EDFB130D /* Pods-dicSWUnary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.debug.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.debug.xcconfig"; sourceTree = "<group>"; };
-		E1363FBD27E7797B0032584F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E1363FBF27E780E80032584F /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		E1363FC127E783F90032584F /* MissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCard.swift; sourceTree = "<group>"; };
 		E1363FC327E79FE20032584F /* WelcomeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCard.swift; sourceTree = "<group>"; };
 		E1363FC527E7A3110032584F /* StatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCard.swift; sourceTree = "<group>"; };
 		E17870A427E1C5A700A93524 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
+		E189CC6727F75374007ED67A /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		E1FECB9927F2F17200E9AACF /* myButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +109,7 @@
 				30B5473A27E1A53200F26AA0 /* SceneDelegate.swift */,
 				30700FE227E1CC36006736E5 /* FirstViewController.swift */,
 				30B5473C27E1A53200F26AA0 /* ViewController.swift */,
-				E1363FBD27E7797B0032584F /* MainView.swift */,
+				E189CC6727F75374007ED67A /* ActivityCell.swift */,
 				E17870A427E1C5A700A93524 /* MissionViewController.swift */,
 				301A112D27E4E53200E4CCFC /* VerificationViewController.swift */,
 				30B5473E27E1A53200F26AA0 /* Main.storyboard */,
@@ -286,12 +286,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B5473D27E1A53200F26AA0 /* ViewController.swift in Sources */,
-				E1363FBE27E7797B0032584F /* MainView.swift in Sources */,
 				E1363FC227E783F90032584F /* MissionCard.swift in Sources */,
 				30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */,
 				30F45E5927EB1747009E157F /* reusableStackViewCell.swift in Sources */,
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
+				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
 				E1363FC027E780E80032584F /* ProfileCard.swift in Sources */,
 				30700FE627E1D321006736E5 /* UILabel.swift in Sources */,
