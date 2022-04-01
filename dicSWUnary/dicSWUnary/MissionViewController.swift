@@ -65,7 +65,7 @@ class MissionViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .clear
+        self.view.backgroundColor = .black
         
         subViews(thisView: self.view)
         addArrangedSubView()
@@ -92,6 +92,7 @@ class MissionViewController: UIViewController{
     func determineMissionImage(questNum: Int){
         missionImage.image = UIImage(named: "missionImage")
     }
+    
     func determineDegree(completeCnt : Int) {
 //        for i in UIFont.familyNames{
 //            print(i)

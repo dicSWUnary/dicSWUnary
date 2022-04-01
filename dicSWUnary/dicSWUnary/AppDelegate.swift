@@ -9,15 +9,13 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
     let window = UIWindow(frame: UIScreen.main.bounds)
+    var verified = false
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        let window = UIWindow(frame: UIScreen.main.bounds)
-//            window.rootViewController = First() // Your initial view controller.
-//            window.makeKeyAndVisible()
-//            self.window = window
-
-            return true
+        
+        return true
         }
         // Override point for customization after application launch.
 
