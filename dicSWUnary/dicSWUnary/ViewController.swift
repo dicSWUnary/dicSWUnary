@@ -7,10 +7,10 @@
 
 import UIKit
 import SnapKit
+import Then
 
-class ViewController: UIViewController {
-    
-    //헤더 뷰
+
+    //MARK: -- Header
     let headerView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
     }
     
-    //프로필
+    //MARK: -- Profile
     let profileImage = UIImageView().then{
         $0.image = UIImage(named: "profileImage")
     }
@@ -40,15 +40,17 @@ class ViewController: UIViewController {
         $0.textColor = UIColor.lightGray
     }
     
-    let editProfileButton = myButton().then{
-        $0.setTitle("프로필 편집", for: .normal)
+    let goToMissionButton = myButton().then{
+        $0.setTitle("미션하러 가기", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         $0.setTitleColor(.darkGray, for: .normal)
         $0.backgroundColor = .white
+        //addTarget() 추가하면 self랑 selector부분에서 에러 발생
+//        $0.addTarget(self, action: #selector(MissionBtnTapped), for: .touchUpInside)
     }
     
     
-    //재학상태
+    //MARK: -- Status
     let statusTitle = UILabel().then{
         $0.text = "재학 상태"
         $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
@@ -94,7 +96,7 @@ class ViewController: UIViewController {
     }
 
 
-    //대외활동
+    //MARK: -- Activity
     let activityTitle = UILabel().then{
         $0.text = "대외 활동"
         $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
@@ -107,20 +109,21 @@ class ViewController: UIViewController {
         $0.text = "🔥 도전! 미션 10개"
         $0.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
     }
-    let activityImage1 = UIImageView().then{
-        $0.image = UIImage(named: "activityImage")
-    }
-    let activityImage2 = UIImageView().then{
-        $0.image = UIImage(named: "activityImage")
-    }
-    let activityImage3 = UIImageView().then{
-        $0.image = UIImage(named: "activityImage")
-    }
-    let activityImage4 = UIImageView().then{
-        $0.image = UIImage(named: "activityImage")
-    }
+
+    //collection view
+    let cellID = "Cell"
+
+    class ViewController: UIViewController {
     
-    //하단 뷰
+        let collectionView: UICollectionView = {
+            let flowlayout = UICollectionViewFlowLayout()
+            let  cv = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
+        
+            return cv
+        }()
+
+    
+    //MARK: -- Footer
     let footerView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -144,16 +147,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "graybackground")
+        
         view.addSubview(headerView)
         headerView.addSubview(welcomeLevel)
         headerView.addSubview(welcomeName)
         
-        headerLayout()
         
         view.addSubview(profileImage)
         view.addSubview(profileName)
         view.addSubview(profileStatus)
-        view.addSubview(editProfileButton)
+        view.addSubview(goToMissionButton)
         
         view.addSubview(statusTitle)
         view.addSubview(statusView)
@@ -163,25 +166,40 @@ class ViewController: UIViewController {
         statusView.addSubview(totalMission)
         statusView.addSubview(nextLevel)
         
+        
         view.addSubview(activityTitle)
         view.addSubview(activityView)
         activityView.addSubview(activityKind)
-        activityView.addSubview(activityImage1)
-        activityView.addSubview(activityImage2)
-        activityView.addSubview(activityImage3)
-        activityView.addSubview(activityImage4)
-        
+        activityView.addSubview(collectionView)
+
+        //collection view 권한 부여
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(ActivityCell.self, forCellWithReuseIdentifier: cellID)
+
         view.addSubview(footerView)
         footerView.addSubview(logoutButton)
         footerView.addSubview(exitButton)
         
+        headerLayout()
         mainLayout()
         statusLayout()
         activityLayout()
         footerLayout()
-        // Do any additional setup after loading the view.
+
     }
     
+    @objc func MissionBtnTapped(){
+        print("toNextView")
+//        var childVC = VerificationViewController()
+//        
+//        childVC.modalPresentationStyle = .fullScreen
+//        self.present(childVC, animated: true, completion: nil)
+        
+        
+    }
+
     func headerLayout(){
         
         headerView.snp.makeConstraints{
@@ -198,7 +216,6 @@ class ViewController: UIViewController {
         
         welcomeName.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(20)
-//            $0.top.equalTo(welcomeLevel.snp.bottom).offset(10)
             $0.bottom.equalToSuperview().offset(-25)
             
         }
@@ -218,7 +235,7 @@ class ViewController: UIViewController {
             $0.top.equalTo(profileName.snp.bottom).offset(10)
             $0.leading.equalTo(profileImage.snp.trailing).offset(20)
         }
-        editProfileButton.snp.makeConstraints{
+        goToMissionButton.snp.makeConstraints{
             $0.top.equalTo(profileImage.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
@@ -230,7 +247,7 @@ class ViewController: UIViewController {
     func statusLayout(){
         
         statusTitle.snp.makeConstraints{
-            $0.top.equalTo(editProfileButton.snp.bottom).offset(20)
+            $0.top.equalTo(goToMissionButton.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(10)
         }
         
@@ -243,8 +260,7 @@ class ViewController: UIViewController {
         nowLevel.snp.makeConstraints{
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)
-//            $0.width.equalTo(100)
-//            $0.height.equalTo(100)
+
         }
         statusProgress.snp.makeConstraints{
             $0.top.equalToSuperview().offset(15)
@@ -285,23 +301,14 @@ class ViewController: UIViewController {
             $0.top.equalToSuperview().offset(10)
             $0.leading.equalToSuperview().offset(10)
         }
-        activityImage1.snp.makeConstraints{
+        
+        collectionView.snp.makeConstraints{
             $0.top.equalTo(activityKind.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(10)
-//            $0.bottom.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.trailing.equalToSuperview().offset(-10)
         }
-        activityImage2.snp.makeConstraints{
-            $0.top.equalTo(activityKind.snp.bottom).offset(10)
-            $0.leading.equalTo(activityImage1.snp.trailing).offset(15)
-        }
-        activityImage3.snp.makeConstraints{
-            $0.top.equalTo(activityKind.snp.bottom).offset(10)
-            $0.leading.equalTo(activityImage2.snp.trailing).offset(15)
-        }
-        activityImage4.snp.makeConstraints{
-            $0.top.equalTo(activityKind.snp.bottom).offset(10)
-            $0.leading.equalTo(activityImage3.snp.trailing).offset(15)
-        }
+
     }
     
     
@@ -329,7 +336,38 @@ class ViewController: UIViewController {
         }
     }
     
-
-
+    
 }
+
+//MARK: -- Extension
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ActivityCell
+//        cell.backgroundColor = .red
+        cell.backgroundView = UIImageView(image: UIImage(named: "activityImage"))
+        return cell
+    }
+    
+    
+}
+
+extension ViewController: UICollectionViewDelegate {
+    
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (collectionView.frame.width-30) / 4, height: (collectionView.frame.width-30) / 4)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+}
+
+
+
 
