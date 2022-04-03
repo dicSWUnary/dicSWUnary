@@ -49,15 +49,11 @@ class ViewController: UIViewController{
     
     
     let goToMissionButton = myButton().then{
-        
-        
         $0.setTitle("미션하러 가기", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         $0.setTitleColor(.darkGray, for: .normal)
         $0.backgroundColor = .white
-        
-        //addTarget() 추가하면 self랑 selector부분에서 에러 발생
-        //        $0.addTarget(self, action: #selector(MissionBtnTapped), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(MissionBtnTapped), for: .touchUpInside)
     }
     
     
@@ -162,13 +158,8 @@ class ViewController: UIViewController{
     }
     
     //navi : 여기서 MissionViewController()으로 이동
-    @objc func goToMission(){
-        print("toMissionView")
-        let childVC = MissionViewController()
-        childVC.modalPresentationStyle = .fullScreen
-        self.present(childVC, animated: true, completion: nil)
-    }
     
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,7 +209,6 @@ class ViewController: UIViewController{
     @objc func MissionBtnTapped(){
         print("toNextView")
         var childVC = MissionViewController()
-
         childVC.modalPresentationStyle = .fullScreen
         self.present(childVC, animated: true, completion: nil)
     }
