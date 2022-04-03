@@ -12,7 +12,14 @@ class reusableStackViewCell: UIView {
     
     let stepLabel = UILabel()
     
-    let stepBtn = UIButton()
+    let stepBtn = UIButton().then{
+        $0.addTarget(self, action: #selector(stackBtnTapped), for: .touchUpInside)
+    }
+    
+    @objc func stackBtnTapped(){
+        print("I am tapped")
+//        present(self.imagePickerController, animated: true, completion: nil)
+    }
     
     func adds(view: UIView){
         view.addSubview(stepLabel)

@@ -20,7 +20,6 @@ class MissionViewController: UIViewController{
 //    var questCollectionView = UICollectionView()
     
     let questCollectionView : UICollectionView = {
-        
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         layout.scrollDirection = .horizontal
@@ -32,6 +31,7 @@ class MissionViewController: UIViewController{
         return cv
     }()
     
+    
     let locationLabel = UILabel()
     
     let detailLocationLabel = UILabel()
@@ -42,7 +42,6 @@ class MissionViewController: UIViewController{
         $0.BtnViewLayout()
         $0.BtnImage.setImage(UIImage(named: "hintBtnImage"), for: .normal)
         $0.BtnLabel.text = "Hint"
-        
     }
     
     let locationBtn = reusableBtnView().then{
@@ -60,13 +59,21 @@ class MissionViewController: UIViewController{
     
     let bottomBtnsStackView = UIStackView().then{
         $0.distribution = .equalSpacing
+        $0.isUserInteractionEnabled = false
     }
+    
+    let imagePickerController = UIImagePickerController().then{
+        $0.sourceType = .camera
+    }
+    
+    let thisView = UIView()
+    
+    let submitImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.questCollectionView.isUserInteractionEnabled = true
         self.view.backgroundColor = .black
-        
         subViews(thisView: self.view)
         addArrangedSubView()
         determineDegree(completeCnt: 1)
@@ -77,16 +84,15 @@ class MissionViewController: UIViewController{
         self.questCollectionView.register(reusableCollectionViewCell.self,
                                           forCellWithReuseIdentifier: "reusableCollectionViewCell")
 //        self.questCollectionView.setCollectionViewLayout(layout, animated: true)
+        self.imagePickerController.delegate = self
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
-        
     }
 
     func addArrangedSubView(){
         bottomBtnsStackView.addArrangedSubview(hintBtn)
         bottomBtnsStackView.addArrangedSubview(locationBtn)
         bottomBtnsStackView.addArrangedSubview(photoSubmitBtn)
-        
     }
     
     func determineMissionImage(questNum: Int){
@@ -205,7 +211,17 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         return cell
     }
-    
+}
 
+extension MissionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {submitImage.image = image }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
 }
