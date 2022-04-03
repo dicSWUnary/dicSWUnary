@@ -11,12 +11,12 @@ import Then
 
 
 
-    //MARK: -- Header
+//MARK: -- Header
 
 class ViewController: UIViewController{
     
     //헤더 뷰
-
+    
     let headerView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -47,26 +47,26 @@ class ViewController: UIViewController{
         $0.textColor = UIColor.lightGray
     }
     
-
+    
     let goToMissionButton = myButton().then{
-
-
+        
+        
         $0.setTitle("미션하러 가기", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18.0)
         $0.setTitleColor(.darkGray, for: .normal)
         $0.backgroundColor = .white
-
+        
         //addTarget() 추가하면 self랑 selector부분에서 에러 발생
-//        $0.addTarget(self, action: #selector(MissionBtnTapped), for: .touchUpInside)
+        //        $0.addTarget(self, action: #selector(MissionBtnTapped), for: .touchUpInside)
     }
     
     
     //MARK: -- Status
-
-
+    
+    
     
     //재학상태
-
+    
     let statusTitle = UILabel().then{
         $0.textColor = .black
         $0.text = "재학 상태"
@@ -101,7 +101,7 @@ class ViewController: UIViewController{
         $0.layer.sublayers![1].cornerRadius = 10
         $0.subviews[1].clipsToBounds = true
         $0.progress = 0.3
-
+        
     }
     let succesMission = UILabel().then{
         $0.text = "3"
@@ -113,12 +113,12 @@ class ViewController: UIViewController{
         $0.textColor = .black
         $0.font = UIFont.systemFont(ofSize: 12.0)
     }
-
-
+    
+    
     //MARK: -- Activity
     let activityTitle = UILabel().then{
         $0.textColor = .black
-
+        
         $0.text = "대외 활동"
         $0.font = UIFont.systemFont(ofSize: 18.0, weight: .semibold)
     }
@@ -131,19 +131,16 @@ class ViewController: UIViewController{
         $0.text = "🔥 완료한 미션"
         $0.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
     }
-
+    
     //collection view
     let cellID = "Cell"
 
-    class ViewController: UIViewController {
-    
-        let collectionView: UICollectionView = {
-            let flowlayout = UICollectionViewFlowLayout()
-            let  cv = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
+    let completeMissionCollectionView: UICollectionView = {
+        let flowlayout = UICollectionViewFlowLayout()
+        let  cv = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
         
-            return cv
-        }()
-
+        return cv
+    }()
     
     //MARK: -- Footer
     let footerView = UIView().then{
@@ -171,8 +168,8 @@ class ViewController: UIViewController{
         childVC.modalPresentationStyle = .fullScreen
         self.present(childVC, animated: true, completion: nil)
     }
- 
-   
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "graybackground")
@@ -195,18 +192,18 @@ class ViewController: UIViewController{
         statusView.addSubview(totalMission)
         statusView.addSubview(nextLevel)
         
-        
+        activityView.addSubview(activityKind)
+        activityView.addSubview(completeMissionCollectionView)
         view.addSubview(activityTitle)
         view.addSubview(activityView)
-        activityView.addSubview(activityKind)
-        activityView.addSubview(collectionView)
-
+        
+        
         //collection view 권한 부여
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(ActivityCell.self, forCellWithReuseIdentifier: cellID)
-
+        self.completeMissionCollectionView.dataSource = self
+        self.completeMissionCollectionView.delegate = self
+        self.completeMissionCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.completeMissionCollectionView.register(ActivityCell.self, forCellWithReuseIdentifier: cellID)
+        
         view.addSubview(footerView)
         footerView.addSubview(logoutButton)
         footerView.addSubview(exitButton)
@@ -216,26 +213,22 @@ class ViewController: UIViewController{
         statusLayout()
         activityLayout()
         footerLayout()
-
     }
     
     @objc func MissionBtnTapped(){
         print("toNextView")
-//        var childVC = VerificationViewController()
-//        
-//        childVC.modalPresentationStyle = .fullScreen
-//        self.present(childVC, animated: true, completion: nil)
-        
-        
-    }
+        var childVC = MissionViewController()
 
+        childVC.modalPresentationStyle = .fullScreen
+        self.present(childVC, animated: true, completion: nil)
+    }
+    
     func headerLayout(){
-        
         headerView.snp.makeConstraints{
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(1.0 / 4.5) 
+            $0.height.equalToSuperview().multipliedBy(1.0 / 4.5)
         }
         
         welcomeLevel.snp.makeConstraints{
@@ -289,7 +282,7 @@ class ViewController: UIViewController{
         nowLevel.snp.makeConstraints{
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)
-
+            
         }
         statusProgress.snp.makeConstraints{
             $0.top.equalToSuperview().offset(15)
@@ -331,13 +324,13 @@ class ViewController: UIViewController{
             $0.leading.equalToSuperview().offset(10)
         }
         
-        collectionView.snp.makeConstraints{
+        completeMissionCollectionView.snp.makeConstraints{
             $0.top.equalTo(activityKind.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(10)
             $0.bottom.equalToSuperview().offset(-10)
             $0.trailing.equalToSuperview().offset(-10)
         }
-
+        
     }
     
     
@@ -355,7 +348,7 @@ class ViewController: UIViewController{
             $0.trailing.equalToSuperview().offset(-70)
             $0.top.equalToSuperview().offset(20)
             $0.centerX.equalToSuperview()
-
+            
         }
         exitButton.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(40)
@@ -364,7 +357,6 @@ class ViewController: UIViewController{
             $0.centerX.equalToSuperview()
         }
     }
-    
     
 }
 
@@ -375,7 +367,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ActivityCell
-//        cell.backgroundColor = .red
+        //        cell.backgroundColor = .red
         cell.backgroundView = UIImageView(image: UIImage(named: "activityImage"))
         return cell
     }
@@ -396,7 +388,3 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return 10
     }
 }
-
-
-
-

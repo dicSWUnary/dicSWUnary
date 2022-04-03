@@ -53,6 +53,7 @@ class MissionViewController: UIViewController{
     
     let photoSubmitBtn = reusableBtnView().then{
         $0.BtnViewLayout()
+        $0.isUserInteractionEnabled = true
         $0.BtnImage.setImage(UIImage(named: "photoBtnImage"), for: .normal)
         $0.BtnLabel.text = "Photo"
     }
