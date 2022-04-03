@@ -160,6 +160,7 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = ""
         view.backgroundColor = UIColor(named: "graybackground")
         
         view.addSubview(headerView)
@@ -203,11 +204,17 @@ class ViewController: UIViewController{
         footerLayout()
     }
     
+    //Btn tapped
     @objc func MissionBtnTapped(){
-        print("toNextView")
-        var childVC = MissionViewController()
-        childVC.modalPresentationStyle = .fullScreen
-        self.present(childVC, animated: true, completion: nil)
+        print("toNaviCon")
+//        let rootVC = MissionViewController()
+//        let navVC = UINavigationController(rootViewController: rootVC)
+//        navVC.modalPresentationStyle = .fullScreen
+//        present(navVC, animated: true)
+        
+        let missionVC = MissionViewController()
+        self.navigationController?.pushViewController(missionVC, animated: true)
+        
     }
     
     func headerLayout(){
