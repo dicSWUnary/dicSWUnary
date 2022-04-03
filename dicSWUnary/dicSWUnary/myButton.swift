@@ -25,5 +25,6 @@ class myButton: UIButton {
             layer.borderColor = UIColor.darkGray.cgColor
             layer.cornerRadius = 5
             clipsToBounds = true
+            
         }
 }

@@ -31,7 +31,6 @@ class MissionViewController: UIViewController{
         return cv
     }()
     
-    
     let locationLabel = UILabel()
     
     let detailLocationLabel = UILabel()
@@ -73,8 +72,9 @@ class MissionViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.questCollectionView.isUserInteractionEnabled = true
-        self.view.backgroundColor = .black
+        self.view.backgroundColor = .white
         subViews(thisView: self.view)
         addArrangedSubView()
         determineDegree(completeCnt: 1)
@@ -88,7 +88,13 @@ class MissionViewController: UIViewController{
         self.imagePickerController.delegate = self
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
+        
+
     }
+                                     
+//    @objc func dismissSelf() {
+//        dismiss(animated: true, completion: nil)
+//    }
 
     func addArrangedSubView(){
         bottomBtnsStackView.addArrangedSubview(hintBtn)
