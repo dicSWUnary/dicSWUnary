@@ -58,9 +58,6 @@ class ViewController: UIViewController{
     
     
     //MARK: -- Status
-    
-    
-    
     //재학상태
     
     let statusTitle = UILabel().then{

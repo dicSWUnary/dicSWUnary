@@ -8,16 +8,16 @@
 import UIKit
 
 class MissionViewController: UIViewController{
-
+    
     let completeList = [0,1,2,3,4] //미션 완료 목록
     var now = 5
     
     let degreeLabel = UILabel()
-//        .then{
-//        $0.font = UIFont(name: "twayair", size: 20)
-//    }
+    //        .then{
+    //        $0.font = UIFont(name: "twayair", size: 20)
+    //    }
     
-//    var questCollectionView = UICollectionView()
+    //    var questCollectionView = UICollectionView()
     
     let questCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,12 +31,29 @@ class MissionViewController: UIViewController{
         return cv
     }()
     
+//    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MissionViewController.dismissKeyboard))
+//
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
     
     let locationLabel = UILabel()
     
     let detailLocationLabel = UILabel()
     
     let missionImage = UIImageView()
+    
+    let bottomCollectionView : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .horizontal
+        
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .none
+        cv.isScrollEnabled = false
+        return cv
+    }()
     
     let hintBtn = reusableBtnView().then{
         $0.BtnViewLayout()
@@ -50,7 +67,6 @@ class MissionViewController: UIViewController{
         $0.BtnLabel.text = "Location"
     }
     
-    
     let photoSubmitBtn = reusableBtnView().then{
         $0.BtnViewLayout()
         $0.isUserInteractionEnabled = true
@@ -58,42 +74,32 @@ class MissionViewController: UIViewController{
         $0.BtnLabel.text = "Photo"
     }
     
-    let bottomBtnsStackView = UIStackView().then{
-        $0.distribution = .equalSpacing
-        $0.isUserInteractionEnabled = false
-    }
-    
     let imagePickerController = UIImagePickerController().then{
         $0.sourceType = .camera
     }
     
-    let thisView = UIView()
+    let bottomContentView = UIImageView()
     
     let submitImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.questCollectionView.isUserInteractionEnabled = true
         self.view.backgroundColor = .black
+        self.questCollectionView.isUserInteractionEnabled = true
         subViews(thisView: self.view)
-        addArrangedSubView()
         determineDegree(completeCnt: 1)
         determineMissionImage(questNum: 1)
         suggestLocation(questNum: 1)
         allLayout()
-        
+        self.bottomCollectionView.isUserInteractionEnabled = true
+        self.bottomCollectionView.register(BottomCollectionViewCell.self, forCellWithReuseIdentifier: "BottomCollectionViewCell")
         self.questCollectionView.register(reusableCollectionViewCell.self,
                                           forCellWithReuseIdentifier: "reusableCollectionViewCell")
-//        self.questCollectionView.setCollectionViewLayout(layout, animated: true)
         self.imagePickerController.delegate = self
+        self.bottomCollectionView.delegate = self
+        self.bottomCollectionView.dataSource = self
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
-    }
-
-    func addArrangedSubView(){
-        bottomBtnsStackView.addArrangedSubview(hintBtn)
-        bottomBtnsStackView.addArrangedSubview(locationBtn)
-        bottomBtnsStackView.addArrangedSubview(photoSubmitBtn)
     }
     
     func determineMissionImage(questNum: Int){
@@ -101,9 +107,9 @@ class MissionViewController: UIViewController{
     }
     
     func determineDegree(completeCnt : Int) {
-//        for i in UIFont.familyNames{
-//            print(i)
-//        }
+        //        for i in UIFont.familyNames{
+        //            print(i)
+        //        }
         degreeLabel.font = UIFont(name: "tway_sky", size: 15)
         if completeCnt == 0{
             degreeLabel.text = "삐약삐약 새내기🐥"
@@ -117,6 +123,7 @@ class MissionViewController: UIViewController{
     }
     
     func suggestLocation(questNum : Int){
+        locationLabel.font = UIFont(name: "tway_sky", size: 25)
         locationLabel.text = "중앙도서관"
     }
     
@@ -126,7 +133,8 @@ class MissionViewController: UIViewController{
         thisView.addSubview(locationLabel)
         thisView.addSubview(detailLocationLabel)
         thisView.addSubview(missionImage)
-        thisView.addSubview(bottomBtnsStackView)
+        thisView.addSubview(bottomCollectionView)
+        thisView.addSubview(bottomContentView)
     }
     
     func allLayout(){
@@ -153,11 +161,12 @@ class MissionViewController: UIViewController{
             $0.trailing.equalToSuperview().offset(-16)
         }
         
-        bottomBtnsStackView.snp.makeConstraints{
+        bottomCollectionView.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(missionImage.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(40)
             $0.trailing.equalToSuperview().offset(-40)
+            $0.height.equalTo(150)
         }
     }
 }
@@ -165,49 +174,114 @@ class MissionViewController: UIViewController{
 
 extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return UICollectionViewFlowLayout.automaticSize
-//    }
-    // 위 아래 간격
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 1
-        }
-
-        // 옆 간격
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 1
-        }
-
-        // cell 사이즈( 옆 라인을 고려하여 설정 )
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-            let width = collectionView.frame.width / 9 - 1
-            let height = collectionView.frame.height - 20
-            let size = CGSize(width: width, height: height)
-            return size
-        }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reusableCollectionViewCell", for: indexPath) as! reusableCollectionViewCell
+    func questCell(cell: reusableCollectionViewCell, index : Int){
         cell.allFuncs()
-        cell.stepLabel.text = String(indexPath.row + 1)
-        if completeList.contains(indexPath.row){
+        cell.stepLabel.text = String(index + 1)
+        if completeList.contains(index){
             cell.stepBtn.setImage(UIImage(named: "completeImage"), for: .normal)
         }
         else {
             cell.stepBtn.setImage(UIImage(named: "notYetImage"), for: .normal)
         }
-        if now == indexPath.row  {
+        if now == index  {
             cell.backgroundView = UIImageView(image: UIImage(named: "nowImage"))
-//            cell.backGroundImage = UIImage(named: "nowImage")!
+            //            cell.backGroundImage = UIImage(named: "nowImage")!
+        }
+    }
+    
+    func bottomCell(cell: BottomCollectionViewCell, index: Int){
+        let btnLabelList = ["Hint", "Location", "Photo"]
+        let btnImageList = ["hintBtnImage", "locationBtnImage", "photoBtnImage"]
+        
+        cell.allFuncs()
+        cell.bottomBtn.setBackgroundImage(UIImage(named: btnImageList[index]), for: .normal)
+        cell.bottomBtnLabel.text = btnLabelList[index]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    // 옆 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        var interItem = CGFloat(0)
+        if collectionView == questCollectionView{
+            interItem = CGFloat(1)
+        }
+        else {
+            interItem = CGFloat(130)
+        }
+        return interItem
+    }
+    
+    // cell 사이즈( 옆 라인을 고려하여 설정 )
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var size = CGSize(width: 0, height: 0)
+        
+        if collectionView == questCollectionView{
+            let width = collectionView.frame.width / 9 - 1
+            let height = collectionView.frame.height - 20
+            size = CGSize(width: width, height: height)
+        }
+        
+        if collectionView == bottomCollectionView{
+            let width = collectionView.frame.width / 3 - 1
+            let height = collectionView.frame.height - 20
+            size = CGSize(width: width, height: height)
+            
+        }
+    
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        var cellNum = 0
+        if collectionView == bottomCollectionView{
+            cellNum = 3
+        }
+        
+        if collectionView == questCollectionView{
+            cellNum = 8
+        }
+        return cellNum
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        return false
+//    }
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        collectionView.delaysContentTouches = false
+        if collectionView == bottomCollectionView {
+            if indexPath.row == 0{
+                print("hint")
+            }
+            if indexPath.row == 1{
+                print("location")
+            }
+            if indexPath.row == 2{
+                print("photo")
+                present(self.imagePickerController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var cell = UICollectionViewCell()
+        
+        if collectionView == questCollectionView {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reusableCollectionViewCell", for: indexPath) as! reusableCollectionViewCell
+            questCell(cell: cell as! reusableCollectionViewCell, index: indexPath.row)
+        }
+        
+        if collectionView == bottomCollectionView {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BottomCollectionViewCell", for: indexPath) as! BottomCollectionViewCell
+            bottomCell(cell: cell as! BottomCollectionViewCell, index: indexPath.row)
+//            if indexPath.row == 2{
+//                present(self.imagePickerController, animated: true, completion: nil)
+//            }
         }
         
         return cell
@@ -224,5 +298,5 @@ extension MissionViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
 }
