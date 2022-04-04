@@ -96,6 +96,7 @@ class MissionViewController: UIViewController{
         self.questCollectionView.register(reusableCollectionViewCell.self,
                                           forCellWithReuseIdentifier: "reusableCollectionViewCell")
         self.imagePickerController.delegate = self
+        
         self.bottomCollectionView.delegate = self
         self.bottomCollectionView.dataSource = self
         self.questCollectionView.delegate = self
@@ -122,6 +123,7 @@ class MissionViewController: UIViewController{
         }
     }
     
+    
     func suggestLocation(questNum : Int){
         locationLabel.font = UIFont(name: "tway_sky", size: 25)
         locationLabel.text = "중앙도서관"
@@ -142,31 +144,43 @@ class MissionViewController: UIViewController{
         
         degreeLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 25)
         }
         questCollectionView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
             $0.top.equalTo(degreeLabel.snp.bottom).offset(16)
             $0.height.equalTo(90)
+            $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 10)
         }
         locationLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(questCollectionView.snp.bottom).offset(16)
+            $0.top.equalTo(questCollectionView.snp.bottom).offset(8)
+            $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 23)
         }
         missionImage.snp.makeConstraints{
             $0.top.equalTo(locationLabel.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview().offset(8)
             $0.trailing.equalToSuperview().offset(-16)
+            $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 4.3)
         }
         
         bottomCollectionView.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(missionImage.snp.bottom).offset(20)
+            $0.top.equalTo(missionImage.snp.bottom).offset(8)
             $0.leading.equalToSuperview().offset(40)
             $0.trailing.equalToSuperview().offset(-40)
             $0.height.equalTo(150)
+            $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 10)
+        }
+        bottomContentView.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            $0.top.equalTo(bottomCollectionView.snp.bottom).offset(10)
+            $0.height.equalTo(missionImage.snp.height)
         }
     }
 }
@@ -226,9 +240,8 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if collectionView == bottomCollectionView{
             let width = collectionView.frame.width / 3 - 1
-            let height = collectionView.frame.height - 20
+            let height = collectionView.frame.height
             size = CGSize(width: width, height: height)
-            
         }
     
         return size
@@ -253,13 +266,15 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
 //        return false
 //    }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        collectionView.delaysContentTouches = false
+        
         if collectionView == bottomCollectionView {
             if indexPath.row == 0{
                 print("hint")
+                bottomContentView.image = UIImage(named: "missionImage")
             }
             if indexPath.row == 1{
                 print("location")
+                bottomContentView.image = UIImage(named: "locationBtnImage")
             }
             if indexPath.row == 2{
                 print("photo")
@@ -279,8 +294,9 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == bottomCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BottomCollectionViewCell", for: indexPath) as! BottomCollectionViewCell
             bottomCell(cell: cell as! BottomCollectionViewCell, index: indexPath.row)
-//            if indexPath.row == 2{
-//                present(self.imagePickerController, animated: true, completion: nil)
+            
+//            cell.snp.makeConstraints{
+//                $0.top.equalTo(bottomCollectionView.snp.top)
 //            }
         }
         
@@ -290,9 +306,15 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 extension MissionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {submitImage.image = image }
-        
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true)
+
+        guard let image = info[.originalImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+
+        // print out the image size as a test
+        bottomContentView.image = image
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

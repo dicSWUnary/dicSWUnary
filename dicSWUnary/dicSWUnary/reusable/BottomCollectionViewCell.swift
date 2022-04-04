@@ -27,13 +27,15 @@ class BottomCollectionViewCell: UICollectionViewCell {
     }
     
     func bottomCollectionViewLayout(collectionViewCell: UIView){
-        bottomBtnLabel.snp.makeConstraints{
+        
+        bottomBtn.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(8)
         }
-        bottomBtn.snp.makeConstraints{
+        bottomBtnLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(bottomBtnLabel.snp.bottom).offset(8)
+            $0.top.equalTo(bottomBtn.snp.bottom).offset(8)
+            $0.bottom.equalToSuperview()
         }
                             
     }
@@ -44,6 +46,7 @@ class BottomCollectionViewCell: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
+        
         allFuncs()
         super.awakeFromNib()
     }
