@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    var verified = false
+    var verified = true
     
     var theVC = UIViewController()
     
@@ -24,20 +24,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: - CASE 1
         //case2 주석 처리 된 지금 실행하면 보내준 영상처럼 navigationcontroller 잘 연결 됨
         //rootview 설정 문제 같은데 이 거 잘 모르겠어 스바루
-        let rootViewcontroller = UINavigationController(rootViewController:ViewController())
-        window.rootViewController = rootViewcontroller
+        
         
         //MARK: - CASE 2
-//        if verified == true { //인증이 완료된 사용자
-//            theVC = ViewController()
-//        
-//            print("verified")
-//        }
-//        else { //인증이 완료되지 않은 사용자
-//            theVC =  FirstViewController()
-//        }
-//
-//        window.rootViewController = theVC // Your initial view controller.
+        if verified == true { //인증이 완료된 사용자 // 네비로 연결
+            let rootViewcontroller = UINavigationController(rootViewController:ViewController())
+            window.rootViewController = rootViewcontroller
+            print("verified")
+        }
+        else { //인증이 완료되지 않은 사용자
+            theVC =  FirstViewController()
+            window.rootViewController = theVC // Your initial view controller.
+        }
 
         window.makeKeyAndVisible()
         self.window = window

@@ -19,8 +19,8 @@
 		30DC50E427EE1A24004363DA /* tway_air.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E227EE1A24004363DA /* tway_air.ttf */; };
 		30DC50E527EE1A24004363DA /* tway_sky.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E327EE1A24004363DA /* tway_sky.ttf */; };
 		30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5527EB0D6F009E157F /* reusableBtnView.swift */; };
-		30F45E5927EB1747009E157F /* reusableStackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5827EB1746009E157F /* reusableStackViewCell.swift */; };
 		30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */; };
+		30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FAF9A727F9C66B00ED8EB5 /* BottomCollectionViewCell.swift */; };
 		601FA6D18DDD8F4AC7A99F9D /* Pods_dicSWUnary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */; };
 		E1363FC027E780E80032584F /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FBF27E780E80032584F /* ProfileCard.swift */; };
 		E1363FC227E783F90032584F /* MissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC127E783F90032584F /* MissionCard.swift */; };
@@ -49,8 +49,8 @@
 		30DC50E227EE1A24004363DA /* tway_air.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_air.ttf; path = Fonts/tway_air.ttf; sourceTree = SOURCE_ROOT; };
 		30DC50E327EE1A24004363DA /* tway_sky.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_sky.ttf; path = Fonts/tway_sky.ttf; sourceTree = SOURCE_ROOT; };
 		30F45E5527EB0D6F009E157F /* reusableBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableBtnView.swift; sourceTree = "<group>"; };
-		30F45E5827EB1746009E157F /* reusableStackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableStackViewCell.swift; sourceTree = "<group>"; };
 		30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableCollectionViewCell.swift; sourceTree = "<group>"; };
+		30FAF9A727F9C66B00ED8EB5 /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
 		7541B45201AFE9D5EDFB130D /* Pods-dicSWUnary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.debug.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.debug.xcconfig"; sourceTree = "<group>"; };
 		E1363FBF27E780E80032584F /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
 		E1363FC127E783F90032584F /* MissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCard.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				30F45E5527EB0D6F009E157F /* reusableBtnView.swift */,
-				30F45E5827EB1746009E157F /* reusableStackViewCell.swift */,
 				30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */,
+				30FAF9A727F9C66B00ED8EB5 /* BottomCollectionViewCell.swift */,
 			);
 			path = reusable;
 			sourceTree = "<group>";
@@ -296,7 +296,6 @@
 				30B5473D27E1A53200F26AA0 /* ViewController.swift in Sources */,
 				E1363FC227E783F90032584F /* MissionCard.swift in Sources */,
 				30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */,
-				30F45E5927EB1747009E157F /* reusableStackViewCell.swift in Sources */,
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
 				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
@@ -308,6 +307,7 @@
 				E1363FC627E7A3110032584F /* StatusCard.swift in Sources */,
 				E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
+				30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */,
 				30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,7 +369,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = PD739GKFH2;
+				DEVELOPMENT_TEAM = 68F2F82KVT;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -431,7 +431,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = PD739GKFH2;
+				DEVELOPMENT_TEAM = 68F2F82KVT;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -445,6 +445,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -460,7 +461,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 68F2F82KVT;
+				DEVELOPMENT_TEAM = PD739GKFH2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dicSWUnary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -489,7 +490,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 68F2F82KVT;
+				DEVELOPMENT_TEAM = PD739GKFH2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dicSWUnary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -520,7 +521,7 @@
 				30B5474827E1A53500F26AA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		30B5474927E1A53500F26AA0 /* Build configuration list for PBXNativeTarget "dicSWUnary" */ = {
 			isa = XCConfigurationList;
@@ -529,7 +530,7 @@
 				30B5474B27E1A53500F26AA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
