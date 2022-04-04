@@ -97,16 +97,7 @@ class MissionViewController: UIViewController{
         self.bottomCollectionView.dataSource = self
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
-        
-
     }
-
-    func addArrangedSubView(){
-        bottomBtnsStackView.addArrangedSubview(hintBtn)
-        bottomBtnsStackView.addArrangedSubview(locationBtn)
-        bottomBtnsStackView.addArrangedSubview(photoSubmitBtn)
-    }
-
     
     func determineMissionImage(questNum: Int){
         missionImage.image = UIImage(named: "missionImage")
