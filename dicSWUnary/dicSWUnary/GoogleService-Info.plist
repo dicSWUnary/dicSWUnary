@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:726535526574:ios:cbb383f4278e62589a353f</string>
+	<key>DATABASE_URL</key>
+	<string>https://dicswunary-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
