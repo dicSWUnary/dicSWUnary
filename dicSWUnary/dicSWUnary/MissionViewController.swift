@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+
 
 class MissionViewController: UIViewController{
+
+
+
+    let db = Database.database().reference()
+
     
     let completeList = [0,1,2,3,4] //미션 완료 목록
     var now = 5
@@ -84,7 +92,14 @@ class MissionViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+
+
+        updateLabel()
+        
+
         self.view.backgroundColor = .black
+
         self.questCollectionView.isUserInteractionEnabled = true
         subViews(thisView: self.view)
         determineDegree(completeCnt: 1)
@@ -101,6 +116,31 @@ class MissionViewController: UIViewController{
         self.bottomCollectionView.dataSource = self
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
+
+        
+
+    }
+    
+    func updateLabel(){
+            db.child("1").observeSingleEvent(of: .value) {snapshot in
+                print("---> \(snapshot)")
+                let value = snapshot.value as? String ?? "" //2번째 줄
+                DispatchQueue.main.async {
+                    print(value)
+                }
+            }
+        }
+    
+                                     
+//    @objc func dismissSelf() {
+//        dismiss(animated: true, completion: nil)
+//    }
+
+    func addArrangedSubView(){
+        bottomBtnsStackView.addArrangedSubview(hintBtn)
+        bottomBtnsStackView.addArrangedSubview(locationBtn)
+        bottomBtnsStackView.addArrangedSubview(photoSubmitBtn)
+
     }
     
     func determineMissionImage(questNum: Int){
