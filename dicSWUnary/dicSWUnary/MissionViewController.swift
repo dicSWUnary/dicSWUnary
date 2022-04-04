@@ -31,7 +31,12 @@ class MissionViewController: UIViewController{
         return cv
     }()
     
-
+//    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MissionViewController.dismissKeyboard))
+//
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+    
     let locationLabel = UILabel()
     
     let detailLocationLabel = UILabel()
@@ -79,19 +84,17 @@ class MissionViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        self.view.backgroundColor = .black
         self.questCollectionView.isUserInteractionEnabled = true
-        self.view.backgroundColor = .white
-
         subViews(thisView: self.view)
         determineDegree(completeCnt: 1)
         determineMissionImage(questNum: 1)
         suggestLocation(questNum: 1)
         allLayout()
+        self.bottomCollectionView.isUserInteractionEnabled = true
+        self.bottomCollectionView.register(BottomCollectionViewCell.self, forCellWithReuseIdentifier: "BottomCollectionViewCell")
         self.questCollectionView.register(reusableCollectionViewCell.self,
                                           forCellWithReuseIdentifier: "reusableCollectionViewCell")
-      //        self.questCollectionView.setCollectionViewLayout(layout, animated: true)
         self.imagePickerController.delegate = self
         self.bottomCollectionView.delegate = self
         self.bottomCollectionView.dataSource = self
