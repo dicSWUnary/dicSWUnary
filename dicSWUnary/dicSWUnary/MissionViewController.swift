@@ -101,9 +101,6 @@ class MissionViewController: UIViewController{
 
     }
 
-                                     
-
-
     func addArrangedSubView(){
         bottomBtnsStackView.addArrangedSubview(hintBtn)
         bottomBtnsStackView.addArrangedSubview(locationBtn)
