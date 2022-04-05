@@ -84,7 +84,7 @@ class MissionViewController: UIViewController{
 //        updateLabel()
         self.view.backgroundColor = .black
         
-        self.questCollectionView.isUserInteractionEnabled = true
+//        self.questCollectionView.isUserInteractionEnabled = true
         subViews(thisView: self.view)
         determineDegree(completeCnt: 1)
         determineMissionImage(questNum: 1)
@@ -115,6 +115,7 @@ class MissionViewController: UIViewController{
                     do {
                         let missions = try FirebaseDecoder().decode([missions].self, from: value)
                         self.dbData = missions
+                        print(dbData)
 
                     } catch let err {
                         print (err)
@@ -123,7 +124,7 @@ class MissionViewController: UIViewController{
                 else {
                     print("No data available")
                 }
-            }
+            } 
     }
     
     func determineMissionImage(questNum: Int){
@@ -210,6 +211,8 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func questCell(cell: reusableCollectionViewCell, index : Int){
         cell.allFuncs()
+        cell.stepBtn.tag = index
+//        cell.testFunc(inp : cell.touchedItem)
         cell.stepLabel.text = String(index + 1)
         if completeList.contains(index){
             cell.stepBtn.setImage(UIImage(named: "completeImage"), for: .normal)
@@ -278,17 +281,14 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         return cellNum
     }
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-    //        return false
-    //    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if collectionView == questCollectionView {
-            missionImage.image = UIImage(named: dbData[indexPath.row].guide_image)
-        }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if collectionView == questCollectionView {
+//            missionImage.image = UIImage(named: dbData[indexPath.row].guide_image)
+//        }
         if collectionView == bottomCollectionView {
             if indexPath.row == 0{
                 print("hint")
@@ -296,7 +296,8 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
             }
             if indexPath.row == 1{
                 print("location")
-                bottomContentView.image = UIImage(named: "locationBtnImage")
+                bottomContentView.image = UIImage(named: "location0")
+                
             }
             if indexPath.row == 2{
                 print("photo")
@@ -311,6 +312,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == questCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reusableCollectionViewCell", for: indexPath) as! reusableCollectionViewCell
             questCell(cell: cell as! reusableCollectionViewCell, index: indexPath.row)
+
         }
         
         if collectionView == bottomCollectionView {

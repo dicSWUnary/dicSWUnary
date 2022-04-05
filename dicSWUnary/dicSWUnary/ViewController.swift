@@ -27,13 +27,13 @@ class ViewController: UIViewController{
         $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
     }
     let welcomeName = UILabel().then{
-        $0.text = "은빈님, 안녕하세요!"
+        $0.text = "슈니, 안녕하세요!"
         $0.font = UIFont.systemFont(ofSize: 30.0, weight: .bold)
     }
     
     //MARK: -- Profile
     let profileImage = UIImageView().then{
-        $0.image = UIImage(named: "profileImage")
+        $0.image = UIImage(named: "swunie")
     }
     
     let profileName = UILabel().then{
@@ -241,6 +241,9 @@ class ViewController: UIViewController{
         profileImage.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(20)
             $0.top.equalTo(headerView.snp.bottom).offset(20)
+            $0.width.equalTo(80)
+            $0.height.equalTo(80)
+            
         }
         profileName.snp.makeConstraints{
             $0.centerY.equalTo(profileImage).offset(-10)
