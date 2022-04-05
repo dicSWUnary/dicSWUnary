@@ -2,30 +2,22 @@
 //  MissionViewController.swift
 //  dicSWUnary
 //
-//  Created by 이규빈 on 2022/03/16.
+//  Created by 김주은 on 2022/03/16.
 //
 
 import UIKit
 import Firebase
 import FirebaseDatabase
-
+import CodableFirebase
 
 class MissionViewController: UIViewController{
-
-
-
-    let db = Database.database().reference()
-
-    
+    private let ref: DatabaseReference! = Database.database().reference()
+//    var dbData = [missions]()
+    var dbData : [missions] = []
     let completeList = [0,1,2,3,4] //미션 완료 목록
     var now = 5
     
     let degreeLabel = UILabel()
-    //        .then{
-    //        $0.font = UIFont(name: "twayair", size: 20)
-    //    }
-    
-    //    var questCollectionView = UICollectionView()
     
     let questCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -38,12 +30,6 @@ class MissionViewController: UIViewController{
         cv.isScrollEnabled = false
         return cv
     }()
-    
-//    let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MissionViewController.dismissKeyboard))
-//
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
     
     let locationLabel = UILabel()
     
@@ -92,14 +78,12 @@ class MissionViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-
-        updateLabel()
+        print("Mission view loaded")
+        readData()
         
-
+//        updateLabel()
         self.view.backgroundColor = .black
-
+        
         self.questCollectionView.isUserInteractionEnabled = true
         subViews(thisView: self.view)
         determineDegree(completeCnt: 1)
@@ -117,30 +101,29 @@ class MissionViewController: UIViewController{
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
 
-        
-
     }
     
-    func updateLabel(){
-            db.child("1").observeSingleEvent(of: .value) {snapshot in
-                print("---> \(snapshot)")
-                let value = snapshot.value as? String ?? "" //2번째 줄
-                DispatchQueue.main.async {
-                    print(value)
+    func readData(){
+            self.ref.getData { [self](error, snapshot) in
+                if let error = error {
+                    print("Error getting data \(error)")
+                }
+                else if snapshot.exists() {
+                    //                        print("Got data \(snapshot.value!)")
+                    //                        print("ttt \(type(of: snapshot.value!))")
+                    guard let value = snapshot.value else {return}
+                    do {
+                        let missions = try FirebaseDecoder().decode([missions].self, from: value)
+                        self.dbData = missions
+
+                    } catch let err {
+                        print (err)
+                    }
+                }
+                else {
+                    print("No data available")
                 }
             }
-        }
-    
-                                     
-//    @objc func dismissSelf() {
-//        dismiss(animated: true, completion: nil)
-//    }
-
-    func addArrangedSubView(){
-        bottomBtnsStackView.addArrangedSubview(hintBtn)
-        bottomBtnsStackView.addArrangedSubview(locationBtn)
-        bottomBtnsStackView.addArrangedSubview(photoSubmitBtn)
-
     }
     
     func determineMissionImage(questNum: Int){
@@ -148,9 +131,6 @@ class MissionViewController: UIViewController{
     }
     
     func determineDegree(completeCnt : Int) {
-        //        for i in UIFont.familyNames{
-        //            print(i)
-        //        }
         degreeLabel.font = UIFont(name: "tway_sky", size: 15)
         if completeCnt == 0{
             degreeLabel.text = "삐약삐약 새내기🐥"
@@ -283,7 +263,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
             let height = collectionView.frame.height
             size = CGSize(width: width, height: height)
         }
-    
+        
         return size
     }
     
@@ -302,15 +282,17 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        return false
-//    }
+    //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    //        return false
+    //    }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
+        if collectionView == questCollectionView {
+            missionImage.image = UIImage(named: dbData[indexPath.row].guide_image)
+        }
         if collectionView == bottomCollectionView {
             if indexPath.row == 0{
                 print("hint")
-                bottomContentView.image = UIImage(named: "missionImage")
+                bottomContentView.image = UIImage(named: dbData[indexPath.row].guide_image)
             }
             if indexPath.row == 1{
                 print("location")
@@ -334,10 +316,6 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == bottomCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BottomCollectionViewCell", for: indexPath) as! BottomCollectionViewCell
             bottomCell(cell: cell as! BottomCollectionViewCell, index: indexPath.row)
-            
-//            cell.snp.makeConstraints{
-//                $0.top.equalTo(bottomCollectionView.snp.top)
-//            }
         }
         
         return cell
@@ -347,12 +325,12 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
 extension MissionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-
+        
         guard let image = info[.originalImage] as? UIImage else {
             print("No image found")
             return
         }
-
+        
         // print out the image size as a test
         bottomContentView.image = image
     }

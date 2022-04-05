@@ -12,13 +12,17 @@ class BottomCollectionViewCell: UICollectionViewCell {
     let bottomBtnLabel = UILabel()
     
     let bottomBtn = UIButton().then{
-        $0.isUserInteractionEnabled = false
+        $0.isUserInteractionEnabled = false //여기여기여기
         $0.addTarget(self, action: #selector(stackBtnTapped), for: .touchUpInside)
     }
     
-    @objc func stackBtnTapped(){
-        print("I am tapped")
+    func setImage(IV: UIImageView, I: String){
+        IV.image = UIImage(named: I)
+    }
 
+    @objc func stackBtnTapped(sender: UIButton) -> Int{
+        print(sender.tag)
+        return (sender.tag)
     }
     
     func adds(view: UIView){

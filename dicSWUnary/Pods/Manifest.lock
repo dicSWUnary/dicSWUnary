@@ -1,4 +1,5 @@
 PODS:
+  - CodableFirebase (0.2.1)
   - Firebase/Analytics (8.14.0):
     - Firebase/Core
   - Firebase/Core (8.14.0):
@@ -98,6 +99,7 @@ PODS:
   - Then (2.7.0)
 
 DEPENDENCIES:
+  - CodableFirebase
   - Firebase/Analytics
   - Firebase/Database
   - SnapKit (~> 5.0.0)
@@ -105,6 +107,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - CodableFirebase
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -121,6 +124,7 @@ SPEC REPOS:
     - Then
 
 SPEC CHECKSUMS:
+  CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   Firebase: 7e8fe528c161b9271d365217a74c16aaf834578e
   FirebaseAnalytics: 2fc3876e2eb347673ad2f35e249ae7b15d6c88f5
   FirebaseCore: b84a44ee7ba999e0f9f76d198a9c7f60a797b848
@@ -136,6 +140,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: aafd82e39c7fe5c724d22c67c942f53890ad0c5d
+PODFILE CHECKSUM: 94d7cd38f36e4cb6a6eb55a4ec4f6c1836d7c75b
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.11.0
