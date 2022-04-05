@@ -16,6 +16,7 @@
 		30B5474027E1A53200F26AA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B5473E27E1A53200F26AA0 /* Main.storyboard */; };
 		30B5474227E1A53400F26AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474127E1A53400F26AA0 /* Assets.xcassets */; };
 		30B5474527E1A53400F26AA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */; };
+		30C462E927FBE5A3002F8323 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C462E827FBE5A3002F8323 /* Structs.swift */; };
 		30DC50E427EE1A24004363DA /* tway_air.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E227EE1A24004363DA /* tway_air.ttf */; };
 		30DC50E527EE1A24004363DA /* tway_sky.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E327EE1A24004363DA /* tway_sky.ttf */; };
 		30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5527EB0D6F009E157F /* reusableBtnView.swift */; };
@@ -46,6 +47,7 @@
 		30B5474127E1A53400F26AA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30B5474427E1A53400F26AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30B5474627E1A53500F26AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30C462E827FBE5A3002F8323 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		30DC50E227EE1A24004363DA /* tway_air.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_air.ttf; path = Fonts/tway_air.ttf; sourceTree = SOURCE_ROOT; };
 		30DC50E327EE1A24004363DA /* tway_sky.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_sky.ttf; path = Fonts/tway_sky.ttf; sourceTree = SOURCE_ROOT; };
 		30F45E5527EB0D6F009E157F /* reusableBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableBtnView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				E1363FC727E7A95A0032584F /* Card */,
 				30700FE527E1D321006736E5 /* UILabel.swift */,
+				30C462E827FBE5A3002F8323 /* Structs.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				30700FE627E1D321006736E5 /* UILabel.swift in Sources */,
 				301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */,
 				E1FECB9A27F2F17200E9AACF /* myButton.swift in Sources */,
+				30C462E927FBE5A3002F8323 /* Structs.swift in Sources */,
 				E1363FC627E7A3110032584F /* StatusCard.swift in Sources */,
 				E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,

@@ -13,6 +13,7 @@ target 'dicSWUnary' do
   # Add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
+  pod 'CodableFirebase'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
