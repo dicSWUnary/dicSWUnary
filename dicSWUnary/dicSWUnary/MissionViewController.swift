@@ -125,7 +125,7 @@ class MissionViewController: UIViewController{
 //                }
 //            }
 //    }
-    
+
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
         locationLabel.text = dbData[questNum].building_name
