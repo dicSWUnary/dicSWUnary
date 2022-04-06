@@ -9,11 +9,12 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import CodableFirebase
+import CoreData
 
 class MissionViewController: UIViewController{
     private let ref: DatabaseReference! = Database.database().reference()
     var dbData = [missions]()
-
+    
     var completeList = [missions]() //미션 완료 목록
     var completeCheck = [Int]()
     var now = 5
@@ -75,10 +76,17 @@ class MissionViewController: UIViewController{
         $0.sourceType = .camera
         $0.allowsEditing = true
     }
-
+    
     //MARK: - LifeCycle : viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Mission view loaded")
+        //        readData()
+        //    advise: "졸업 사진 스팟", building_name: "정문", floor: "X", guide_image: "guide0", hint: "서울여대의 얼굴", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true
+        saveNewMission(0, buildingName: "정문", spotName: "학교 마크", floor: "0", guideImage: "guide0", hint: "서울여대의 얼굴", locationImage: "location_0", advise: "졸업 사진 스팟", complete: false)
+        getAllMission()
+        
         
         imageLength = Int((self.view.safeAreaLayoutGuide.layoutFrame.width) - 100)
         self.view.backgroundColor = .black
@@ -98,34 +106,50 @@ class MissionViewController: UIViewController{
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
         
-
+        
     }
     
+    
     //MARK: - Firebase 연동
-//    func readData(){
-//            self.ref.getData { [self](error, snapshot) in
-//                if let error = error {
-//                    print("Error getting data \(error)")
-//                }
-//                else if snapshot.exists() {
-//                    //                        print("Got data \(snapshot.value!)")
-//                    //                        print("ttt \(type(of: snapshot.value!))")
-//                    guard let value = snapshot.value else {return}
-//                    do {
-//                        let missions = try FirebaseDecoder().decode([missions].self, from: value)
-//                        self.dbData = missions
-//                        print(dbData)
-//
-//                    } catch let err {
-//                        print (err)
-//                    }
-//                }
-//                else {
-//                    print("No data available")
-//                }
-//            }
-//    }
-
+    //    func readData(){
+    //            self.ref.getData { [self](error, snapshot) in
+    //                if let error = error {
+    //                    print("Error getting data \(error)")
+    //                }
+    //                else if snapshot.exists() {
+    //                    //                        print("Got data \(snapshot.value!)")
+    //                    //                        print("ttt \(type(of: snapshot.value!))")
+    //                    guard let value = snapshot.value else {return}
+    //                    do {
+    //                        let missions = try FirebaseDecoder().decode([missions].self, from: value)
+    //                        self.dbData = missions
+    //                        print(dbData)
+    //
+    //                    } catch let err {
+    //                        print (err)
+    //                    }
+    //                }
+    //                else {
+    //                    print("No data available")
+    //                }
+    //            }
+    //    }
+    
+    
+    fileprivate func getAllMission() {
+        let missions: [Quests] = CoreDataManager.shared.getMissions()
+        let missionIndex: [Int16] = missions.map({$0.index})
+        let missionBuilding: String? = missions.filter({$0.index == 0}).first?.buildingName
+        print("allMission = \(missionIndex)")
+        print("Building Name = \(missionBuilding)")
+    }
+    // 새로운 유저 등록
+    fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
+        CoreDataManager.shared.saveMission(index: index, buildingName: buildingName, spotName: spotName, floor: floor, guideImage: guideImage, hint: hint, locationImage: locationImage, advise: advise, complete: complete){
+            onSuccess in print("saved = \(onSuccess)")
+        }
+    }
+    
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
         locationLabel.text = dbData[questNum].building_name
@@ -152,7 +176,7 @@ class MissionViewController: UIViewController{
         thisView.addSubview(detailLocationLabel)
         thisView.addSubview(missionImage)
         thisView.addSubview(bottomCollectionView)
-//        thisView.addSubview(bottomContentView)
+        //        thisView.addSubview(bottomContentView)
     }
     
     func allLayout(){
@@ -180,8 +204,8 @@ class MissionViewController: UIViewController{
         missionImage.snp.makeConstraints{
             $0.top.equalTo(detailLocationLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-//            $0.leading.equalToSuperview().offset(8)
-//            $0.trailing.equalToSuperview().offset(-16)
+            //            $0.leading.equalToSuperview().offset(8)
+            //            $0.trailing.equalToSuperview().offset(-16)
             $0.width.equalTo(imageLength)
             $0.height.equalTo(imageLength)
         }
@@ -193,14 +217,14 @@ class MissionViewController: UIViewController{
             $0.trailing.equalToSuperview().offset(-40)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 10)
         }
-//        bottomContentView.snp.makeConstraints{
-//            $0.leading.equalToSuperview().offset(16)
-//            $0.trailing.equalToSuperview().offset(-16)
-//            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-//            $0.top.equalTo(bottomCollectionView.snp.bottom).offset(10)
-//            $0.width.equalTo(imageLength)
-//            $0.height.equalTo(imageLength)
-//        }
+        //        bottomContentView.snp.makeConstraints{
+        //            $0.leading.equalToSuperview().offset(16)
+        //            $0.trailing.equalToSuperview().offset(-16)
+        //            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+        //            $0.top.equalTo(bottomCollectionView.snp.bottom).offset(10)
+        //            $0.width.equalTo(imageLength)
+        //            $0.height.equalTo(imageLength)
+        //        }
     }
 }
 
@@ -210,7 +234,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
     func questCell(cell: reusableCollectionViewCell, index : Int){
         cell.allFuncs()
         cell.stepBtn.tag = index
-//        cell.testFunc(inp : cell.touchedItem)
+        //        cell.testFunc(inp : cell.touchedItem)
         cell.stepLabel.text = String(index + 1)
         if completeCheck.contains(index){
             cell.stepBtn.setImage(UIImage(named: "completeImage"), for: .normal)
@@ -282,7 +306,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == questCollectionView {
             if completeCheck.contains(indexPath.row) || indexPath.row == now {
@@ -297,11 +321,11 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         else if collectionView == bottomCollectionView {
             if indexPath.row == 0{
                 showAlert(style: .alert, title: "Hint",text: dbData[now].hint)
-//                bottomContentView.image = UIImage(named: dbData[indexPath.row].guide_image)
+                //                bottomContentView.image = UIImage?(named: dbData[indexPath.row].guide_image)
             }
             if indexPath.row == 1{
                 showAlert(style: .alert, title: "Location", text: dbData[now].floor + "에 위치하고 있어요.")
-//                bottomContentView.image = UIImage(named: "location0")
+                //                bottomContentView.image = UIImage(named: "location0")
                 
             }
             if indexPath.row == 2{
@@ -316,7 +340,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == questCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reusableCollectionViewCell", for: indexPath) as! reusableCollectionViewCell
             questCell(cell: cell as! reusableCollectionViewCell, index: indexPath.row)
-
+            
         }
         
         if collectionView == bottomCollectionView {
@@ -340,7 +364,7 @@ extension MissionViewController: UIImagePickerControllerDelegate, UINavigationCo
         nextVC.submittedImage = image
         nextVC.imageLength = imageLength
         self.navigationController?.pushViewController(nextVC, animated: true)
-
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
