@@ -15,21 +15,7 @@ class reusableCollectionViewCell: UICollectionViewCell {
     let stepLabel = UILabel()
     
     let stepBtn = UIButton().then{
-        $0.addTarget(self, action: #selector(stepBtnTapped), for: .touchUpInside)
-    }
-    func testFunc(inp: Int) -> String{
-        if inp == 0 {
-            print("done")
-            
-        }
-        return "done"
-    }
-    @objc func stepBtnTapped(sender: UIButton)-> Int{
-        print(sender.tag)
-//        testFunc(inp : sender.tag)
-        touchedItem  = sender.tag
-        
-        return sender.tag
+        $0.isUserInteractionEnabled = false
     }
     
     func adds(view: UIView){

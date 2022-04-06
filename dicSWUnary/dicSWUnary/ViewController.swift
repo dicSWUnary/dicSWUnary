@@ -15,8 +15,20 @@ import Then
 
 class ViewController: UIViewController{
     
-    //헤더 뷰
+    var dbData = [missions(advise: "정문에 위치한 서울여대의 마크! 졸업 사진 스팟이에요!", building_name: "정문", floor: "건물 외부", guide_image: "guide0", hint: "정문을 통해서 50주년으로 가볼까요?", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
+                  missions(advise: "토익, 등본, 발표자료 등 프린트가 필요하다면 카피웍스를 이용해보세요.", building_name: "50주년 기념관", floor: "지하 1층", guide_image: "guide1", hint: "계단 옆 연못 옆을 볼까요?", index: 1, location_image: "location_1", spot_name: "카피웍스", succes_check: true),
+                  missions(advise: "50주년 기념관 1층에서는 빠르게 식사를 해결할 수 있어요. 또 제공되는 테이블에서 과제 등을 해도 괜찮아요.", building_name: "50주년 기념관", floor: "1층", guide_image: "guide_2", hint: "빵 냄새를 따라가다보면 만날 수 있을지도?", index: 2, location_image: "location_2", spot_name: "CU 편의점", succes_check: false),
+                  missions(advise: "재학증명서, 장학금 수혜증명서 등 다양한 증명서 출력이 저렴한 가격에 가능해요!", building_name: "인문사회관", floor: "1층", guide_image: "guide_3", hint: "인문사회관 내부에서 땅콩계단 방향을 바라보세요", index: 3, location_image: "location_3", spot_name: "키오스크", succes_check: false),
+                  missions(advise: "유일한 좌식 좌석. 온돌이 깔려있어서 뜨뜻하게 공부할 수 있어요.", building_name: "도서관", floor: "1층", guide_image: "guide_4", hint: "좌석번호 178-181를 찾아보세요.", index: 4, location_image: "location_4", spot_name: "슈니마루", succes_check: false),
+                  missions(advise: "학기 초에 한 학기 대여를 신청하면, 책 값을 아낄 수 있어요.", building_name: "도서관", floor: "4층", guide_image: "guide_5", hint: "엘리베이터는 비상계단 앞에 있어요! 그걸 타고 올라가볼까요?", index: 5, location_image: "location_5", spot_name: "자연과학 자료실", succes_check: false),
+                  missions(advise: "편지나 서류를 보내고 싶다면 서울여대 우체국을 이용해보세요", building_name: "학생누리관", floor: "1층", guide_image: "guide_6", hint: "누리관에서 우리은행을 지나 쭉 들어와보세요.", index: 6, location_image: "location_6", spot_name: "우체국", succes_check: false),
+                  missions(advise: "1학년부터 4학년 모두를 위한 취업 프로그램이 준비되어있으니, 저학년일 때부터 많이 이용해보세요.", building_name: "학생누리관", floor: "2층", guide_image: "guide_7", hint: "누리관 1층에 들어가자마자 오른쪽으로 꺾어보세요. 처음보는 비상계단이 나올거에요.", index: 7, location_image: "location_7", spot_name: "취업경력개발팀", succes_check: false)]
     
+    var completeList = [missions]()
+    var completeCheck = [Int]()
+    var now = 0
+    
+    //헤더 뷰
     let headerView = UIView().then{
         $0.backgroundColor = .white
     }
@@ -163,6 +175,14 @@ class ViewController: UIViewController{
         navigationItem.title = ""
         view.backgroundColor = UIColor(named: "graybackground")
         
+        //makeList
+        self.completeList = dbData.filter{$0.succes_check == true}
+        
+        for i in completeList{
+            completeCheck.append(i.index)
+        }
+        now = completeCheck.max()! + 1
+        
         view.addSubview(headerView)
         headerView.addSubview(welcomeLevel)
         headerView.addSubview(welcomeName)
@@ -206,13 +226,11 @@ class ViewController: UIViewController{
     
     //Btn tapped
     @objc func MissionBtnTapped(){
-        print("toNaviCon")
-//        let rootVC = MissionViewController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: true)
-        
         let missionVC = MissionViewController()
+        missionVC.dbData = dbData
+        missionVC.now = now
+        missionVC.completeCheck = completeCheck
+        missionVC.completeList = completeList
         self.navigationController?.pushViewController(missionVC, animated: true)
         
     }
@@ -232,8 +250,7 @@ class ViewController: UIViewController{
         
         welcomeName.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(20)
-            $0.bottom.equalToSuperview().offset(-25)
-            
+            $0.bottom.equalToSuperview().offset(-25)            
         }
     }
     

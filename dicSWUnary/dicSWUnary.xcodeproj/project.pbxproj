@@ -17,6 +17,9 @@
 		30B5474227E1A53400F26AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474127E1A53400F26AA0 /* Assets.xcassets */; };
 		30B5474527E1A53400F26AA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */; };
 		30C462E927FBE5A3002F8323 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C462E827FBE5A3002F8323 /* Structs.swift */; };
+		30C4632E27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30C4632C27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld */; };
+		30C4633027FD7FB6002F8323 /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */; };
+		30C4633227FD8776002F8323 /* UsefulFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4633127FD8776002F8323 /* UsefulFuncs.swift */; };
 		30DC50E427EE1A24004363DA /* tway_air.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E227EE1A24004363DA /* tway_air.ttf */; };
 		30DC50E527EE1A24004363DA /* tway_sky.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E327EE1A24004363DA /* tway_sky.ttf */; };
 		30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5527EB0D6F009E157F /* reusableBtnView.swift */; };
@@ -48,6 +51,9 @@
 		30B5474427E1A53400F26AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30B5474627E1A53500F26AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30C462E827FBE5A3002F8323 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		30C4632D27FD5C2A002F8323 /* dicSWUnary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dicSWUnary.xcdatamodel; sourceTree = "<group>"; };
+		30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
+		30C4633127FD8776002F8323 /* UsefulFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulFuncs.swift; sourceTree = "<group>"; };
 		30DC50E227EE1A24004363DA /* tway_air.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_air.ttf; path = Fonts/tway_air.ttf; sourceTree = SOURCE_ROOT; };
 		30DC50E327EE1A24004363DA /* tway_sky.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_sky.ttf; path = Fonts/tway_sky.ttf; sourceTree = SOURCE_ROOT; };
 		30F45E5527EB0D6F009E157F /* reusableBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableBtnView.swift; sourceTree = "<group>"; };
@@ -79,8 +85,10 @@
 		30700FE427E1D303006736E5 /* help */ = {
 			isa = PBXGroup;
 			children = (
+				E1FECB9927F2F17200E9AACF /* myButton.swift */,
 				30700FE527E1D321006736E5 /* UILabel.swift */,
 				30C462E827FBE5A3002F8323 /* Structs.swift */,
+				30C4633127FD8776002F8323 /* UsefulFuncs.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -118,6 +126,7 @@
 				E17870A427E1C5A700A93524 /* MissionViewController.swift */,
 				E18C92AC27FD6B0F00147CAA /* CoreDataManager.swift */,
 				301A112D27E4E53200E4CCFC /* VerificationViewController.swift */,
+				30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */,
 				30B5473E27E1A53200F26AA0 /* Main.storyboard */,
 				30B5474127E1A53400F26AA0 /* Assets.xcassets */,
 				30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */,
@@ -126,6 +135,7 @@
 				E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */,
 				E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */,
 				E18C92B827FD855800147CAA /* Quests.xcdatamodeld */,
+				30C4632C27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld */,
 			);
 			path = dicSWUnary;
 			sourceTree = "<group>";
@@ -289,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B5473D27E1A53200F26AA0 /* ViewController.swift in Sources */,
+				30C4633027FD7FB6002F8323 /* SubmitViewController.swift in Sources */,
 				30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */,
 				E18C92BE27FD860B00147CAA /* Quests+CoreDataProperties.swift in Sources */,
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
@@ -305,6 +316,7 @@
 				30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */,
 				E18C92BD27FD860B00147CAA /* Quests+CoreDataClass.swift in Sources */,
 				30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */,
+				30C4633227FD8776002F8323 /* UsefulFuncs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
