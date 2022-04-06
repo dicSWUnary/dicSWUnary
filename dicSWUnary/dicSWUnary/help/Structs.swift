@@ -26,7 +26,7 @@ struct missions : Codable {
 //        case index = "INDEX"
 //        case location_image = "LOCATION"
 //        case spot_name = "SPOT_NAME"
-//        case succes_check = "SUCCES_CHECK"
+//        case succes_check = "SUCwCES_CHECK"
 //    }
     
 }
