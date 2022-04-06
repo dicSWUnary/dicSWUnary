@@ -166,6 +166,7 @@ class MissionViewController: UIViewController{
         questCollectionView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
+//            $0.centerX.equalToSuperview()
             $0.top.equalTo(degreeLabel.snp.bottom).offset(16)
             $0.height.equalTo(90)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 10)
