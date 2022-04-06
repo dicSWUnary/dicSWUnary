@@ -9,13 +9,13 @@ import Foundation
 import CodableFirebase
 
 struct missions : Codable {
-    let advise: String
-    let building_name : String
-    let floor, guide_image, hint: String
-    let index: Int
-    let location_image: String
-    let spot_name: String
-    let succes_check: Bool
+    var advise: String
+    var building_name : String
+    var floor, guide_image, hint: String
+    var index: Int
+    var location_image: String
+    var spot_name: String
+    var succes_check: Bool
     
 //    enum CodingKeys: String, CodingKey {
 //        case building_name = "BUILDING_NAME"

@@ -32,6 +32,7 @@
 		E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E18C92B827FD855800147CAA /* Quests.xcdatamodeld */; };
 		E18C92BD27FD860B00147CAA /* Quests+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */; };
 		E18C92BE27FD860B00147CAA /* Quests+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */; };
+		E18C92C027FD912D00147CAA /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BF27FD912D00147CAA /* myButton.swift */; };
 		E19BFB8327FB43980085F69E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19BFB8227FB43980085F69E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		E18C92B927FD855800147CAA /* Quests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quests.xcdatamodel; sourceTree = "<group>"; };
 		E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E18C92BF27FD912D00147CAA /* myButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = "<group>"; };
 		E19BFB8227FB43980085F69E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,7 +88,7 @@
 				30700FE527E1D321006736E5 /* UILabel.swift */,
 				30C462E827FBE5A3002F8323 /* Structs.swift */,
 				30C4633127FD8776002F8323 /* UsefulFuncs.swift */,
-				30C4633327FD9433002F8323 /* myButton.swift */,
+				E18C92BF27FD912D00147CAA /* myButton.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -301,6 +303,7 @@
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
 				E18C92AD27FD6B0F00147CAA /* CoreDataManager.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
+				E18C92C027FD912D00147CAA /* myButton.swift in Sources */,
 				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
 				E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */,

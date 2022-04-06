@@ -190,7 +190,7 @@ fileprivate struct _FirebaseKeyedDecodingContainer<K : CodingKey> : KeyedDecodin
         return value
     }
     
-    public func decode(_ type: Int16.Type, forKey key: Key) throws -> Int16 {
+    public func decode(_ type: Int.Type, forKey key: Key) throws -> Double {
         guard let entry = self.container[key.stringValue] else {
             throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "No value associated with key \(key) (\"\(key.stringValue)\")."))
         }
@@ -198,7 +198,7 @@ fileprivate struct _FirebaseKeyedDecodingContainer<K : CodingKey> : KeyedDecodin
         self.decoder.codingPath.append(key)
         defer { self.decoder.codingPath.removeLast() }
         
-        guard let value = try self.decoder.unbox(entry, as: Int16.self) else {
+        guard let value = try self.decoder.unbox(entry, as: Double.self) else {
             throw DecodingError.valueNotFound(type, DecodingError.Context(codingPath: self.decoder.codingPath, debugDescription: "Expected \(type) value but found null instead."))
         }
         
