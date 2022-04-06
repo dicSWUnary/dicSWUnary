@@ -132,6 +132,9 @@ class MissionViewController: UIViewController{
 //                else {
 //                    print("No data available")
 //                }
+//            }
+//    }
+
     
     fileprivate func getAllMission() {
         let missions: [Quests] = CoreDataManager.shared.getMissions()
@@ -146,7 +149,6 @@ class MissionViewController: UIViewController{
         onSuccess in print("saved = \(onSuccess)")
             }
         }
-    
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
         locationLabel.text = dbData[questNum].building_name
