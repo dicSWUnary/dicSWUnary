@@ -12,7 +12,7 @@ struct missions : Codable {
     let advise: String
     let building_name : String
     let floor, guide_image, hint: String
-    let index: Double
+    let index: Int
     let location_image: String
     let spot_name: String
     let succes_check: Bool
