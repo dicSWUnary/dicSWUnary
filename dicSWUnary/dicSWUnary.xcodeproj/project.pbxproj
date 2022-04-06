@@ -17,7 +17,6 @@
 		30B5474227E1A53400F26AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474127E1A53400F26AA0 /* Assets.xcassets */; };
 		30B5474527E1A53400F26AA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */; };
 		30C462E927FBE5A3002F8323 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C462E827FBE5A3002F8323 /* Structs.swift */; };
-		30C4632E27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30C4632C27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld */; };
 		30C4633027FD7FB6002F8323 /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */; };
 		30C4633227FD8776002F8323 /* UsefulFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4633127FD8776002F8323 /* UsefulFuncs.swift */; };
 		30DC50E427EE1A24004363DA /* tway_air.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E227EE1A24004363DA /* tway_air.ttf */; };
@@ -32,8 +31,8 @@
 		E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E18C92B827FD855800147CAA /* Quests.xcdatamodeld */; };
 		E18C92BD27FD860B00147CAA /* Quests+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */; };
 		E18C92BE27FD860B00147CAA /* Quests+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */; };
+		E18C92C027FD912D00147CAA /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BF27FD912D00147CAA /* myButton.swift */; };
 		E19BFB8327FB43980085F69E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19BFB8227FB43980085F69E /* GoogleService-Info.plist */; };
-		E1FECB9A27F2F17200E9AACF /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FECB9927F2F17200E9AACF /* myButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +50,6 @@
 		30B5474427E1A53400F26AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30B5474627E1A53500F26AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30C462E827FBE5A3002F8323 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
-		30C4632D27FD5C2A002F8323 /* dicSWUnary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dicSWUnary.xcdatamodel; sourceTree = "<group>"; };
 		30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		30C4633127FD8776002F8323 /* UsefulFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulFuncs.swift; sourceTree = "<group>"; };
 		30DC50E227EE1A24004363DA /* tway_air.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_air.ttf; path = Fonts/tway_air.ttf; sourceTree = SOURCE_ROOT; };
@@ -66,8 +64,8 @@
 		E18C92B927FD855800147CAA /* Quests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quests.xcdatamodel; sourceTree = "<group>"; };
 		E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E18C92BF27FD912D00147CAA /* myButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = "<group>"; };
 		E19BFB8227FB43980085F69E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E1FECB9927F2F17200E9AACF /* myButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +83,10 @@
 		30700FE427E1D303006736E5 /* help */ = {
 			isa = PBXGroup;
 			children = (
-				E1FECB9927F2F17200E9AACF /* myButton.swift */,
 				30700FE527E1D321006736E5 /* UILabel.swift */,
 				30C462E827FBE5A3002F8323 /* Structs.swift */,
 				30C4633127FD8776002F8323 /* UsefulFuncs.swift */,
+				E18C92BF27FD912D00147CAA /* myButton.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -131,11 +129,9 @@
 				30B5474127E1A53400F26AA0 /* Assets.xcassets */,
 				30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */,
 				30B5474627E1A53500F26AA0 /* Info.plist */,
-				E1FECB9927F2F17200E9AACF /* myButton.swift */,
 				E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */,
 				E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */,
 				E18C92B827FD855800147CAA /* Quests.xcdatamodeld */,
-				30C4632C27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld */,
 			);
 			path = dicSWUnary;
 			sourceTree = "<group>";
@@ -305,12 +301,12 @@
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
 				E18C92AD27FD6B0F00147CAA /* CoreDataManager.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
+				E18C92C027FD912D00147CAA /* myButton.swift in Sources */,
 				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
 				E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */,
 				30700FE627E1D321006736E5 /* UILabel.swift in Sources */,
 				301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */,
-				E1FECB9A27F2F17200E9AACF /* myButton.swift in Sources */,
 				30C462E927FBE5A3002F8323 /* Structs.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
 				30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */,

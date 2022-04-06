@@ -81,13 +81,6 @@ class MissionViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Mission view loaded")
-        //        readData()
-        //    advise: "졸업 사진 스팟", building_name: "정문", floor: "X", guide_image: "guide0", hint: "서울여대의 얼굴", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true
-        saveNewMission(0, buildingName: "정문", spotName: "학교 마크", floor: "0", guideImage: "guide0", hint: "서울여대의 얼굴", locationImage: "location_0", advise: "졸업 사진 스팟", complete: false)
-        getAllMission()
-        
-        
         imageLength = Int((self.view.safeAreaLayoutGuide.layoutFrame.width) - 100)
         self.view.backgroundColor = .black
         
@@ -105,7 +98,6 @@ class MissionViewController: UIViewController{
         self.bottomCollectionView.dataSource = self
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
-        
         
     }
     
@@ -135,20 +127,6 @@ class MissionViewController: UIViewController{
     //                }
     //            }
     //    }
-    
-    fileprivate func getAllMission() {
-        let missions: [Quests] = CoreDataManager.shared.getMissions()
-        let missionIndex: [Int16] = missions.map({$0.index})
-        let missionBuilding: String? = missions.filter({$0.index == 0}).first?.buildingName
-        print("allMission = \(missionIndex)")
-        print("Building Name = \(missionBuilding)")
-    }
-    // 새로운 유저 등록
-    fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
-        CoreDataManager.shared.saveMission(index: index, buildingName: buildingName, spotName: spotName, floor: floor, guideImage: guideImage, hint: hint, locationImage: locationImage, advise: advise, complete: complete){
-            onSuccess in print("saved = \(onSuccess)")
-        }
-    }
     
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))

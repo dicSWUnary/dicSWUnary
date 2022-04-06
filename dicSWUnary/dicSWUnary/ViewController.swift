@@ -15,7 +15,7 @@ import Then
 
 class ViewController: UIViewController{
     
-    var dbData = [missions(advise: "정문에 위치한 서울여대의 마크! 졸업 사진 스팟이에요!", building_name: "정문", floor: "건물 외부", guide_image: "guide0", hint: "정문을 통해서 50주년으로 가볼까요?", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
+    var initData = [missions(advise: "정문에 위치한 서울여대의 마크! 졸업 사진 스팟이에요!", building_name: "정문", floor: "건물 외부", guide_image: "guide0", hint: "정문을 통해서 50주년으로 가볼까요?", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
                   missions(advise: "토익, 등본, 발표자료 등 프린트가 필요하다면 카피웍스를 이용해보세요.", building_name: "50주년 기념관", floor: "지하 1층", guide_image: "guide1", hint: "계단 옆 연못 옆을 볼까요?", index: 1, location_image: "location_1", spot_name: "카피웍스", succes_check: true),
                   missions(advise: "50주년 기념관 1층에서는 빠르게 식사를 해결할 수 있어요. 또 제공되는 테이블에서 과제 등을 해도 괜찮아요.", building_name: "50주년 기념관", floor: "1층", guide_image: "guide_2", hint: "빵 냄새를 따라가다보면 만날 수 있을지도?", index: 2, location_image: "location_2", spot_name: "CU 편의점", succes_check: false),
                   missions(advise: "재학증명서, 장학금 수혜증명서 등 다양한 증명서 출력이 저렴한 가격에 가능해요!", building_name: "인문사회관", floor: "1층", guide_image: "guide_3", hint: "인문사회관 내부에서 땅콩계단 방향을 바라보세요", index: 3, location_image: "location_3", spot_name: "키오스크", succes_check: false),
@@ -23,7 +23,7 @@ class ViewController: UIViewController{
                   missions(advise: "학기 초에 한 학기 대여를 신청하면, 책 값을 아낄 수 있어요.", building_name: "도서관", floor: "4층", guide_image: "guide_5", hint: "엘리베이터는 비상계단 앞에 있어요! 그걸 타고 올라가볼까요?", index: 5, location_image: "location_5", spot_name: "자연과학 자료실", succes_check: false),
                   missions(advise: "편지나 서류를 보내고 싶다면 서울여대 우체국을 이용해보세요", building_name: "학생누리관", floor: "1층", guide_image: "guide_6", hint: "누리관에서 우리은행을 지나 쭉 들어와보세요.", index: 6, location_image: "location_6", spot_name: "우체국", succes_check: false),
                   missions(advise: "1학년부터 4학년 모두를 위한 취업 프로그램이 준비되어있으니, 저학년일 때부터 많이 이용해보세요.", building_name: "학생누리관", floor: "2층", guide_image: "guide_7", hint: "누리관 1층에 들어가자마자 오른쪽으로 꺾어보세요. 처음보는 비상계단이 나올거에요.", index: 7, location_image: "location_7", spot_name: "취업경력개발팀", succes_check: false)]
-    
+    var dbData = [missions]()
     var completeList = [missions]()
     var completeCheck = [Int]()
     var now = 0
@@ -143,7 +143,8 @@ class ViewController: UIViewController{
     let completeMissionCollectionView: UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
         let  cv = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
-        
+        flowlayout.scrollDirection = .horizontal
+        cv.isScrollEnabled = true
         return cv
     }()
     
@@ -169,9 +170,12 @@ class ViewController: UIViewController{
     //navi : 여기서 MissionViewController()으로 이동
     
 
-    
+    let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkFirstOrnot()
+        dbData = initData
+        getAllMission()
         navigationItem.title = ""
         view.backgroundColor = UIColor(named: "graybackground")
         
@@ -192,7 +196,7 @@ class ViewController: UIViewController{
         view.addSubview(profileName)
         view.addSubview(profileStatus)
         view.addSubview(goToMissionButton)
-        
+        determineProgress()
         view.addSubview(statusTitle)
         view.addSubview(statusView)
         statusView.addSubview(nowLevel)
@@ -222,12 +226,28 @@ class ViewController: UIViewController{
         statusLayout()
         activityLayout()
         footerLayout()
+//        CoreDataManag
     }
     
+    func checkFirstOrnot(){
+        if defaults.bool(forKey: "First Launch") == true {
+            print("Second+")
+            defaults.set(true, forKey: "FirstLaunch")
+        } else {
+            //    advise: "졸업 사진 스팟", building_name: "정문", floor: "X", guide_image: "guide0", hint: "서울여대의 얼굴", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true
+
+            for i in initData{
+                saveNewMission(Int16(i.index), buildingName: i.building_name, spotName: i.spot_name, floor: i.floor, guideImage: i.guide_image, hint: i.hint, locationImage: i.location_image, advise: i.advise, complete: i.succes_check)
+            }
+            
+            print("First")
+            defaults.set(true, forKey: "First Launch")
+        }
+    }
     //Btn tapped
     @objc func MissionBtnTapped(){
         let missionVC = MissionViewController()
-        missionVC.dbData = dbData
+        missionVC.dbData = dbData.reversed()
         missionVC.now = now
         missionVC.completeCheck = completeCheck
         missionVC.completeList = completeList
@@ -371,18 +391,54 @@ class ViewController: UIViewController{
             $0.centerX.equalToSuperview()
         }
     }
+    func determineProgress(){
+            succesMission.text = String(now)
+            statusProgress.progress = Float(now)/8
+        }
+    
+    // 새로운 유저 등록
+    fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
+        CoreDataManager.shared.saveMission(index: index, buildingName: buildingName, spotName: spotName, floor: floor, guideImage: guideImage, hint: hint, locationImage: locationImage, advise: advise, complete: complete){
+        onSuccess in print("saved = \(onSuccess)")
+            }
+        }
+    fileprivate func getAllMission() {
+        let missions: [Quests] = CoreDataManager.shared.getMissions()
+        for i in 0...7 {
+            dbData[i].advise = missions[i].advise!
+            dbData[i].index = Int(missions[i].index)
+            dbData[i].building_name = missions[i].buildingName!
+            dbData[i].spot_name = missions[i].spotName!
+            dbData[i].guide_image = missions[i].guideImage!
+            dbData[i].hint = missions[i].hint!
+            dbData[i].location_image = missions[i].locationImage!
+            dbData[i].succes_check = missions[i].complete
+//            dbData[i].advise = missions[i].advise
+        }
+        let missionIndex: [Int16] = missions.map({$0.index})
+        let missionBuilding: String? = missions.filter({$0.index == 0}).first?.buildingName
+//        print("allMission = \(missionIndex)")
+//        print("Building Name = \(missionBuilding)")
+        print("allData")
+
+        }
+    
     
 }
 
 //MARK: -- Extension
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return completeList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ActivityCell
         //        cell.backgroundColor = .red
-        cell.backgroundView = UIImageView(image: UIImage(named: "activityImage"))
+        if (completeCheck.contains(indexPath.row)) {
+            cell.backgroundView = UIImageView(image: UIImage(named: String(format: "guideImage%d", indexPath.row)))
+        }
+            
+        
         return cell
     }
     
