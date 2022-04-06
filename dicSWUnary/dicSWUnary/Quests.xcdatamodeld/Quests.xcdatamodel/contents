@@ -12,6 +12,6 @@
         <attribute name="spotName" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Quests" positionX="-36" positionY="9" width="128" height="178"/>
+        <element name="Quests" positionX="-36" positionY="9" width="128" height="164"/>
     </elements>
 </model>
