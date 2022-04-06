@@ -111,6 +111,7 @@ class MissionViewController: UIViewController{
     
     
     //MARK: - Firebase 연동
+
     //    func readData(){
     //            self.ref.getData { [self](error, snapshot) in
     //                if let error = error {
@@ -134,7 +135,6 @@ class MissionViewController: UIViewController{
     //                }
     //            }
     //    }
-    
     
     fileprivate func getAllMission() {
         let missions: [Quests] = CoreDataManager.shared.getMissions()
