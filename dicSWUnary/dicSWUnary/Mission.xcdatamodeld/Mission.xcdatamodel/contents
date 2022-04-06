@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Mission" representedClassName="Mission" syncable="YES">
+        <attribute name="advise" optional="YES" attributeType="String" customClassName="String"/>
+        <attribute name="buildingName" optional="YES" attributeType="String"/>
+        <attribute name="floor" optional="YES" attributeType="String"/>
+        <attribute name="guideImage" optional="YES" attributeType="String"/>
+        <attribute name="hint" optional="YES" attributeType="String"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="locationImage" optional="YES" attributeType="String"/>
+        <attribute name="spotName" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Mission" positionX="-54" positionY="-9" width="128" height="163"/>
+    </elements>
+</model>

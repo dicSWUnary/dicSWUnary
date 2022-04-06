@@ -8,15 +8,15 @@
 import Foundation
 import CodableFirebase
 
-struct missions : Codable {
-    let advise: String
-    let building_name : String
-    let floor, guide_image, hint: String
-    let index: Double
-    let location_image: String
-    let spot_name: String
-    let succes_check: Bool
-    
+//struct missions : Codable {
+//    let advise: String
+//    let building_name : String
+//    let floor, guide_image, hint: String
+//    let index: Double
+//    let location_image: String
+//    let spot_name: String
+//    let succes_check: Bool
+//    
 //    enum CodingKeys: String, CodingKey {
 //        case building_name = "BUILDING_NAME"
 //        case advise = "ADVISE"
@@ -29,4 +29,4 @@ struct missions : Codable {
 //        case succes_check = "SUCCES_CHECK"
 //    }
     
-}
+//}

@@ -9,18 +9,19 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import CodableFirebase
+import CoreData
 
 class MissionViewController: UIViewController{
     private let ref: DatabaseReference! = Database.database().reference()
 //    var dbData = [missions]()
-    var dbData = [missions(advise: "졸업 사진 스팟", building_name: "정문", floor: "X", guide_image: "guide0", hint: "서울여대의 얼굴", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
-                  missions(advise: "수업 전 강의 자료 출력은 필수!", building_name: "building1", floor: "B1", guide_image: "guide1", hint: "연못 옆에 문 있어요", index: 1, location_image: "location_1", spot_name: "spot1", succes_check: true),
-                  missions(advise: "불닭 드실?", building_name: "50주년 기념관", floor: "1층", guide_image: "guide_2", hint: "어디서 맛있는 냄새 나요", index: 2, location_image: "location_2", spot_name: "CU 편의점", succes_check: true),
-                  missions(advise: "재학증명서 출력이 가능해요!", building_name: "인사관", floor: "1층", guide_image: "guide_3", hint: "주문하는 거에요?", index: 3, location_image: "location_3", spot_name: "키오스크", succes_check: false),
-                  missions(advise: "zoom 강의 들을 수 있어요!", building_name: "도서관", floor: "1층", guide_image: "guide_4", hint: "신발 벗어야 돼요?", index: 4, location_image: "location_4", spot_name: "슈니마루", succes_check: true),
-                  missions(advise: "전공 서적을 찾아 보세요!", building_name: "도서관", floor: "4층", guide_image: "guide_5", hint: "전공 책 꼭 사야돼?", index: 5, location_image: "location_5", spot_name: "자연과학 자료실", succes_check: false),
-                  missions(advise: "갑자기 편지를 쓰고 싶다거나..?", building_name: "누리관", floor: "1층", guide_image: "guide_6", hint: "박스 사러 더 많이 갈 듯?", index: 6, location_image: "location_6", spot_name: "우체국", succes_check: false),
-                  missions(advise: "졸업하려면 한 번은 가야 합니다!", building_name: "누리관", floor: "2층", guide_image: "guide_7", hint: "@swu_career", index: 7, location_image: "location_7", spot_name: "취경팀", succes_check: false)]
+//    var dbData = [missions(advise: "졸업 사진 스팟", building_name: "정문", floor: "X", guide_image: "guide0", hint: "서울여대의 얼굴", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
+//                  missions(advise: "수업 전 강의 자료 출력은 필수!", building_name: "building1", floor: "B1", guide_image: "guide1", hint: "연못 옆에 문 있어요", index: 1, location_image: "location_1", spot_name: "spot1", succes_check: true),
+//                  missions(advise: "불닭 드실?", building_name: "50주년 기념관", floor: "1층", guide_image: "guide_2", hint: "어디서 맛있는 냄새 나요", index: 2, location_image: "location_2", spot_name: "CU 편의점", succes_check: true),
+//                  missions(advise: "재학증명서 출력이 가능해요!", building_name: "인사관", floor: "1층", guide_image: "guide_3", hint: "주문하는 거에요?", index: 3, location_image: "location_3", spot_name: "키오스크", succes_check: false),
+//                  missions(advise: "zoom 강의 들을 수 있어요!", building_name: "도서관", floor: "1층", guide_image: "guide_4", hint: "신발 벗어야 돼요?", index: 4, location_image: "location_4", spot_name: "슈니마루", succes_check: true),
+//                  missions(advise: "전공 서적을 찾아 보세요!", building_name: "도서관", floor: "4층", guide_image: "guide_5", hint: "전공 책 꼭 사야돼?", index: 5, location_image: "location_5", spot_name: "자연과학 자료실", succes_check: false),
+//                  missions(advise: "갑자기 편지를 쓰고 싶다거나..?", building_name: "누리관", floor: "1층", guide_image: "guide_6", hint: "박스 사러 더 많이 갈 듯?", index: 6, location_image: "location_6", spot_name: "우체국", succes_check: false),
+//                  missions(advise: "졸업하려면 한 번은 가야 합니다!", building_name: "누리관", floor: "2층", guide_image: "guide_7", hint: "@swu_career", index: 7, location_image: "location_7", spot_name: "취경팀", succes_check: false)]
 
     let completeList = [0,1,2,3,4] //미션 완료 목록
     var now = 5
@@ -87,7 +88,11 @@ class MissionViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Mission view loaded")
-        readData()
+//        readData()
+//    advise: "졸업 사진 스팟", building_name: "정문", floor: "X", guide_image: "guide0", hint: "서울여대의 얼굴", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true
+        saveNewMission(0, buildingName: "정문", spotName: "학교 마크", floor: "0", guideImage: "guide0", hint: "서울여대의 얼굴", locationImage: "location_0", advise: "졸업 사진 스팟", complete: false)
+        getAllMission()
+       
         
 //        updateLabel()
         self.view.backgroundColor = .black
@@ -111,29 +116,43 @@ class MissionViewController: UIViewController{
 
     }
     
-    func readData(){
-            self.ref.getData { [self](error, snapshot) in
-                if let error = error {
-                    print("Error getting data \(error)")
-                }
-                else if snapshot.exists() {
-                    //                        print("Got data \(snapshot.value!)")
-                    //                        print("ttt \(type(of: snapshot.value!))")
-                    guard let value = snapshot.value else {return}
-                    do {
-                        let missions = try FirebaseDecoder().decode([missions].self, from: value)
-                        self.dbData = missions
-                        print(dbData)
-
-                    } catch let err {
-                        print (err)
-                    }
-                }
-                else {
-                    print("No data available")
-                }
-            } 
-    }
+//    func readData(){
+//            self.ref.getData { [self](error, snapshot) in
+//                if let error = error {
+//                    print("Error getting data \(error)")
+//                }
+//                else if snapshot.exists() {
+//                    //                        print("Got data \(snapshot.value!)")
+//                    //                        print("ttt \(type(of: snapshot.value!))")
+//                    guard let value = snapshot.value else {return}
+//                    do {
+//                        let missions = try FirebaseDecoder().decode([missions].self, from: value)
+//                        self.dbData = missions
+//                        print(dbData)
+//
+//                    } catch let err {
+//                        print (err)
+//                    }
+//                }
+//                else {
+//                    print("No data available")
+//                }
+//            } 
+//    }
+    
+    fileprivate func getAllMission() {
+        let missions: [Quests] = CoreDataManager.shared.getMissions()
+        let missionIndex: [Int16] = missions.map({$0.index})
+        let missionBuilding: String? = missions.filter({$0.index == 0}).first?.buildingName
+        print("allMission = \(missionIndex)")
+        print("Building Name = \(missionBuilding)")
+        }
+    // 새로운 유저 등록
+    fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
+        CoreDataManager.shared.saveMission(index: index, buildingName: buildingName, spotName: spotName, floor: floor, guideImage: guideImage, hint: hint, locationImage: locationImage, advise: advise, complete: complete){
+        onSuccess in print("saved = \(onSuccess)")
+            }
+        }
     
     func determineMissionImage(questNum: Int){
         missionImage.image = UIImage(named: "missionImage")
@@ -300,7 +319,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         if collectionView == bottomCollectionView {
             if indexPath.row == 0{
                 print("hint")
-                bottomContentView.image = UIImage(named: dbData[indexPath.row].guide_image)
+//                bottomContentView.image = UIImage(named: dbData[indexPath.row].guide_image)
             }
             if indexPath.row == 1{
                 print("location")
