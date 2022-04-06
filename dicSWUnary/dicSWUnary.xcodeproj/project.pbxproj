@@ -20,6 +20,7 @@
 		30C4633027FD7FB6002F8323 /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */; };
 		30C4633227FD8776002F8323 /* UsefulFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4633127FD8776002F8323 /* UsefulFuncs.swift */; };
 		30C4633427FD9434002F8323 /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4633327FD9433002F8323 /* myButton.swift */; };
+		30C4633A27FDAB92002F8323 /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C4633927FDAB92002F8323 /* myButton.swift */; };
 		30DC50E427EE1A24004363DA /* tway_air.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E227EE1A24004363DA /* tway_air.ttf */; };
 		30DC50E527EE1A24004363DA /* tway_sky.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E327EE1A24004363DA /* tway_sky.ttf */; };
 		30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5527EB0D6F009E157F /* reusableBtnView.swift */; };
@@ -32,7 +33,6 @@
 		E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E18C92B827FD855800147CAA /* Quests.xcdatamodeld */; };
 		E18C92BD27FD860B00147CAA /* Quests+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */; };
 		E18C92BE27FD860B00147CAA /* Quests+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */; };
-		E18C92C027FD912D00147CAA /* myButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BF27FD912D00147CAA /* myButton.swift */; };
 		E19BFB8327FB43980085F69E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19BFB8227FB43980085F69E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +54,7 @@
 		30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		30C4633127FD8776002F8323 /* UsefulFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulFuncs.swift; sourceTree = "<group>"; };
 		30C4633327FD9433002F8323 /* myButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = "<group>"; };
+		30C4633927FDAB92002F8323 /* myButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = SOURCE_ROOT; };
 		30DC50E227EE1A24004363DA /* tway_air.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_air.ttf; path = Fonts/tway_air.ttf; sourceTree = SOURCE_ROOT; };
 		30DC50E327EE1A24004363DA /* tway_sky.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_sky.ttf; path = Fonts/tway_sky.ttf; sourceTree = SOURCE_ROOT; };
 		30F45E5527EB0D6F009E157F /* reusableBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableBtnView.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		E18C92B927FD855800147CAA /* Quests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quests.xcdatamodel; sourceTree = "<group>"; };
 		E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E18C92BF27FD912D00147CAA /* myButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myButton.swift; sourceTree = "<group>"; };
 		E19BFB8227FB43980085F69E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,9 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				30700FE527E1D321006736E5 /* UILabel.swift */,
+				30C4633927FDAB92002F8323 /* myButton.swift */,
 				30C462E827FBE5A3002F8323 /* Structs.swift */,
 				30C4633127FD8776002F8323 /* UsefulFuncs.swift */,
-				E18C92BF27FD912D00147CAA /* myButton.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -100,6 +100,7 @@
 				30B5473627E1A53200F26AA0 /* Products */,
 				40E1E7018FB42CC1310AF7F9 /* Pods */,
 				4B7D75A50F0D17FE61AA6FB9 /* Frameworks */,
+				30C4633627FDAA05002F8323 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +137,14 @@
 				E18C92B827FD855800147CAA /* Quests.xcdatamodeld */,
 			);
 			path = dicSWUnary;
+			sourceTree = "<group>";
+		};
+		30C4633627FDAA05002F8323 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				30C4633327FD9433002F8323 /* myButton.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		30DC50E127EE19DE004363DA /* fonts */ = {
@@ -303,7 +312,6 @@
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
 				E18C92AD27FD6B0F00147CAA /* CoreDataManager.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
-				E18C92C027FD912D00147CAA /* myButton.swift in Sources */,
 				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
 				E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */,
@@ -312,6 +320,7 @@
 				30C462E927FBE5A3002F8323 /* Structs.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
 				30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */,
+				30C4633A27FDAB92002F8323 /* myButton.swift in Sources */,
 				30C4633427FD9434002F8323 /* myButton.swift in Sources */,
 				E18C92BD27FD860B00147CAA /* Quests+CoreDataClass.swift in Sources */,
 				30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */,

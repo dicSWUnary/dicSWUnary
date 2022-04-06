@@ -195,7 +195,6 @@ class ViewController: UIViewController{
         view.addSubview(profileName)
         view.addSubview(profileStatus)
         view.addSubview(goToMissionButton)
-        determineProgress()
         view.addSubview(statusTitle)
         view.addSubview(statusView)
         statusView.addSubview(nowLevel)
@@ -218,7 +217,6 @@ class ViewController: UIViewController{
         view.addSubview(footerView)
         footerView.addSubview(logoutButton)
         footerView.addSubview(exitButton)
-        determineProgress()
         headerLayout()
         mainLayout()
         statusLayout()
@@ -393,10 +391,6 @@ class ViewController: UIViewController{
             $0.centerX.equalToSuperview()
         }
     }
-    func determineProgress(){
-            succesMission.text = String(now)
-            statusProgress.progress = Float(now)/8
-        }
     
     // 새로운 유저 등록
     fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
@@ -439,8 +433,6 @@ extension ViewController: UICollectionViewDataSource {
         if (completeCheck.contains(indexPath.row)) {
             cell.backgroundView = UIImageView(image: UIImage(named: String(format: "guideImage%d", indexPath.row)))
         }
-            
-        
         return cell
     }
     
