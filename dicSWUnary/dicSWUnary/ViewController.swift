@@ -109,7 +109,7 @@ class ViewController: UIViewController{
         
     }
     let succesMission = UILabel().then{
-        $0.text = "3"
+//        $0.text = "3"
         $0.textColor = UIColor(named: "progressBlue")
         $0.font = UIFont.systemFont(ofSize: 12.0)
     }
@@ -182,11 +182,10 @@ class ViewController: UIViewController{
             completeCheck.append(i.index)
         }
         now = completeCheck.max()! + 1
-        
+        determineProgress()
         view.addSubview(headerView)
         headerView.addSubview(welcomeLevel)
         headerView.addSubview(welcomeName)
-        
         
         view.addSubview(profileImage)
         view.addSubview(profileName)
@@ -206,7 +205,6 @@ class ViewController: UIViewController{
         view.addSubview(activityTitle)
         view.addSubview(activityView)
         
-        
         //collection view 권한 부여
         self.completeMissionCollectionView.dataSource = self
         self.completeMissionCollectionView.delegate = self
@@ -216,7 +214,7 @@ class ViewController: UIViewController{
         view.addSubview(footerView)
         footerView.addSubview(logoutButton)
         footerView.addSubview(exitButton)
-        
+        determineProgress()
         headerLayout()
         mainLayout()
         statusLayout()
@@ -235,6 +233,10 @@ class ViewController: UIViewController{
         
     }
     
+    func determineProgress(){
+        succesMission.text = String(now)
+        statusProgress.progress = Float(now)/8
+    }
     func headerLayout(){
         headerView.snp.makeConstraints{
             $0.top.equalToSuperview()
