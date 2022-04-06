@@ -34,9 +34,7 @@ class FirstViewController: UIViewController {
     }
     
     @objc func webMailBtnTapped(){
-        print("toNextView")
         var childVC = VerificationViewController()
-        
         childVC.modalPresentationStyle = .fullScreen
         self.present(childVC, animated: true, completion: nil)
     }
