@@ -12,18 +12,10 @@ import Then
 class reusableBtnView: UIView {
     
     let BtnImage = UIButton()
-//        .then{
-//        $0.isUserInteractionEnabled = true
-//    }
     
     let BtnLabel = UILabel().then{
         $0.font = UIFont(name: "tway_sky", size: 14)
     }
-    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//        BtnViewLayout()
-//    }
     
     func adds(view: UIView){
         view.addSubview(BtnImage)
@@ -44,9 +36,4 @@ class reusableBtnView: UIView {
             $0.trailing.leading.equalToSuperview()
         }
     }
-        
-    
-    
-    
-
 }
