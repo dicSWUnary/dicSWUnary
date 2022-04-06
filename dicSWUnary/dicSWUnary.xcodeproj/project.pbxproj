@@ -17,16 +17,13 @@
 		30B5474227E1A53400F26AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474127E1A53400F26AA0 /* Assets.xcassets */; };
 		30B5474527E1A53400F26AA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */; };
 		30C462E927FBE5A3002F8323 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C462E827FBE5A3002F8323 /* Structs.swift */; };
+		30C4632E27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30C4632C27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld */; };
 		30DC50E427EE1A24004363DA /* tway_air.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E227EE1A24004363DA /* tway_air.ttf */; };
 		30DC50E527EE1A24004363DA /* tway_sky.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30DC50E327EE1A24004363DA /* tway_sky.ttf */; };
 		30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5527EB0D6F009E157F /* reusableBtnView.swift */; };
 		30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */; };
 		30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FAF9A727F9C66B00ED8EB5 /* BottomCollectionViewCell.swift */; };
 		601FA6D18DDD8F4AC7A99F9D /* Pods_dicSWUnary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */; };
-		E1363FC027E780E80032584F /* ProfileCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FBF27E780E80032584F /* ProfileCard.swift */; };
-		E1363FC227E783F90032584F /* MissionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC127E783F90032584F /* MissionCard.swift */; };
-		E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC327E79FE20032584F /* WelcomeCard.swift */; };
-		E1363FC627E7A3110032584F /* StatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1363FC527E7A3110032584F /* StatusCard.swift */; };
 		E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17870A427E1C5A700A93524 /* MissionViewController.swift */; };
 		E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189CC6727F75374007ED67A /* ActivityCell.swift */; };
 		E19BFB8327FB43980085F69E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19BFB8227FB43980085F69E /* GoogleService-Info.plist */; };
@@ -48,16 +45,13 @@
 		30B5474427E1A53400F26AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		30B5474627E1A53500F26AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30C462E827FBE5A3002F8323 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
+		30C4632D27FD5C2A002F8323 /* dicSWUnary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dicSWUnary.xcdatamodel; sourceTree = "<group>"; };
 		30DC50E227EE1A24004363DA /* tway_air.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_air.ttf; path = Fonts/tway_air.ttf; sourceTree = SOURCE_ROOT; };
 		30DC50E327EE1A24004363DA /* tway_sky.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = tway_sky.ttf; path = Fonts/tway_sky.ttf; sourceTree = SOURCE_ROOT; };
 		30F45E5527EB0D6F009E157F /* reusableBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableBtnView.swift; sourceTree = "<group>"; };
 		30F45E5A27EB1AE7009E157F /* reusableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reusableCollectionViewCell.swift; sourceTree = "<group>"; };
 		30FAF9A727F9C66B00ED8EB5 /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
 		7541B45201AFE9D5EDFB130D /* Pods-dicSWUnary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.debug.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.debug.xcconfig"; sourceTree = "<group>"; };
-		E1363FBF27E780E80032584F /* ProfileCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCard.swift; sourceTree = "<group>"; };
-		E1363FC127E783F90032584F /* MissionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCard.swift; sourceTree = "<group>"; };
-		E1363FC327E79FE20032584F /* WelcomeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCard.swift; sourceTree = "<group>"; };
-		E1363FC527E7A3110032584F /* StatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCard.swift; sourceTree = "<group>"; };
 		E17870A427E1C5A700A93524 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
 		E189CC6727F75374007ED67A /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		E19BFB8227FB43980085F69E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -79,7 +73,6 @@
 		30700FE427E1D303006736E5 /* help */ = {
 			isa = PBXGroup;
 			children = (
-				E1363FC727E7A95A0032584F /* Card */,
 				30700FE527E1D321006736E5 /* UILabel.swift */,
 				30C462E827FBE5A3002F8323 /* Structs.swift */,
 			);
@@ -123,6 +116,7 @@
 				30B5474327E1A53400F26AA0 /* LaunchScreen.storyboard */,
 				30B5474627E1A53500F26AA0 /* Info.plist */,
 				E1FECB9927F2F17200E9AACF /* myButton.swift */,
+				30C4632C27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld */,
 			);
 			path = dicSWUnary;
 			sourceTree = "<group>";
@@ -161,17 +155,6 @@
 				0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E1363FC727E7A95A0032584F /* Card */ = {
-			isa = PBXGroup;
-			children = (
-				E1363FC527E7A3110032584F /* StatusCard.swift */,
-				E1363FC327E79FE20032584F /* WelcomeCard.swift */,
-				E1363FBF27E780E80032584F /* ProfileCard.swift */,
-				E1363FC127E783F90032584F /* MissionCard.swift */,
-			);
-			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,19 +280,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B5473D27E1A53200F26AA0 /* ViewController.swift in Sources */,
-				E1363FC227E783F90032584F /* MissionCard.swift in Sources */,
 				30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */,
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
 				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
+				30C4632E27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
-				E1363FC027E780E80032584F /* ProfileCard.swift in Sources */,
 				30700FE627E1D321006736E5 /* UILabel.swift in Sources */,
 				301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */,
 				E1FECB9A27F2F17200E9AACF /* myButton.swift in Sources */,
 				30C462E927FBE5A3002F8323 /* Structs.swift in Sources */,
-				E1363FC627E7A3110032584F /* StatusCard.swift in Sources */,
-				E1363FC427E79FE20032584F /* WelcomeCard.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
 				30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */,
 				30F45E5B27EB1AE7009E157F /* reusableCollectionViewCell.swift in Sources */,
@@ -537,6 +517,19 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		30C4632C27FD5C2A002F8323 /* dicSWUnary.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				30C4632D27FD5C2A002F8323 /* dicSWUnary.xcdatamodel */,
+			);
+			currentVersion = 30C4632D27FD5C2A002F8323 /* dicSWUnary.xcdatamodel */;
+			path = dicSWUnary.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 30B5472D27E1A53200F26AA0 /* Project object */;
 }
