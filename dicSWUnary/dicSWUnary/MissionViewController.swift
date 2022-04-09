@@ -17,7 +17,7 @@ class MissionViewController: UIViewController{
     
     var completeList = [missions]() //미션 완료 목록
     var completeCheck = [Int]()
-    var now = 5
+    var now = Int()
     var imageLength = 0
     let degreeLabel = UILabel()
     
@@ -99,6 +99,7 @@ class MissionViewController: UIViewController{
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
         
+        print("here now is", now)
     }
     
     
@@ -303,6 +304,8 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
                 //                bottomContentView.image = UIImage?(named: dbData[indexPath.row].guide_image)
             }
             if indexPath.row == 1{
+                print("here nownow is", now)
+                print("here dbdb", dbData)
                 showAlert(style: .alert, title: "Location", text: dbData[now].floor + "에 위치하고 있어요.")
                 //                bottomContentView.image = UIImage(named: "location0")
                 
