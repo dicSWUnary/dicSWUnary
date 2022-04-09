@@ -245,6 +245,7 @@ class ViewController: UIViewController{
         let missionVC = MissionViewController()
         missionVC.dbData = dbData.reversed()
         missionVC.now = now
+        print("now is ", now)
         missionVC.completeCheck = completeCheck
         missionVC.completeList = completeList
         self.navigationController?.pushViewController(missionVC, animated: true)
@@ -402,6 +403,7 @@ class ViewController: UIViewController{
         let missions: [Quests] = CoreDataManager.shared.getMissions()
         for i in 0...7 {
             dbData[i].advise = missions[i].advise!
+            dbData[i].floor = missions[i].floor!
             dbData[i].index = Int(missions[i].index)
             dbData[i].building_name = missions[i].buildingName!
             dbData[i].spot_name = missions[i].spotName!
