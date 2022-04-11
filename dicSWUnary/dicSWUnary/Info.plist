@@ -4,9 +4,13 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>온글잎 안될과학유니랩장체.ttf</string>
+		<string>온글잎 안될과학약체.ttf</string>
 		<string>tway_sky.ttf</string>
 		<string>tway_air.ttf</string>
 	</array>
+	<key></key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

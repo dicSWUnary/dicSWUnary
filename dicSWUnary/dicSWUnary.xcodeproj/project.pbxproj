@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A112D27E4E53200E4CCFC /* VerificationViewController.swift */; };
+		306945C02803EE2100C1AA63 /* 온글잎 안될과학약체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */; };
+		306945C12803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */; };
 		30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30700FE227E1CC36006736E5 /* FirstViewController.swift */; };
 		30700FE627E1D321006736E5 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30700FE527E1D321006736E5 /* UILabel.swift */; };
 		30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B5473827E1A53200F26AA0 /* AppDelegate.swift */; };
@@ -40,6 +42,8 @@
 		01964AD4BEA1BE73AF014813 /* Pods-dicSWUnary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.release.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.release.xcconfig"; sourceTree = "<group>"; };
 		0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dicSWUnary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		301A112D27E4E53200E4CCFC /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학약체.ttf"; path = "Fonts/온글잎 안될과학약체.ttf"; sourceTree = SOURCE_ROOT; };
+		306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학유니랩장체.ttf"; path = "Fonts/온글잎 안될과학유니랩장체.ttf"; sourceTree = SOURCE_ROOT; };
 		30700FE227E1CC36006736E5 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		30700FE527E1D321006736E5 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		30B5473527E1A53200F26AA0 /* dicSWUnary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dicSWUnary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +154,8 @@
 		30DC50E127EE19DE004363DA /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */,
+				306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */,
 				30DC50E227EE1A24004363DA /* tway_air.ttf */,
 				30DC50E327EE1A24004363DA /* tway_sky.ttf */,
 			);
@@ -252,6 +258,8 @@
 				30B5474227E1A53400F26AA0 /* Assets.xcassets in Resources */,
 				30DC50E527EE1A24004363DA /* tway_sky.ttf in Resources */,
 				30B5474027E1A53200F26AA0 /* Main.storyboard in Resources */,
+				306945C12803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf in Resources */,
+				306945C02803EE2100C1AA63 /* 온글잎 안될과학약체.ttf in Resources */,
 				E19BFB8327FB43980085F69E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
