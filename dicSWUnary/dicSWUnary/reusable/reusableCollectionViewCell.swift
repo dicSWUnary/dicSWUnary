@@ -12,7 +12,9 @@ class reusableCollectionViewCell: UICollectionViewCell {
     
     var backGroundImage = UIImage()
     
-    let stepLabel = UILabel()
+    let stepLabel = UILabel().then{
+        $0.textColor = .lightGray
+    }
     
     let stepBtn = UIButton().then{
         $0.isUserInteractionEnabled = false

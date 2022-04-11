@@ -13,33 +13,45 @@ import CoreData
 
 class MissionViewController: UIViewController{
     private let ref: DatabaseReference! = Database.database().reference()
+    
     var dbData = [missions]()
     
+    var backgroundImage = UIImageView().then{
+        $0.image = UIImage(named: "background_paper")
+    }
     var completeList = [missions]() //미션 완료 목록
     var completeCheck = [Int]()
     var now = Int()
     var imageLength = 0
-    let degreeLabel = UILabel()
+    let degreeLabel = UILabel().then{
+        $0.textColor = .darkGray
+    }
     
     let questCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .none
+        cv.backgroundColor = UIColor.init(white: 1, alpha: 1)
         cv.isScrollEnabled = false
+        cv.setRounded(radius: 10)
+        cv.setBorder(borderColor: UIColor.lightGray , borderWidth: 1)
         return cv
     }()
     
     let locationLabel = UILabel().then{
-        $0.font = UIFont(name: "tway_sky", size: 25)
+        $0.font = UIFont(name: "Unreal_science_yuni", size: 40)
+        $0.textColor = .darkGray
     }
     
     let detailLocationLabel = UILabel().then{
-        $0.font = UIFont(name: "tway_sky", size: 18)
+        $0.font = UIFont(name: "Unreal_science_yuni", size: 30)
+        $0.textColor = .darkGray
     }
     
-    let missionImage = UIImageView()
+    let missionImage = UIImageView().then{
+        $0.setRounded(radius: 10)
+    }
     
     let bottomCollectionView : UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -80,10 +92,17 @@ class MissionViewController: UIViewController{
     //MARK: - LifeCycle : viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+//        for family in UIFont.familyNames {
+//
+//            let sName: String = family as String
+//            print("family: \(sName)")
+//
+//            for name in UIFont.fontNames(forFamilyName: sName) {
+//                print("name: \(name as String)")
+//            }
+//        }
         
         imageLength = Int((self.view.safeAreaLayoutGuide.layoutFrame.width) - 100)
-        self.view.backgroundColor = .black
-        
         subViews(thisView: self.view)
         determineDegree(completeCnt: completeCheck.count)
         determineMission(questNum: now)
@@ -98,8 +117,7 @@ class MissionViewController: UIViewController{
         self.bottomCollectionView.dataSource = self
         self.questCollectionView.delegate = self
         self.questCollectionView.dataSource = self
-        
-        print("here now is", now)
+
     }
     
     
@@ -130,13 +148,14 @@ class MissionViewController: UIViewController{
     //    }
     
     func determineMission(questNum: Int){
+        
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
         locationLabel.text = dbData[questNum].building_name
         detailLocationLabel.text = dbData[questNum].spot_name
     }
     
     func determineDegree(completeCnt : Int) {
-        degreeLabel.font = UIFont(name: "tway_sky", size: 15)
+        degreeLabel.font = UIFont(name: "Unreal_science_medicine", size: 40)
         if completeCnt <= 3{
             degreeLabel.text = "삐약삐약 새내기🐥"
         } else if completeCnt <= 5{
@@ -149,27 +168,28 @@ class MissionViewController: UIViewController{
     }
     
     func subViews(thisView : UIView){
+        thisView.addSubview(backgroundImage)
         thisView.addSubview(degreeLabel)
         thisView.addSubview(questCollectionView)
         thisView.addSubview(locationLabel)
         thisView.addSubview(detailLocationLabel)
         thisView.addSubview(missionImage)
         thisView.addSubview(bottomCollectionView)
-        //        thisView.addSubview(bottomContentView)
     }
     
     func allLayout(){
+        backgroundImage.snp.makeConstraints{
+            $0.leading.trailing.top.bottom.equalToSuperview()
+        }
         degreeLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 25)
         }
         questCollectionView.snp.makeConstraints{
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().offset(-16)
-//            $0.centerX.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(self.view.frame.width - 50)
             $0.top.equalTo(degreeLabel.snp.bottom).offset(16)
-            $0.height.equalTo(90)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 10)
         }
         locationLabel.snp.makeConstraints{
@@ -184,15 +204,14 @@ class MissionViewController: UIViewController{
         missionImage.snp.makeConstraints{
             $0.top.equalTo(detailLocationLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-            //            $0.leading.equalToSuperview().offset(8)
-            //            $0.trailing.equalToSuperview().offset(-16)
+
             $0.width.equalTo(imageLength)
             $0.height.equalTo(imageLength)
         }
         
         bottomCollectionView.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(missionImage.snp.bottom).offset(8)
+            $0.top.equalTo(missionImage.snp.bottom).offset(15)
             $0.leading.equalToSuperview().offset(40)
             $0.trailing.equalToSuperview().offset(-40)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 10)
@@ -211,6 +230,18 @@ class MissionViewController: UIViewController{
 
 extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if collectionView == questCollectionView{
+            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        }
+        else {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+        
+        
+            
+    }
     func questCell(cell: reusableCollectionViewCell, index : Int){
         cell.allFuncs()
         cell.stepBtn.tag = index
@@ -259,7 +290,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if collectionView == questCollectionView{
             let width = collectionView.frame.width / 9 - 1
-            let height = collectionView.frame.height - 20
+            let height = collectionView.frame.height - 10
             size = CGSize(width: width, height: height)
         }
         
@@ -289,10 +320,11 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == questCollectionView {
-            if completeCheck.contains(indexPath.row) || indexPath.row == now {
+            if completeCheck.contains(indexPath.row) || indexPath.row == completeCheck.max()! + 1 {
                 missionImage.image  = UIImage(named: String(format: "guideImage%d", indexPath.row))
                 locationLabel.text = dbData[indexPath.row].building_name
                 detailLocationLabel.text = dbData[indexPath.row].spot_name
+                now = indexPath.row
             }
             else {
                 showAlert(style: .alert, title: "Caution", text: "차례로 미션을 수행해주세요")
@@ -301,11 +333,8 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         else if collectionView == bottomCollectionView {
             if indexPath.row == 0{
                 showAlert(style: .alert, title: "Hint",text: dbData[now].hint)
-                //                bottomContentView.image = UIImage?(named: dbData[indexPath.row].guide_image)
             }
             if indexPath.row == 1{
-                print("here nownow is", now)
-                print("here dbdb", dbData)
                 showAlert(style: .alert, title: "Location", text: dbData[now].floor + "에 위치하고 있어요.")
                 //                bottomContentView.image = UIImage(named: "location0")
                 
