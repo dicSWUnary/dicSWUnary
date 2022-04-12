@@ -37,9 +37,9 @@ class BottomCollectionViewCell: UICollectionViewCell {
     }
     
     func allFuncs(){
-        self.backgroundColor = .init(white: 1, alpha: 0.5)
-        self.setRounded(radius: 10)
-        self.setBorder(borderColor: .lightGray, borderWidth: 1)
+//        self.backgroundColor = .init(white: 1, alpha: 0.5)
+//        self.setRounded(radius: 10)
+//        self.setBorder(borderColor: .lightGray, borderWidth: 1)
         adds(view: self)
         bottomCollectionViewLayout(collectionViewCell: self)
     }

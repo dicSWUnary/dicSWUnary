@@ -407,6 +407,7 @@ class ViewController: UIViewController{
         onSuccess in print("saved = \(onSuccess)")
             }
         }
+    
     fileprivate func getAllMission() {
         let missions: [Quests] = CoreDataManager.shared.getMissions()
         for i in 0...7 {
