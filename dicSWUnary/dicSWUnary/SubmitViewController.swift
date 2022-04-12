@@ -12,7 +12,8 @@ import CoreML
 
 class SubmitViewController: UIViewController {
     var complete = Bool()
-    
+    var now = Int()
+    var dbData = [missions]()
     var submittedImage = UIImage()
     let submittedImageView = UIImageView()
     let submitBtn = myButton().then{
@@ -22,7 +23,17 @@ class SubmitViewController: UIViewController {
     var imageLength = Int()
     
     @objc func gotoNextVC(){
+        goToFirstViewController()
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func goToFirstViewController() {
+        let a = self.navigationController!.viewControllers[1] as! MissionViewController
+        dbData[now].succes_check = true
+        a.completeList.append(dbData[now])
+        a.completeCheck.append(now)
+        a.now = now + 1
+        a.dbData = dbData
     }
     
     func testFunc(complete: Bool){

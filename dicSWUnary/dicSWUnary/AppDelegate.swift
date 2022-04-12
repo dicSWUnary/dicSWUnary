@@ -28,7 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var verified = false
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+
         
         FirebaseApp.configure()
         
@@ -70,6 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    
     
 }
 
