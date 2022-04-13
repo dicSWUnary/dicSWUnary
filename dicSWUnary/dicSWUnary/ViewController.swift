@@ -175,6 +175,21 @@ class ViewController: UIViewController{
     
 
     let defaults = UserDefaults.standard
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        dbData = CoreDataManager.shared.retrieveData()
+        getAllMission()
+        
+        //makeList
+        self.completeList = dbData.filter{$0.succes_check == true}
+        
+        for i in completeList{
+            completeCheck.append(i.index)
+        }
+        now = completeCheck.max()! + 1
+        determineProgress()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkFirstOrnot()
@@ -239,6 +254,7 @@ class ViewController: UIViewController{
         if defaults.bool(forKey: "First Launch") == true {
             print("Second+")
             defaults.set(true, forKey: "FirstLaunch")
+//            CoreDataManager.shared.retrieveData()
         } else {
 
             for i in initData{
