@@ -148,7 +148,7 @@ class ViewController: UIViewController{
         dbData = initData
         getAllMission()
         navigationItem.title = ""
-        view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
         
         //makeList
         self.completeList = dbData.filter{$0.succes_check == true}
@@ -229,7 +229,7 @@ class ViewController: UIViewController{
     }
     func headerLayout(){
         backgroundImage.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(40)
+            $0.top.equalToSuperview().offset(30)
             $0.bottom.equalToSuperview().offset(0)
             $0.leading.trailing.equalToSuperview()
         }
