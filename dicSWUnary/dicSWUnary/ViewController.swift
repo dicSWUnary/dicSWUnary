@@ -30,7 +30,7 @@ class ViewController: UIViewController{
     var dbData = [missions]()
     var completeList = [missions]()
     var completeCheck = [Int]()
-    var now = 0
+    var now = Int()
     
     //헤더 뷰
     let headerView = UIView().then{
@@ -190,6 +190,11 @@ class ViewController: UIViewController{
             completeCheck.append(i.index)
         }
         now = completeCheck.max()! + 1
+        if now == 8 {
+            let childVC = CertificationViewController()
+            childVC.modalPresentationStyle = .fullScreen
+            self.present(childVC, animated: false, completion: nil)
+        }
         determineProgress()
         view.addSubview(backgroundImage)
         view.addSubview(headerView)
@@ -235,7 +240,6 @@ class ViewController: UIViewController{
             print("Second+")
             defaults.set(true, forKey: "FirstLaunch")
         } else {
-            //    advise: "졸업 사진 스팟", building_name: "정문", floor: "X", guide_image: "guide0", hint: "서울여대의 얼굴", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true
 
             for i in initData{
                 saveNewMission(Int16(i.index), buildingName: i.building_name, spotName: i.spot_name, floor: i.floor, guideImage: i.guide_image, hint: i.hint, locationImage: i.location_image, advise: i.advise, complete: i.succes_check)
@@ -279,7 +283,7 @@ class ViewController: UIViewController{
         
         welcomeName.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(20)
-            $0.bottom.equalToSuperview().offset(-25)            
+            $0.bottom.equalToSuperview().offset(-25)
         }
     }
     
@@ -407,7 +411,6 @@ class ViewController: UIViewController{
         onSuccess in print("saved = \(onSuccess)")
             }
         }
-    
     fileprivate func getAllMission() {
         let missions: [Quests] = CoreDataManager.shared.getMissions()
         for i in 0...7 {

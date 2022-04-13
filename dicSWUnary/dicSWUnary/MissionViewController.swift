@@ -90,9 +90,13 @@ class MissionViewController: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("DB data")
-        print(dbData)
+//        print("DB data")
+//        print(dbData)
         print("now is ", now)
+        if now == 8 {
+            print("done")
+            exit(0)
+        }
         determineDegree(completeCnt: completeCheck.count)
         determineMission(questNum: now)
         questCollectionView.reloadData()
@@ -106,6 +110,8 @@ class MissionViewController: UIViewController{
 //                    print("== \(names)")
 //                }
 //            }
+//        print("test")
+//        print(CoreDataManager.shared.retrieveData())
         self.view.backgroundColor = .white
         imageLength = Int((self.view.safeAreaLayoutGuide.layoutFrame.width) - 100)
         subViews(thisView: self.view)
@@ -152,11 +158,11 @@ class MissionViewController: UIViewController{
     //            }
     //    }
     
-    fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
-        CoreDataManager.shared.saveMission(index: index, buildingName: buildingName, spotName: spotName, floor: floor, guideImage: guideImage, hint: hint, locationImage: locationImage, advise: advise, complete: complete){
-        onSuccess in print("saved = \(onSuccess)")
-            }
-        }
+//    fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
+//        CoreDataManager.shared.saveMission(index: index, buildingName: buildingName, spotName: spotName, floor: floor, guideImage: guideImage, hint: hint, locationImage: locationImage, advise: advise, complete: complete){
+//        onSuccess in print("saved = \(onSuccess)")
+//            }
+//        }
     
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))

@@ -11,6 +11,7 @@
 		306945C02803EE2100C1AA63 /* 온글잎 안될과학약체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */; };
 		306945C12803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */; };
 		306945C32805A17F00C1AA63 /* neodgm_code.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945C22805A17E00C1AA63 /* neodgm_code.ttf */; };
+		306945C528066A9900C1AA63 /* CertificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306945C428066A9900C1AA63 /* CertificationViewController.swift */; };
 		30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30700FE227E1CC36006736E5 /* FirstViewController.swift */; };
 		30700FE627E1D321006736E5 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30700FE527E1D321006736E5 /* UILabel.swift */; };
 		30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B5473827E1A53200F26AA0 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 		306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학약체.ttf"; path = "Fonts/온글잎 안될과학약체.ttf"; sourceTree = SOURCE_ROOT; };
 		306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학유니랩장체.ttf"; path = "Fonts/온글잎 안될과학유니랩장체.ttf"; sourceTree = SOURCE_ROOT; };
 		306945C22805A17E00C1AA63 /* neodgm_code.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = neodgm_code.ttf; path = Fonts/neodgm_code.ttf; sourceTree = SOURCE_ROOT; };
+		306945C428066A9900C1AA63 /* CertificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewController.swift; sourceTree = "<group>"; };
 		30700FE227E1CC36006736E5 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		30700FE527E1D321006736E5 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		30B5473527E1A53200F26AA0 /* dicSWUnary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dicSWUnary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 				30B5473C27E1A53200F26AA0 /* ViewController.swift */,
 				E189CC6727F75374007ED67A /* ActivityCell.swift */,
 				E17870A427E1C5A700A93524 /* MissionViewController.swift */,
+				306945C428066A9900C1AA63 /* CertificationViewController.swift */,
 				E18C92AC27FD6B0F00147CAA /* CoreDataManager.swift */,
 				301A112D27E4E53200E4CCFC /* VerificationViewController.swift */,
 				30C4632F27FD7FB6002F8323 /* SubmitViewController.swift */,
@@ -322,6 +325,7 @@
 				30B5473927E1A53200F26AA0 /* AppDelegate.swift in Sources */,
 				E18C92BE27FD860B00147CAA /* Quests+CoreDataProperties.swift in Sources */,
 				30F45E5627EB0D6F009E157F /* reusableBtnView.swift in Sources */,
+				306945C528066A9900C1AA63 /* CertificationViewController.swift in Sources */,
 				E18C92AD27FD6B0F00147CAA /* CoreDataManager.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
 				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,

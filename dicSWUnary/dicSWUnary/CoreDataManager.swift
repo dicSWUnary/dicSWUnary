@@ -35,6 +35,60 @@ class CoreDataManager {
         }
         return models
     }
+    func retrieveData() { guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Quests")
+        do { let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject]
+            { print(data.value(forKey: "complete") as! Bool) } }
+        catch {
+            print("error")
+        }
+    }
+
+
+    func updateMission(index : Int, newData : missions) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Quests")
+        fetchRequest.predicate = NSPredicate(format: "index = %d", index)
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            let objectUpdate = test[0] as! NSManagedObject
+            objectUpdate.setValue(true, forKey: "complete")
+            do {
+                try managedContext.save()
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+//    func fetchMission() -> [missions] {
+//            do {
+//                let request = Bookmark.fetchRequest()
+//                let results = try context.fetch(request)
+//                return results
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//            return []
+//        }
+//
+//    func updateMission(mission : missions) {
+//            let fetchResults = fetchBookmarks()
+//            for result in fetchResults {
+//                if result.url == notice.url {
+//                    result.title = "업데이트한 제목"
+//                }
+//            }
+//            saveToContext()
+//        }
+//
     
     func saveMission(index: Int16, buildingName: String,
                   spotName: String, floor: String, guideImage: String, hint: String,
