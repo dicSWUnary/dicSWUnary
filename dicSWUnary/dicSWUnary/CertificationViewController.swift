@@ -10,7 +10,7 @@ import UIKit
 class CertificationViewController: UIViewController {
 
     let certificaitonImage = UIImageView().then{
-        $0.image = UIImage(named: "certfication")
+        $0.image = UIImage(named: "graduate")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,9 @@ class CertificationViewController: UIViewController {
     }
     func makeLayout(){
         certificaitonImage.snp.makeConstraints{
-            $0.leading.top.bottom.trailing.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(200)
+            $0.bottom.equalToSuperview().offset(-200)
         }
     }
     

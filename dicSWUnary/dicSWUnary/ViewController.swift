@@ -18,7 +18,6 @@ class ViewController: UIViewController{
         $0.image = UIImage(named: "background_paper")
     }
     
-    
     var initData = [missions(advise: "정문에 위치한 서울여대의 마크! 졸업 사진 스팟이에요!", building_name: "정문", floor: "건물 외부", guide_image: "guide0", hint: "정문을 통해서 50주년으로 가볼까요?", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
                   missions(advise: "토익, 등본, 발표자료 등 프린트가 필요하다면 카피웍스를 이용해보세요.", building_name: "50주년 기념관", floor: "지하 1층", guide_image: "guide1", hint: "계단 옆 연못 옆을 볼까요?", index: 1, location_image: "location_1", spot_name: "카피웍스", succes_check: true),
                   missions(advise: "50주년 기념관 1층에서는 빠르게 식사를 해결할 수 있어요. 또 제공되는 테이블에서 과제 등을 해도 괜찮아요.", building_name: "50주년 기념관", floor: "1층", guide_image: "guide_2", hint: "빵 냄새를 따라가다보면 만날 수 있을지도?", index: 2, location_image: "location_2", spot_name: "CU 편의점", succes_check: false),
@@ -177,6 +176,7 @@ class ViewController: UIViewController{
     let defaults = UserDefaults.standard
     
     override func viewDidAppear(_ animated: Bool) {
+        var tempCompleteCheck = [Int]()
 //        dbData = CoreDataManager.shared.retrieveData()
         getAllMission()
         
@@ -184,10 +184,12 @@ class ViewController: UIViewController{
         self.completeList = dbData.filter{$0.succes_check == true}
         
         for i in completeList{
-            completeCheck.append(i.index)
+            tempCompleteCheck.append(i.index)
         }
+        completeCheck = tempCompleteCheck
         now = completeCheck.max()! + 1
         determineProgress()
+        completeMissionCollectionView.reloadData()
     }
     
     override func viewDidLoad() {

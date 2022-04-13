@@ -15,7 +15,6 @@ class MissionViewController: UIViewController{
     private let ref: DatabaseReference! = Database.database().reference()
     
     var dbData = [missions]()
-    
     var backgroundImage = UIImageView().then{
         $0.image = UIImage(named: "gameBackground")
     }
@@ -23,7 +22,12 @@ class MissionViewController: UIViewController{
     var completeCheck = [Int]()
     var now = Int()
     var imageLength = 0
+    let upperView = UIView().then{
+        $0.setRounded(radius: 15)
+        $0.backgroundColor = .white
+    }
     let degreeLabel = UILabel().then{
+        $0.text = "ddddddddd"
         $0.textColor = .darkGray
     }
     
@@ -97,6 +101,8 @@ class MissionViewController: UIViewController{
             print("done")
             exit(0)
         }
+        print("completeCheck.count", completeCheck.count)
+        print("completeCheck", completeCheck)
         determineDegree(completeCnt: completeCheck.count)
         determineMission(questNum: now)
         questCollectionView.reloadData()
@@ -104,15 +110,7 @@ class MissionViewController: UIViewController{
     //MARK: - LifeCycle : viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-//        for family: String in UIFont.familyNames {
-//                print("\(family)")
-//                for names: String in UIFont.fontNames(forFamilyName: family) {
-//                    print("== \(names)")
-//                }
-//            }
-//        print("test")
-//        print(CoreDataManager.shared.retrieveData())
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
         imageLength = Int((self.view.safeAreaLayoutGuide.layoutFrame.width) - 100)
         subViews(thisView: self.view)
         determineDegree(completeCnt: completeCheck.count)
@@ -130,40 +128,6 @@ class MissionViewController: UIViewController{
         self.questCollectionView.dataSource = self
 
     }
-    
-    
-    //MARK: - Firebase 연동
-
-    //    func readData(){
-    //            self.ref.getData { [self](error, snapshot) in
-    //                if let error = error {
-    //                    print("Error getting data \(error)")
-    //                }
-    //                else if snapshot.exists() {
-    //                    //                        print("Got data \(snapshot.value!)")
-    //                    //                        print("ttt \(type(of: snapshot.value!))")
-    //                    guard let value = snapshot.value else {return}
-    //                    do {
-    //                        let missions = try FirebaseDecoder().decode([missions].self, from: value)
-    //                        self.dbData = missions
-    //                        print(dbData)
-    //
-    //                    } catch let err {
-    //                        print (err)
-    //                    }
-    //                }
-    //                else {
-    //                    print("No data available")
-    //                }
-    //            }
-    //    }
-    
-//    fileprivate func saveNewMission(_ index: Int16, buildingName: String,spotName: String, floor: String, guideImage: String, hint: String, locationImage : String, advise : String, complete : Bool) {
-//        CoreDataManager.shared.saveMission(index: index, buildingName: buildingName, spotName: spotName, floor: floor, guideImage: guideImage, hint: hint, locationImage: locationImage, advise: advise, complete: complete){
-//        onSuccess in print("saved = \(onSuccess)")
-//            }
-//        }
-    
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
         locationLabel.text = dbData[questNum].building_name
@@ -178,28 +142,29 @@ class MissionViewController: UIViewController{
             degreeLabel.text = "에헴! 나도 이제 학사🎓"
         } else if completeCnt <= 7{
             degreeLabel.text = "척척석사🧑🏻‍🎓"
-        } else if completeCnt == 8{
+        } else{
             degreeLabel.text = "서울여대 박사🧑🏻‍⚕️"
         }
     }
     
     func subViews(thisView : UIView){
         thisView.addSubview(backgroundImage)
-        thisView.addSubview(degreeLabel)
-        thisView.addSubview(questCollectionView)
+        thisView.addSubview(upperView)
         thisView.addSubview(locationLabel)
         thisView.addSubview(detailLocationLabel)
         thisView.addSubview(missionImage)
         thisView.addSubview(bottomCollectionView)
     }
     
-    func allLayout(){
+    func makeUpperView(){
+        upperView.addSubview(degreeLabel)
+        upperView.addSubview(questCollectionView)
         
         degreeLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
 //            $0.leading.equalToSuperview().offset(16)
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 25)
+//            $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 25)
         }
         questCollectionView.snp.makeConstraints{
             $0.centerX.equalToSuperview()
@@ -207,10 +172,21 @@ class MissionViewController: UIViewController{
             $0.top.equalTo(degreeLabel.snp.bottom).offset(16)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 10)
         }
+    }
+    
+    func allLayout(){
+        
+        upperView.snp.makeConstraints{
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+        }
+        makeUpperView()
+        
         backgroundImage.snp.makeConstraints{
-            $0.top.equalTo(questCollectionView.snp.bottom)
+            $0.top.equalTo(upperView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+        
         locationLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(backgroundImage.snp.top).offset(12)
