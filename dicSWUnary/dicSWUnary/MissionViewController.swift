@@ -388,7 +388,6 @@ extension MissionViewController: UIImagePickerControllerDelegate, UINavigationCo
         nextVC.now = now
         nextVC.imageLength = imageLength
         self.navigationController?.pushViewController(nextVC, animated: true)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
