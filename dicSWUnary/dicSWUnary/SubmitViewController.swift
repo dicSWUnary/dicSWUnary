@@ -19,7 +19,7 @@ class SubmitViewController: UIViewController {
     let submitBtn = UIButton().then{
         $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 23)
         $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
-        $0.setTitle(">>제출하기", for: .normal)
+        $0.setTitle(">> 제출하기", for: .normal)
         $0.addTarget(self, action: #selector(submitBtnTapped), for: .touchUpInside)
     }
     
