@@ -140,7 +140,29 @@ class ViewController: UIViewController{
     
     //navi : 여기서 MissionViewController()으로 이동
     
-
+    override func viewDidAppear(_ animated: Bool) {
+            if now == 8 {
+                let childVC = CertificationViewController()
+                childVC.modalPresentationStyle = .fullScreen
+                self.present(childVC, animated: false, completion: nil)
+            }
+        getAllMission()
+        var tempCompleteList = [missions]()
+        var tempCompleteCheck = [Int]()
+        tempCompleteList = dbData.filter{$0.succes_check == true}
+        
+        for i in tempCompleteList{
+            tempCompleteCheck.append(i.index)
+        }
+        
+        completeList = tempCompleteList
+        completeCheck = tempCompleteCheck
+        now = completeCheck.max()! + 1
+        determineProgress()
+        completeMissionCollectionView.reloadInputViews()
+        completeMissionCollectionView.reloadData()
+    }
+    
     let defaults = UserDefaults.standard
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,8 +184,6 @@ class ViewController: UIViewController{
 
         view.addSubview(welcomeName)
         view.addSubview(goToMissionButton)
-        
-        
         
         view.addSubview(statusView)
         view.addSubview(statusImage)
