@@ -121,7 +121,6 @@ class MissionViewController: UIViewController{
         self.questCollectionView.register(reusableCollectionViewCell.self,
                                           forCellWithReuseIdentifier: "reusableCollectionViewCell")
         self.imagePickerController.delegate = self
-        
         self.bottomCollectionView.delegate = self
         self.bottomCollectionView.dataSource = self
         self.questCollectionView.delegate = self
