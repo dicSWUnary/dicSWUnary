@@ -10,12 +10,11 @@ import SnapKit
 import Then
 
 
-
-//MARK: -- Header
-
 class ViewController: UIViewController{
-    var backgroundImage = UIImageView().then{
-        $0.image = UIImage(named: "ViewControllerBackground")
+    
+    let displayView = UIView().then{
+        $0.setRounded(radius: 15)
+        $0.backgroundColor = UIColor(red: 38/256, green: 38/256, blue: 38/256, alpha: 1)
     }
     
     
@@ -34,7 +33,7 @@ class ViewController: UIViewController{
     
 
 
-    //MARK: -- Profile
+    //MARK: - Profile
     let welcomeName = UILabel().then{
         $0.text = ">>슈니, 반가워요!🐥"
         $0.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 35)
@@ -42,16 +41,7 @@ class ViewController: UIViewController{
     }
     
     
-    let goToMissionButton = UIButton().then{
-        $0.setTitle(">>미션하러 가기", for: .normal)
-        $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 35)
-        $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
-        
-        $0.addTarget(self, action: #selector(MissionBtnTapped), for: .touchUpInside)
-    }
-    
-    
-    //MARK: -- Status
+    //MARK: - Status
     //재학상태
     
     let statusTitle = UILabel().then{
@@ -65,7 +55,7 @@ class ViewController: UIViewController{
     }
     
     let statusView = UIView().then{
-        $0.backgroundColor = .black
+        $0.backgroundColor = UIColor(red: 38/256, green: 38/256, blue: 38/256, alpha: 1)
         $0.layer.cornerRadius = 4
     }
     let nowLevel = UILabel().then{
@@ -106,14 +96,14 @@ class ViewController: UIViewController{
     }
     
     
-    //MARK: -- Activity
+    //MARK: - Activity
     let activityTitle = UILabel().then{
         $0.textColor = .white
         $0.text = ">>대외 활동"
         $0.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 20)
     }
     let activityView = UIView().then{
-        $0.backgroundColor = .black
+        UIColor(red: 38/256, green: 38/256, blue: 38/256, alpha: 1)
         $0.layer.cornerRadius = 4
     }
     let activityImage = UIImageView().then{
@@ -133,10 +123,32 @@ class ViewController: UIViewController{
         let  cv = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
         flowlayout.scrollDirection = .horizontal
         cv.isScrollEnabled = true
-        cv.backgroundColor = .black
+        cv.backgroundColor = UIColor(red: 38/256, green: 38/256, blue: 38/256, alpha: 1)
         return cv
     }()
     
+    //MARK: - Footer
+    let goToMissionButton = UIButton().then{
+        $0.setTitle(">>미션하러 가기", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 35)
+        $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
+        
+        $0.addTarget(self, action: #selector(MissionBtnTapped), for: .touchUpInside)
+    }
+    
+    let stickBackground = UIImageView().then{
+        $0.image = UIImage(named: "stickBackground")
+    }
+    
+    let vcStick = UIButton().then{
+        
+        $0.setImage(UIImage(named: "vcStick"), for: .normal)
+        
+    }
+
+    let vcButton = UIButton().then{
+        $0.setImage(UIImage(named: "vcButton"), for: .normal)
+    }
     
     //navi : 여기서 MissionViewController()으로 이동
     
@@ -164,6 +176,8 @@ class ViewController: UIViewController{
     }
     
     let defaults = UserDefaults.standard
+    
+    //MARK: -LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         checkFirstOrnot()
@@ -180,27 +194,15 @@ class ViewController: UIViewController{
         }
         now = completeCheck.max()! + 1
         determineProgress()
-        view.addSubview(backgroundImage)
 
-        view.addSubview(welcomeName)
-        view.addSubview(goToMissionButton)
-        
-        view.addSubview(statusView)
-        view.addSubview(statusImage)
-        view.addSubview(statusTitle)
-        statusView.addSubview(nowLevel)
-        statusView.addSubview(statusProgress)
-        statusView.addSubview(succesMission)
-        statusView.addSubview(totalMission)
-        statusView.addSubview(nextLevel)
-        
-        view.addSubview(activityTitle)
-        activityView.addSubview(completeMissionCollectionView)
-        view.addSubview(activityView)
-        activityView.addSubview(activityImage)
-        activityView.addSubview(activityKind)
-        
-        
+
+        //Layout
+        addView()
+        mainLayout()
+        statusLayout()
+        activityLayout()
+        footerLayout()
+
         
         //collection view 권한 부여
         self.completeMissionCollectionView.dataSource = self
@@ -209,14 +211,11 @@ class ViewController: UIViewController{
         self.completeMissionCollectionView.register(ActivityCell.self, forCellWithReuseIdentifier: cellID)
         
 
-        headerLayout()
-        mainLayout()
-        statusLayout()
-        activityLayout()
-        footerLayout()
-//        CoreDataManag
+       
+
     }
     
+//MARK: - HELPER
     func checkFirstOrnot(){
         if defaults.bool(forKey: "First Launch") == true {
             print("Second+")
@@ -231,6 +230,8 @@ class ViewController: UIViewController{
             defaults.set(true, forKey: "First Launch")
         }
     }
+    
+    
     //Btn tapped
     @objc func MissionBtnTapped(){
         let missionVC = MissionViewController()
@@ -243,35 +244,62 @@ class ViewController: UIViewController{
         
     }
     
+    func addView(){
+        view.addSubview(displayView)
+        view.addSubview(welcomeName)
+        view.addSubview(goToMissionButton)
+        
+        view.addSubview(statusView)
+        view.addSubview(statusImage)
+        view.addSubview(statusTitle)
+        statusView.addSubview(nowLevel)
+        statusView.addSubview(statusProgress)
+        statusView.addSubview(succesMission)
+        statusView.addSubview(totalMission)
+        statusView.addSubview(nextLevel)
+        
+        view.addSubview(activityTitle)
+        view.addSubview(activityView)
+        activityView.addSubview(completeMissionCollectionView)
+        activityView.addSubview(activityImage)
+        activityView.addSubview(activityKind)
+        
+        view.addSubview(stickBackground)
+        stickBackground.addSubview(vcStick)
+        stickBackground.addSubview(vcButton)
+    }
+    
     func determineProgress(){
         succesMission.text = String(now)
         statusProgress.progress = Float(now)/8
     }
-    func headerLayout(){
-        backgroundImage.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(30)
-            $0.bottom.equalToSuperview().offset(0)
-            $0.leading.trailing.equalToSuperview()
-        }
 
-    }
+
     
     func mainLayout(){
+        displayView.snp.makeConstraints{
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview().offset(-140)
+            $0.leading.equalToSuperview().offset(7)
+            $0.trailing.equalToSuperview().offset(-7)
+        }
+        
         welcomeName.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(130)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
+            $0.height.equalToSuperview().multipliedBy(1.0 / 10.0)
         }
     }
     
     func statusLayout(){
         
         statusTitle.snp.makeConstraints{
-            $0.top.equalTo(welcomeName.snp.bottom).offset(45)
+            $0.top.equalTo(statusImage.snp.top).offset(10)
             $0.leading.equalToSuperview().offset(25)
         }
         
         statusImage.snp.makeConstraints{
-            $0.top.equalTo(welcomeName.snp.bottom).offset(40)
+            $0.top.equalTo(welcomeName.snp.bottom).offset(30)
             $0.leading.equalToSuperview().offset(15)
             $0.trailing.equalToSuperview().offset(-15)
             $0.height.equalToSuperview().multipliedBy(1.0 / 7.0)
@@ -314,14 +342,15 @@ class ViewController: UIViewController{
     
     func activityLayout(){
         activityTitle.snp.makeConstraints{
-            $0.top.equalTo(statusView.snp.bottom).offset(40)
-            $0.leading.equalToSuperview().offset(20)
+            $0.top.equalTo(statusView.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(25)
+            $0.bottom.equalTo(activityView.snp.top).offset(-10)
         }
         
         activityImage.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(0)
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(5)
-            $0.bottom.equalToSuperview().offset(0)
+            $0.bottom.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-5)
             
         }
@@ -349,10 +378,30 @@ class ViewController: UIViewController{
     func footerLayout(){
 
         goToMissionButton.snp.makeConstraints{
-            $0.top.equalTo(activityView.snp.bottom).offset(30)
+            $0.top.equalTo(activityView.snp.bottom).offset(60)
             $0.leading.equalToSuperview().offset(20)
+            $0.bottom.equalTo(displayView.snp.bottom).offset(-70)
             $0.trailing.equalToSuperview().offset(-20)
             $0.centerX.equalToSuperview()
+        }
+        
+        stickBackground.snp.makeConstraints{
+            $0.top.equalTo(displayView.snp.bottom).offset(20)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        vcStick.snp.makeConstraints{
+            $0.top.equalTo(goToMissionButton.snp.bottom).offset(50)
+            $0.leading.equalToSuperview().offset(76)
+            $0.bottom.equalToSuperview().offset(-50)
+            $0.trailing.equalTo(vcButton.snp.leading).offset(-50)
+        }
+        vcButton.snp.makeConstraints{
+            $0.top.equalToSuperview()
+            $0.leading.equalTo(vcStick.snp.trailing).offset(50)
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.trailing.equalToSuperview().offset(-50)
         }
     }
     

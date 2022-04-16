@@ -13,7 +13,7 @@ class reusableCollectionViewCell: UICollectionViewCell {
     var backGroundImage = UIImage()
     
     let stepLabel = UILabel().then{
-        $0.textColor = .lightGray
+        $0.textColor = .white
         $0.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 20)
     }
     
