@@ -1,14 +1,14 @@
 {
   "images" : [
     {
+      "filename" : "hintStick.png",
       "scale" : "1x",
-      "idiom" : "universal",
-      "filename" : "hintStick.png"
+      "idiom" : "universal"
     },
     {
       "scale" : "2x",
-      "filename" : "hintStick@2x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "hintStick@2x.png"
     },
     {
       "idiom" : "universal",
