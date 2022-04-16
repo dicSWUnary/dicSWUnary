@@ -152,7 +152,29 @@ class ViewController: UIViewController{
     
     //navi : 여기서 MissionViewController()으로 이동
     
-
+    override func viewDidAppear(_ animated: Bool) {
+            if now == 8 {
+                let childVC = CertificationViewController()
+                childVC.modalPresentationStyle = .fullScreen
+                self.present(childVC, animated: false, completion: nil)
+            }
+        getAllMission()
+        var tempCompleteList = [missions]()
+        var tempCompleteCheck = [Int]()
+        tempCompleteList = dbData.filter{$0.succes_check == true}
+        
+        for i in tempCompleteList{
+            tempCompleteCheck.append(i.index)
+        }
+        
+        completeList = tempCompleteList
+        completeCheck = tempCompleteCheck
+        now = completeCheck.max()! + 1
+        determineProgress()
+        completeMissionCollectionView.reloadInputViews()
+        completeMissionCollectionView.reloadData()
+    }
+    
     let defaults = UserDefaults.standard
     
     //MARK: -LifeCycle
@@ -173,12 +195,14 @@ class ViewController: UIViewController{
         now = completeCheck.max()! + 1
         determineProgress()
 
+
         //Layout
         addView()
         mainLayout()
         statusLayout()
         activityLayout()
         footerLayout()
+
         
         //collection view 권한 부여
         self.completeMissionCollectionView.dataSource = self
@@ -249,6 +273,7 @@ class ViewController: UIViewController{
         succesMission.text = String(now)
         statusProgress.progress = Float(now)/8
     }
+
 
     
     func mainLayout(){
