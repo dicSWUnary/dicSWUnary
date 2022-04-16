@@ -14,6 +14,7 @@ class reusableCollectionViewCell: UICollectionViewCell {
     
     let stepLabel = UILabel().then{
         $0.textColor = .lightGray
+        $0.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 20)
     }
     
     let stepBtn = UIButton().then{

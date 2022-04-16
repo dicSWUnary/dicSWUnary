@@ -240,7 +240,8 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         if completeCheck.max()! + 1 == index {
-            cell.backgroundView = UIImageView(image: UIImage(named: "Rectangle 3"))
+//            cell.backgroundView = UIImageView(image: UIImage(named: "nowIndex"))
+            cell.stepBtn.setImage(UIImage(named: "nowIndex"), for: .normal)
         }
         else {
             cell.backgroundView = .none
