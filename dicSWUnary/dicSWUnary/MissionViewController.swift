@@ -15,9 +15,6 @@ class MissionViewController: UIViewController{
     private let ref: DatabaseReference! = Database.database().reference()
     
     var dbData = [missions]()
-//    var backgroundImage = UIImageView().then{
-//        $0.image = UIImage(named: "gameBackground2")
-//    }
     
     let displayView = UIView().then{
         $0.setRounded(radius: 15)
@@ -28,10 +25,7 @@ class MissionViewController: UIViewController{
     var completeCheck = [Int]()
     var now = Int()
     var imageLength = 0
-//    let upperView = UIView().then{
-//        $0.setRounded(radius: 15)
-//        $0.backgroundColor = .white
-//    }
+
     let degreeLabel = UILabel().then{
         $0.text = "ddddddddd"
         $0.textColor = .white
@@ -44,8 +38,6 @@ class MissionViewController: UIViewController{
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = UIColor.init(white: 1, alpha: 0)
         cv.isScrollEnabled = false
-//        cv.setRounded(radius: 10)
-//        cv.setBorder(borderColor: UIColor.lightGray , borderWidth: 1)
         return cv
     }()
     
@@ -65,7 +57,6 @@ class MissionViewController: UIViewController{
     
     let missionImage = UIImageView().then{
         $0.setRounded(radius: 23)
-//        $0.setBorder(borderColor: UIColor(named: "missionBorder"), borderWidth: 2)
     }
     
     let bottomCollectionView : UICollectionView = {
@@ -108,15 +99,9 @@ class MissionViewController: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        print("DB data")
-//        print(dbData)
-        print("now is ", now)
         if now == 8 {
-            print("done")
             exit(0)
         }
-        print("completeCheck.count", completeCheck.count)
-        print("completeCheck", completeCheck)
         determineDegree(completeCnt: completeCheck.count)
         determineMission(questNum: now)
         questCollectionView.reloadData()
@@ -178,7 +163,6 @@ class MissionViewController: UIViewController{
         
         degreeLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-//            $0.leading.equalToSuperview().offset(16)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 25)
         }
@@ -200,21 +184,15 @@ class MissionViewController: UIViewController{
         }
         makeUpperView()
         
-//        backgroundImage.snp.makeConstraints{
-//          $0.top.equalTo(upperView.snp.bottom)
-//            $0.top.equalToSuperview().offset(40)
-//            $0.leading.trailing.bottom.equalToSuperview()
-//        }
-        
         locationLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(questCollectionView.snp.bottom).offset(15)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 23)
         }
+        
         detailLocationLabel.snp.makeConstraints{
             $0.centerX.equalTo(locationLabel)
             $0.top.equalTo(locationLabel.snp.bottom)
-//            $0.bottom.equalTo(missionImage.snp.top).offset(-10)
             $0.height.equalTo(self.view.safeAreaLayoutGuide.layoutFrame.height / 23)
         }
         
@@ -225,16 +203,15 @@ class MissionViewController: UIViewController{
             $0.leading.equalToSuperview().offset(15)
             $0.trailing.equalToSuperview().offset(-15)
         }
+        
         missionImage.snp.makeConstraints{
             $0.top.equalTo(detailLocationLabel.snp.bottom).offset(3)
             $0.leading.equalTo(missionBorderImage.snp.leading).offset(15)
             $0.bottom.equalTo(missionBorderImage.snp.bottom).offset(-56)
             $0.trailing.equalTo(missionBorderImage.snp.trailing).offset(-15)
             $0.centerX.equalToSuperview()
-//            $0.width.equalTo(imageLength)
-//            $0.height.equalTo(imageLength)
-
         }
+        
         stickBackground.snp.makeConstraints{
             $0.top.equalTo(displayView.snp.bottom).offset(20)
             $0.leading.equalToSuperview()
@@ -256,16 +233,12 @@ class MissionViewController: UIViewController{
 extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
         if collectionView == questCollectionView{
             return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         }
         else {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
-        
-        
-            
     }
     func questCell(cell: reusableCollectionViewCell, index : Int){
         cell.allFuncs()
@@ -279,12 +252,10 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         
         if completeCheck.max()! + 1 == index {
-//            cell.backgroundView = UIImageView(image: UIImage(named: "nowIndex"))
             cell.stepBtn.setImage(UIImage(named: "nowIndex"), for: .normal)
         }
         else {
             cell.backgroundView = .none
-//            cell.backgroundView = UIImageView(image: UIImage(named: "Rectangle 1"))
         }
     }
     
@@ -409,5 +380,4 @@ extension MissionViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
 }
