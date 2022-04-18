@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    var verified = true
+    var verified = false
     
     var theVC = UIViewController()
     
