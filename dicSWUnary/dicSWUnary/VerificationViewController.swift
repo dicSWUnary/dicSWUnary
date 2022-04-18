@@ -116,7 +116,7 @@ class VerificationViewController: UIViewController {
         }
         innerLineView.snp.makeConstraints{
             $0.top.equalTo(welcomeLabel.snp.bottom).offset(20)
-            $0.bottom.equalToSuperview().offset(-30)
+//            $0.bottom.equalToSuperview().offset(-30)
             $0.leading.equalToSuperview().offset(10)
             $0.trailing.equalToSuperview().offset(-10)
         }
@@ -162,6 +162,7 @@ class VerificationViewController: UIViewController {
             $0.leading.equalToSuperview().offset(30)
             $0.trailing.equalToSuperview().offset(-30)
             $0.width.equalTo(100)
+            $0.bottom.equalTo(innerLineView).offset(-50)
 
         }
     }

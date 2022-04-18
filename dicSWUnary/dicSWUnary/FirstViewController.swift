@@ -18,16 +18,16 @@ class FirstViewController: UIViewController {
     }
 
     let webMailBtn = UIButton().then{
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(.white, for: .normal)
         $0.setTitle("웹메일 인증으로 시작하기", for: .normal)
-        $0.titleLabel?.textColor = .black
+        $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 23)
         $0.addTarget(self, action: #selector(webMailBtnTapped), for: .touchUpInside)
         $0.setUnderline()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor =  UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
         self.view.addSubview(dictionaryImage)
         self.view.addSubview(webMailBtn)
         allLayout()
