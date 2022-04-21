@@ -34,7 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         else { //인증이 완료되지 않은 사용자
             theVC =  FirstViewController()
-            window.rootViewController = theVC // Your initial view controller.
+            window.rootViewController = theVC
+            // 이걸 이니셜뷰로 하고 navi root 설정 어떻게 할 지 고민해봐야할 듯
         }
 
         window.makeKeyAndVisible()
