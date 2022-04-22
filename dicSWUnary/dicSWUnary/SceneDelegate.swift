@@ -11,10 +11,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    var verified = true
+    var verified = false
     
     var theVC = UIViewController()
-    
+    let navi = UINavigationController(rootViewController: ViewController())
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -24,20 +24,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: - CASE 1
         //case2 주석 처리 된 지금 실행하면 보내준 영상처럼 navigationcontroller 잘 연결 됨
         //rootview 설정 문제 같은데 이 거 잘 모르겠어 스바루
-        
+//        let navi = UINavigationController(rootViewController: ViewController())
+//        navi.viewControllers = [ViewController(),MissionViewController()]
         
         //MARK: - CASE 2
         if verified == true { //인증이 완료된 사용자 // 네비로 연결
-            let rootViewcontroller = UINavigationController(rootViewController:ViewController())
-            window.rootViewController = rootViewcontroller
+            theVC =  navi
             print("verified")
         }
         else { //인증이 완료되지 않은 사용자
             theVC =  FirstViewController()
-            window.rootViewController = theVC
             // 이걸 이니셜뷰로 하고 navi root 설정 어떻게 할 지 고민해봐야할 듯
         }
-
+        window.rootViewController = theVC
         window.makeKeyAndVisible()
         self.window = window
     }

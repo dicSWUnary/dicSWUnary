@@ -14,8 +14,7 @@ import CoreData
 class MissionViewController: UIViewController{
     private let ref: DatabaseReference! = Database.database().reference()
     
-    var dbData = [missions]()
-    
+    var dbData =  [missions]()
     let displayView = UIView().then{
         $0.setRounded(radius: 15)
         $0.backgroundColor = UIColor(red: 38/256, green: 38/256, blue: 38/256, alpha: 1)
@@ -24,7 +23,7 @@ class MissionViewController: UIViewController{
     var completeList = [missions]() //미션 완료 목록
     var completeCheck = [Int]()
     var now = Int()
-    var imageLength = 0
+    var imageLength = Int()
 
     let degreeLabel = UILabel().then{
         $0.text = "ddddddddd"
@@ -129,6 +128,7 @@ class MissionViewController: UIViewController{
     }
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
+        print("here data? : ", dbData)
         locationLabel.text = dbData[questNum].building_name
         detailLocationLabel.text = dbData[questNum].spot_name
     }
@@ -381,3 +381,4 @@ extension MissionViewController: UIImagePickerControllerDelegate, UINavigationCo
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
