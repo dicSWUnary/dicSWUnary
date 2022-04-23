@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 
 class VerificationViewController: UIViewController {
 
+    private let authorizedDomain: String = "ENTER AUTHORIZED DOMAIN"
+    
     let displayView = UIView().then{
         $0.setRounded(radius: 20)
         $0.backgroundColor = UIColor(red: 38/256, green: 38/256, blue: 38/256, alpha: 1)
@@ -52,6 +55,9 @@ class VerificationViewController: UIViewController {
     
     let sendButton = UIButton().then{
         $0.setTitle(">>인증 링크 받기 :)", for: .normal)
+//
+
+//        FirebaseDatabase.send
         $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 25)
         $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
     }
@@ -67,6 +73,22 @@ class VerificationViewController: UIViewController {
         $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 30)
         $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
         $0.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
+    }
+    
+    private func sendSignInLink(to email: String) {
+      let actionCodeSettings = ActionCodeSettings()
+      let stringURL = "https://\(authorizedDomain).firebaseapp.com/login?email=\(email)"
+      actionCodeSettings.url = URL(string: stringURL)
+      // The sign-in operation must be completed in the app.
+      actionCodeSettings.handleCodeInApp = true
+      actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+
+      Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { error in
+        guard error == nil else { return self.displayError(error) }
+
+        // Set `email` property as it will be used to complete sign in after opening email link
+        self.email = email
+      }
     }
     
     override func viewDidLoad() {
