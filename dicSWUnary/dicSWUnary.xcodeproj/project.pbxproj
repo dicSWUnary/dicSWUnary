@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A112D27E4E53200E4CCFC /* VerificationViewController.swift */; };
+		3022961F281504F400A32078 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022961E281504F400A32078 /* EmailViewModel.swift */; };
 		306945C02803EE2100C1AA63 /* 온글잎 안될과학약체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */; };
 		306945C12803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */; };
 		306945C32805A17F00C1AA63 /* neodgm_code.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945C22805A17E00C1AA63 /* neodgm_code.ttf */; };
@@ -44,6 +45,7 @@
 		01964AD4BEA1BE73AF014813 /* Pods-dicSWUnary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.release.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.release.xcconfig"; sourceTree = "<group>"; };
 		0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dicSWUnary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		301A112D27E4E53200E4CCFC /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		3022961E281504F400A32078 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학약체.ttf"; path = "Fonts/온글잎 안될과학약체.ttf"; sourceTree = SOURCE_ROOT; };
 		306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학유니랩장체.ttf"; path = "Fonts/온글잎 안될과학유니랩장체.ttf"; sourceTree = SOURCE_ROOT; };
 		306945C22805A17E00C1AA63 /* neodgm_code.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = neodgm_code.ttf; path = Fonts/neodgm_code.ttf; sourceTree = SOURCE_ROOT; };
@@ -97,6 +99,7 @@
 				30C4633927FDAB92002F8323 /* myButton.swift */,
 				30C462E827FBE5A3002F8323 /* Structs.swift */,
 				30C4633127FD8776002F8323 /* UsefulFuncs.swift */,
+				3022961E281504F400A32078 /* EmailViewModel.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				E18C92AD27FD6B0F00147CAA /* CoreDataManager.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
 				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
+				3022961F281504F400A32078 /* EmailViewModel.swift in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
 				E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */,
 				30700FE627E1D321006736E5 /* UILabel.swift in Sources */,

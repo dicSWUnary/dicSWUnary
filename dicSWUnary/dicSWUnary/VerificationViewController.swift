@@ -7,11 +7,14 @@
 
 import UIKit
 import FirebaseAuth
+import RxSwift
+import RxCocoa
 
 
 class VerificationViewController: UIViewController {
 
-    private let authorizedDomain: String = "ENTER AUTHORIZED DOMAIN"
+    var emailViewModel = EmailViewModel()
+    let disposeBag = DisposeBag()
     
     let displayView = UIView().then{
         $0.setRounded(radius: 20)
@@ -55,11 +58,9 @@ class VerificationViewController: UIViewController {
     
     let sendButton = UIButton().then{
         $0.setTitle(">>인증 링크 받기 :)", for: .normal)
-//
-
-//        FirebaseDatabase.send
         $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 25)
         $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
+        $0.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
     }
 
     let checkLabel = UILabel().then{
@@ -75,27 +76,19 @@ class VerificationViewController: UIViewController {
         $0.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
     }
     
-    private func sendSignInLink(to email: String) {
-      let actionCodeSettings = ActionCodeSettings()
-      let stringURL = "https://\(authorizedDomain).firebaseapp.com/login?email=\(email)"
-      actionCodeSettings.url = URL(string: stringURL)
-      // The sign-in operation must be completed in the app.
-      actionCodeSettings.handleCodeInApp = true
-      actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
-
-      Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { error in
-        guard error == nil else { return self.displayError(error) }
-
-        // Set `email` property as it will be used to complete sign in after opening email link
-        self.email = email
-      }
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
         loadComponents(me: self.view)
+        _ = emailTextField.rx.text.map { $0 ?? ""}.bind(to: emailViewModel.emailText)
+        _ = emailViewModel.isValid.subscribe(onNext: {
+            isValid in
+            self.sendButton.isUserInteractionEnabled = isValid ? true : false
+//            self.sendButton.isEnabled = isValid ? true : false
+            print("isValid = \(isValid)")
+        }).disposed(by: disposeBag)
+        
         allLayout()
     }
 
@@ -104,10 +97,9 @@ class VerificationViewController: UIViewController {
         let navi = UINavigationController(rootViewController: ViewController())
         navi.modalPresentationStyle = .fullScreen
         self.present(navi, animated: true, completion: nil)
-
-//        let childVC = ViewController()
-//        childVC.modalPresentationStyle = .fullScreen
-//        self.present(childVC, animated: true, completion: nil)
+    }
+    @objc func sendButtonTapped(){
+        print("I am working")
     }
     
     func loadComponents(me : UIView){
