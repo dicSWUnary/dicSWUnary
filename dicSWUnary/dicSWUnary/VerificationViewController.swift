@@ -58,8 +58,9 @@ class VerificationViewController: UIViewController {
     
     let sendButton = UIButton().then{
         $0.setTitle(">>인증 링크 받기 :)", for: .normal)
+        $0.setTitleColor(.gray, for: .disabled) //disable이면 gray이고,
+        $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal) //enable이면 yellow
         $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 25)
-        $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
         $0.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
     }
 
@@ -76,16 +77,24 @@ class VerificationViewController: UIViewController {
         $0.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
     }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        
         self.view.backgroundColor = UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
         loadComponents(me: self.view)
         _ = emailTextField.rx.text.map { $0 ?? ""}.bind(to: emailViewModel.emailText)
         _ = emailViewModel.isValid.subscribe(onNext: {
             isValid in
+            self.sendButton.isEnabled = isValid ? true : false
             self.sendButton.isUserInteractionEnabled = isValid ? true : false
-//            self.sendButton.isEnabled = isValid ? true : false
             print("isValid = \(isValid)")
         }).disposed(by: disposeBag)
         

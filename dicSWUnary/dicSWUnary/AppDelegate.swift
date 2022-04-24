@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+//import FirebaseAuth
 import CoreData
 
 
@@ -35,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    
     // Override point for customization after application launch.
     
     // MARK: UISceneSession Lifecycle
