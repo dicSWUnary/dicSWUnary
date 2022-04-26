@@ -26,6 +26,7 @@ class FirstViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor =  UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
         self.view.addSubview(dictionaryImage)
