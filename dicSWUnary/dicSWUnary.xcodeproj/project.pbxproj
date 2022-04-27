@@ -52,6 +52,7 @@
 		306945C428066A9900C1AA63 /* CertificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewController.swift; sourceTree = "<group>"; };
 		30700FE227E1CC36006736E5 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		30700FE527E1D321006736E5 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		3093FD8F2818D43200063F88 /* dicSWUnary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = dicSWUnary.entitlements; sourceTree = "<group>"; };
 		30B5473527E1A53200F26AA0 /* dicSWUnary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dicSWUnary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B5473827E1A53200F26AA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30B5473A27E1A53200F26AA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 		30B5473727E1A53200F26AA0 /* dicSWUnary */ = {
 			isa = PBXGroup;
 			children = (
+				3093FD8F2818D43200063F88 /* dicSWUnary.entitlements */,
 				E19BFB8227FB43980085F69E /* GoogleService-Info.plist */,
 				30DC50E127EE19DE004363DA /* fonts */,
 				30F45E5727EB0D85009E157F /* reusable */,
@@ -495,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dicSWUnary/dicSWUnary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PD739GKFH2;
@@ -525,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dicSWUnary/dicSWUnary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PD739GKFH2;

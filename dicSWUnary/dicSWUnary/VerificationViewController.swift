@@ -10,7 +10,6 @@ import FirebaseAuth
 import RxSwift
 import RxCocoa
 
-
 class VerificationViewController: UIViewController {
     private var email: String!
     
@@ -91,13 +90,11 @@ class VerificationViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
         
         self.view.backgroundColor = UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
-        
         emailTextField.text = UserDefaults.standard.value(forKey: "Email") as? String
         if let link = UserDefaults.standard.value(forKey: "Link") as? String {
             self.link = link
             sendButton.isEnabled = true
         }
-        
         loadComponents(me: self.view)
         emailValidation()
         allLayout()
@@ -105,7 +102,12 @@ class VerificationViewController: UIViewController {
     @objc func sendButtonTapped(){
         let email = emailTextField.text
         guard let email = emailTextField.text, !email.isEmpty else { return }
+        sendButton.isEnabled = false
+        sendButton.isUserInteractionEnabled = false
+        sendButton.setTitleColor(.gray, for: .normal)
+        dismissKeyboard()
         firebaseAuth()
+        checkLabel.isHidden = false
 //        sendSignInLink(to: email)
     }
     // MARK: - Firebase 🔥
@@ -156,18 +158,35 @@ class VerificationViewController: UIViewController {
     }
     let actionCodeSetting = ActionCodeSettings()
     func firebaseAuth(){
-        actionCodeSetting.url = URL(string: "https://dicswunary.firebaseapp.com/?email=\(email)")
+//        actionCodeSetting.url = URL(string: "https://dicswunary.firebaseapp.com/?email=\(email)")
+//
+//        actionCodeSetting.handleCodeInApp = true
+//        actionCodeSetting.setIOSBundleID(Bundle.main.bundleIdentifier!)
+//        email = emailTextField.text
+//        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSetting) { error in
+//            if let error = error {
+//                print("email not sent \"\(error.localizedDescription)\"")
+//            } else {
+//                print("email sent")
+//            }
+//        }
         
-        actionCodeSetting.handleCodeInApp = true
-        actionCodeSetting.setIOSBundleID(Bundle.main.bundleIdentifier!)
-        email = emailTextField.text
-        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSetting) { error in
+        guard let email = emailTextField.text else { return }
+        
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://dicswunary.firebaseapp.com/?email=\(email)")
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+        
+        Auth.auth().sendSignInLink(toEmail: email,
+                                   actionCodeSettings: actionCodeSettings) { error in
             if let error = error {
                 print("email not sent \"\(error.localizedDescription)\"")
             } else {
                 print("email sent")
             }
         }
+        
     }
     
     func emailValidation(){
@@ -180,11 +199,31 @@ class VerificationViewController: UIViewController {
     }
     
     @objc func verifyButtonTapped(){
-        let navi = UINavigationController(rootViewController: ViewController())
-        navi.modalPresentationStyle = .fullScreen
-        self.present(navi, animated: true, completion: nil)
+        guard let email = emailTextField.text,
+              let link = UserDefaults.standard.string(forKey: "Link") else { return }
+        Auth.auth().signIn(withEmail: email, link: link) { [weak self] result, error in
+            if let error = error {
+                print("email auth error \"\(error.localizedDescription)\"")
+                return
+            }
+            //auth 성공시,
+//            self.sce
+//            SceneDelegate.
+//            verified = true
+            let navi = UINavigationController(rootViewController: ViewController())
+            navi.modalPresentationStyle = .fullScreen
+            self!.present(navi, animated: true, completion: nil)
+        }
     }
     
+    func goTonextView(verified : Bool){
+        if verified == true {
+            let navi = UINavigationController(rootViewController: ViewController())
+            navi.modalPresentationStyle = .fullScreen
+            
+            self.present(navi, animated: true, completion: nil)
+        }
+    }
     func loadComponents(me : UIView){
         
         me.addSubview(displayView)
