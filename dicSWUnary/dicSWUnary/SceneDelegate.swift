@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,7 +16,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var theVC = UIViewController()
     let navi = UINavigationController(rootViewController: ViewController())
-
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard let webpageURL = userActivity.webpageURL else { return }
+        let link = webpageURL.absoluteString
+        if Auth.auth().isSignIn(withEmailLink: link) {
+            UserDefaults.standard.set(link, forKey: "Link")
+        }
+        print(userActivity.webpageURL)
+        /*
+         https://exemaillogin.page.link/?link=https://sample-9ca7b.firebaseapp.com/__/auth/action?apiKey%3DAIzaSyDkfsdsd6cdah83MZtMEllERKqWJcV3os14%26mode%3DsignIn%26oobCode%3DcZ-xm1p4pXDuKmSvQ7DqxkcQQYzMLqBR0l331QBZA08AAAF9NeZFOA%26continueUrl%3Dhttps://sample-9ca7b.firebaseapp.com/?email%253Dpalatable7@naver.com%26lang%3Den&ibi=com.jake.ExEmailLogin&ifl=https://sample-9ca7b.firebaseapp.com/__/auth/action?apiKey%3DAIzaSyDkZ2b76cdah83MZtMEllERKqWJcV3os14%26mode%3DsignIn%26oobCode%3DcZ-xm1p4pXDuKmSvQ7DqxkcQQYzMLqBR0l331QBZA08AAAF9NeZFOA%26continueUrl%3Dhttps://sample-9ca7b.firebaseapp.com/?email%253Dpafdsable7@naver.com%26lang%3Den
+         */
+    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
           
