@@ -245,10 +245,8 @@ class VerificationViewController: UIViewController {
     
     func emailLayout(){
         displayView.snp.makeConstraints{
-            
-            $0.leading.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            
-            $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            $0.leading.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10)
         }
         welcomeLabel.snp.makeConstraints{
             $0.top.equalTo(displayView.snp.top).offset(45)
