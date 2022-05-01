@@ -125,6 +125,8 @@ class ViewController: UIViewController{
     
     //MARK: - Footer
     let goToMissionButton = UIButton().then{
+        $0.isUserInteractionEnabled = true
+        $0.isEnabled = true
         $0.setTitle(">>미션하러 가기", for: .normal)
         $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 35)
         $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
@@ -136,15 +138,12 @@ class ViewController: UIViewController{
     }
     
     let vcStick = UIButton().then{
-        
         $0.setImage(UIImage(named: "vcStick"), for: .normal)
-        
     }
 
     let vcButton = UIButton().then{
         $0.setImage(UIImage(named: "vcButton"), for: .normal)
     }
-    
     
     override func viewDidAppear(_ animated: Bool) {
             if now == 8 {
@@ -205,10 +204,6 @@ class ViewController: UIViewController{
         self.completeMissionCollectionView.delegate = self
         self.completeMissionCollectionView.translatesAutoresizingMaskIntoConstraints = false
         self.completeMissionCollectionView.register(ActivityCell.self, forCellWithReuseIdentifier: cellID)
-        
-
-       
-
     }
     
 //MARK: - HELPER
@@ -230,12 +225,14 @@ class ViewController: UIViewController{
     
     //Btn tapped
     @objc func MissionBtnTapped(){
+        print("I am tapped")
         let missionVC = MissionViewController()
         missionVC.dbData = dbData.reversed()
         missionVC.now = now
         print("now is ", now)
         missionVC.completeCheck = completeCheck
         missionVC.completeList = completeList
+        
 //        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
 //        nowNavi.viewControllers  = [missionVC]
 //        nowNavi.pushViewController(missionVC, animated: false)
@@ -371,12 +368,11 @@ class ViewController: UIViewController{
             $0.bottom.equalToSuperview().offset(-20)
             $0.trailing.equalToSuperview().offset(-25)
         }
-        
     }
     
     
     func footerLayout(){
-
+        
         goToMissionButton.snp.makeConstraints{
             $0.top.equalTo(activityView.snp.bottom).offset(60)
             $0.leading.equalToSuperview().offset(20)
