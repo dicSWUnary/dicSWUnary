@@ -74,7 +74,8 @@ class VerificationViewController: UIViewController {
     let verifyButton = UIButton().then{
         $0.setTitle(">> 인증완료:) ", for: .normal)
         $0.titleLabel?.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 30)
-        $0.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
+        $0.isEnabled = false
+        $0.setTitleColor(.gray, for: .disabled)
         $0.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
     }
     
@@ -184,6 +185,9 @@ class VerificationViewController: UIViewController {
                 print("email not sent \"\(error.localizedDescription)\"")
             } else {
                 print("email sent")
+                self.verifyButton.isEnabled = true
+                self.verifyButton.setTitleColor(UIColor(named: "vcYellow"), for: .normal)
+                self.verifyButton.reloadInputViews()
             }
         }
         
@@ -206,10 +210,7 @@ class VerificationViewController: UIViewController {
                 print("email auth error \"\(error.localizedDescription)\"")
                 return
             }
-            //auth 성공시,
-//            self.sce
-//            SceneDelegate.
-//            verified = true
+            //auth 성공시
             let navi = UINavigationController(rootViewController: ViewController())
             navi.modalPresentationStyle = .fullScreen
             self!.present(navi, animated: true, completion: nil)
