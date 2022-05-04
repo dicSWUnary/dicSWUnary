@@ -16,29 +16,51 @@ class CoreDataManager {
     
     let modelName: String = "Quests"
     
-    func getVerified(ascending: Bool = false) -> Verified {
-        var models: Verified = Verified()
+    
+//    func getVerified() -> Verified {
+//        var models: Verified = Verified()
+//
+//        if let context = context {
+////            let indexSort: NSSortDescriptor = NSSortDescriptor(key: "emailVerified", ascending: true)
+//
+////            NSSortDescriptor sortDescriptorWithKey:@"Project" ascending:YES
+//
+//            let fetchRequest: NSFetchRequest<NSManagedObject>
+//                = NSFetchRequest<NSManagedObject>(entityName: "Verified")
+////            fetchRequest.sortDescriptors = [indexSort]
+//
+//            do {
+//                if let fetchResult: Verified = try context.fetch(fetchRequest) as? Verified {
+//                    models = fetchResult
+//                }
+//            } catch let error as NSError {
+//                print("Could not fetch🥺: \(error), \(error.userInfo)")
+//            }
+//        }
+//        print(models)
+//        return models
+//    }
+//
+    func getVerified(ascending: Bool = false) -> [Verified] {
+        var models: [Verified] = [Verified]()
         
         if let context = context {
-            let indexSort: NSSortDescriptor = NSSortDescriptor(key: "Verified", ascending: ascending)
-            
-//            NSSortDescriptor sortDescriptorWithKey:@"Project" ascending:YES
-            
+            let indexSort: NSSortDescriptor = NSSortDescriptor(key: "emailVerified", ascending: ascending)
             let fetchRequest: NSFetchRequest<NSManagedObject>
                 = NSFetchRequest<NSManagedObject>(entityName: "Verified")
-//            fetchRequest.sortDescriptors = [indexSort]
+            fetchRequest.sortDescriptors = [indexSort]
             
             do {
-                if let fetchResult: Verified = try context.fetch(fetchRequest) as? Verified {
+                if let fetchResult: [Verified] = try context.fetch(fetchRequest) as? [Verified] {
                     models = fetchResult
                 }
             } catch let error as NSError {
                 print("Could not fetch🥺: \(error), \(error.userInfo)")
             }
         }
-        print(models)
         return models
     }
+    
     
     func getMissions(ascending: Bool = false) -> [Quests] {
         var models: [Quests] = [Quests]()
