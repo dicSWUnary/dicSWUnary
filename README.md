@@ -29,8 +29,6 @@ Xcode (Version 13)
 
 <img alt="dicswunary_workflow" src=https://user-images.githubusercontent.com/70624771/166632245-185f3272-0784-405d-bb57-3b95ae88e0e7.png width="500" align="center">
 
-![image 31 (2)]()
-
 ### 👩🏻‍💻 ****기능 개발여부/담당자****
 
 | 기능 | 상세 기능 | 담당자 | 구현 여부 |
