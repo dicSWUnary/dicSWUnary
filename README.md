@@ -1,8 +1,8 @@
 # dicSWUnary
-# Readme
-![icon1@2x](https://user-images.githubusercontent.com/70624771/166632399-2c22225d-a588-4b05-9a65-369c3d255e15.png)
 
-```python
+<img alt="dicswunary_icon" src="https://user-images.githubusercontent.com/70624771/166632399-2c22225d-a588-4b05-9a65-369c3d255e15.png" width="150" align="left">
+
+```
 🍎 2022학년도 1학기 프로젝트 종합설계 🍎
 
 알쓸SWU잡 ( DicSWUnary )
@@ -11,6 +11,9 @@
 
 서울여자대학교 소프트웨어융합학과 김주은 / 이규빈
 ```
+
+<br/>
+
 
 ### 🖥️ ****개발환경 및 사용한 라이브러리****
 
