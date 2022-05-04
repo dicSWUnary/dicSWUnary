@@ -35,8 +35,7 @@ Xcode (Version 13)
 | 스플래시 | 스플래시 | 주은 | ✅ |
 | 데이터관리 | coreData | 규빈 | ✅ |
 | 인증 | 웹메일 인증 | 주은 | ✅ |
-|  | firebase auth
-:Passwordless | 주은 | ✅ |
+|  | firebase auth :Passwordless | 주은 | ✅ |
 | 홈뷰 | 상태보여주기 | 규빈 | ✅ |
 | 머신러닝 | 모델학습 | 규빈 | ✅ |
 
