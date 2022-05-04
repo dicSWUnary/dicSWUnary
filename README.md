@@ -27,7 +27,9 @@ Xcode (Version 13)
 
 ### 🌊 **서비스 workflow**
 
-![image 31 (2)](https://user-images.githubusercontent.com/70624771/166632245-185f3272-0784-405d-bb57-3b95ae88e0e7.png)
+<img alt="dicswunary_workflow" src=https://user-images.githubusercontent.com/70624771/166632245-185f3272-0784-405d-bb57-3b95ae88e0e7.png width="300" align="center">
+
+![image 31 (2)]()
 
 ### 👩🏻‍💻 ****기능 개발여부/담당자****
 
