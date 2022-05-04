@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
+    
+    
+    
     let window = UIWindow(frame: UIScreen.main.bounds)
     var verified = false
     
@@ -36,7 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+   
     
+
     
     // Override point for customization after application launch.
     
@@ -74,6 +79,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+   
     
     
     
