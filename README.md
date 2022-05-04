@@ -1,7 +1,8 @@
 # dicSWUnary
 # Readme
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d8e9dc69-6259-47d1-b28f-268dfb5427fb/Untitled.png)
+![icon1@3x](https://user-images.githubusercontent.com/70624771/166632169-b197c1e7-1136-4bf4-b998-94942a2f6527.png)
+
 
 ```python
 🍎 2022학년도 1학기 프로젝트 종합설계 🍎
@@ -25,7 +26,7 @@ Xcode (Version 13)
 
 ### 🌊 **서비스 workflow**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30972868-77c3-440c-bf8f-8059430f26ef/Untitled.png)
+![image 31 (2)](https://user-images.githubusercontent.com/70624771/166632245-185f3272-0784-405d-bb57-3b95ae88e0e7.png)
 
 ### 👩🏻‍💻 ****기능 개발여부/담당자****
 
