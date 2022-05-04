@@ -49,6 +49,6 @@ Xcode (Version 13)
 
 ### 👭 TeamMembers
 
-[JubyKim - Overview](https://github.com/JubyKim)
-
-[https://github.com/9yubean2](https://github.com/9yubean2)
+| <IMG src="https://github.com/jubykim.png?size=100" width="150"> | <IMG src="https://github.com/9yubean2.png?size=100" width="150"> | 
+| :----------------------------------------------------------: | :----------------------------------------------------------: | 
+|                           김주은                            |                            이규빈                            |       
