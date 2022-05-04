@@ -1,6 +1,6 @@
 # dicSWUnary
 # Readme
-<IMG src="https://user-images.githubusercontent.com/70624771/166632169-b197c1e7-1136-4bf4-b998-94942a2f6527.png?size=200" width="150""> 
+![icon1@2x](https://user-images.githubusercontent.com/70624771/166632399-2c22225d-a588-4b05-9a65-369c3d255e15.png)
 
 ```python
 🍎 2022학년도 1학기 프로젝트 종합설계 🍎
