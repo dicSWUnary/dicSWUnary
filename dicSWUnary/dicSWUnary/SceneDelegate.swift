@@ -12,10 +12,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    var verified = false
-    
+    var userVerified = false
+    let defaults = UserDefaults.standard
+
     var theVC = UIViewController()
     let navi = UINavigationController(rootViewController: ViewController())
+    
+    
+    fileprivate func getUserverified() {
+        let verified : Verified = CoreDataManager.shared.getVerified()
+        userVerified = verified.emailVerified
+    }
+    
+    func checkFirstOrnot(){
+        if defaults.bool(forKey: "First Launch") == true {
+            print("Second+")
+            getUserverified()
+            defaults.set(true, forKey: "FirstLaunch")
+            
+        } else {
+            print("First")
+            //save
+            CoreDataManager.shared.saveVerified(emailVerified: false){
+            onSuccess in print("saved = \(onSuccess)")
+                }
+
+            defaults.set(true, forKey: "First Launch")
+        }
+    }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         guard let webpageURL = userActivity.webpageURL else { return }
@@ -32,16 +56,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
           
+        checkFirstOrnot()
+        
         let window = UIWindow(windowScene: windowScene)
         
         //MARK: - CASE 1
         //case2 주석 처리 된 지금 실행하면 보내준 영상처럼 navigationcontroller 잘 연결 됨
-        //rootview 설정 문제 같은데 이 거 잘 모르겠어 스바루
+        //rootview 설정 문제 같은데 이 거 잘 모르겠어
 //        let navi = UINavigationController(rootViewController: ViewController())
 //        navi.viewControllers = [ViewController(),MissionViewController()]
         
         //MARK: - CASE 2
-        if verified == true { //인증이 완료된 사용자 // 네비로 연결
+        if userVerified == true { //인증이 완료된 사용자 // 네비로 연결
             theVC =  navi
             print("verified")
         }

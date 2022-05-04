@@ -12,7 +12,8 @@ import RxCocoa
 
 class VerificationViewController: UIViewController {
     private var email: String!
-    
+    let defaults = UserDefaults.standard
+    var userVerified  = Bool()
     var emailViewModel = EmailViewModel()
     
     let disposeBag = DisposeBag()
@@ -78,6 +79,11 @@ class VerificationViewController: UIViewController {
         $0.setTitleColor(.gray, for: .disabled)
         $0.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
     }
+    fileprivate func getUserverified() {
+        let verified : Verified = CoreDataManager.shared.getVerified()
+        userVerified = verified.emailVerified
+    }
+    
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -111,6 +117,13 @@ class VerificationViewController: UIViewController {
         checkLabel.isHidden = false
 //        sendSignInLink(to: email)
     }
+    
+    fileprivate func saveUserverified(verified : Bool) {
+        CoreDataManager.shared.saveVerified(emailVerified: verified){
+        onSuccess in print("saved = \(onSuccess)")
+            }
+        }
+    
     // MARK: - Firebase 🔥
 //    dicswunary.firebaseapp.com
     private let authorizedDomain: String = "dicswunary"
@@ -193,6 +206,7 @@ class VerificationViewController: UIViewController {
         
     }
     
+    
     func emailValidation(){
         _ = emailTextField.rx.text.map { $0 ?? ""}.bind(to: emailViewModel.emailText)
         _ = emailViewModel.isValid.subscribe(onNext: {
@@ -211,6 +225,9 @@ class VerificationViewController: UIViewController {
                 return
             }
             //auth 성공시
+            print("이거 get get get!!!!!!!!!! sibal")
+            CoreDataManager.shared.getVerified()
+            self!.saveUserverified(verified: true)
             let navi = UINavigationController(rootViewController: ViewController())
             navi.modalPresentationStyle = .fullScreen
             self!.present(navi, animated: true, completion: nil)
@@ -226,7 +243,6 @@ class VerificationViewController: UIViewController {
         }
     }
     func loadComponents(me : UIView){
-        
         me.addSubview(displayView)
         displayView.addSubview(welcomeLabel)
         displayView.addSubview(innerLineView)

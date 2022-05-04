@@ -16,6 +16,30 @@ class CoreDataManager {
     
     let modelName: String = "Quests"
     
+    func getVerified(ascending: Bool = false) -> Verified {
+        var models: Verified = Verified()
+        
+        if let context = context {
+            let indexSort: NSSortDescriptor = NSSortDescriptor(key: "Verified", ascending: ascending)
+            
+//            NSSortDescriptor sortDescriptorWithKey:@"Project" ascending:YES
+            
+            let fetchRequest: NSFetchRequest<NSManagedObject>
+                = NSFetchRequest<NSManagedObject>(entityName: "Verified")
+//            fetchRequest.sortDescriptors = [indexSort]
+            
+            do {
+                if let fetchResult: Verified = try context.fetch(fetchRequest) as? Verified {
+                    models = fetchResult
+                }
+            } catch let error as NSError {
+                print("Could not fetch🥺: \(error), \(error.userInfo)")
+            }
+        }
+        print(models)
+        return models
+    }
+    
     func getMissions(ascending: Bool = false) -> [Quests] {
         var models: [Quests] = [Quests]()
         
@@ -87,6 +111,27 @@ class CoreDataManager {
             print(error)
         }
     }
+    
+    func updateVerified(verified : Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Verified")
+        fetchRequest.predicate = NSPredicate(format: "emailVerified == %@", NSNumber(value: false))
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            let objectUpdate = test[0] as! NSManagedObject
+            objectUpdate.setValue(true, forKey: "emailVerified")
+            do {
+                try managedContext.save()
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
 
 //    func fetchMission() -> [missions] {
 //            do {
@@ -109,6 +154,20 @@ class CoreDataManager {
 //            saveToContext()
 //        }
 //
+    func saveVerified(emailVerified: Bool, onSuccess: @escaping ((Bool) -> Void)) {
+        if let context = context,
+           let entity: NSEntityDescription
+            = NSEntityDescription.entity(forEntityName: "Verified", in: context) {
+            
+            if let userVerified: Verified = NSManagedObject(entity: entity, insertInto: context) as? Verified {
+                
+                userVerified.emailVerified = emailVerified
+                contextSave { success in
+                    onSuccess(success)
+                }
+            }
+        }
+    }
     
     func saveMission(index: Int16, buildingName: String,
                   spotName: String, floor: String, guideImage: String, hint: String,
