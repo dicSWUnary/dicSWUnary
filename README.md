@@ -1,7 +1,7 @@
 # dicSWUnary
 # Readme
 
-![icon1@3x](https://user-images.githubusercontent.com/70624771/166632169-b197c1e7-1136-4bf4-b998-94942a2f6527.png)
+![icon1@3x](https://user-images.githubusercontent.com/70624771/166632169-b197c1e7-1136-4bf4-b998-94942a2f6527.png?size=200" width="150")
 
 
 ```python
