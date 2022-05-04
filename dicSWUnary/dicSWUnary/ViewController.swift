@@ -208,17 +208,17 @@ class ViewController: UIViewController{
     
 //MARK: - HELPER
     func checkFirstOrnot(){
-        if defaults.bool(forKey: "First Launch") == true {
+        if defaults.bool(forKey: "getMissions") == true {
             print("Second+")
-            defaults.set(true, forKey: "FirstLaunch")
+            defaults.set(true, forKey: "getMissions")
         } else {
 
             for i in initData{
                 saveNewMission(Int16(i.index), buildingName: i.building_name, spotName: i.spot_name, floor: i.floor, guideImage: i.guide_image, hint: i.hint, locationImage: i.location_image, advise: i.advise, complete: i.succes_check)
             }
             
-            print("First")
-            defaults.set(true, forKey: "First Launch")
+            print("getMissions")
+            defaults.set(true, forKey: "getMissions")
         }
     }
     
@@ -424,8 +424,6 @@ class ViewController: UIViewController{
         }
         let missionIndex: [Int16] = missions.map({$0.index})
         let missionBuilding: String? = missions.filter({$0.index == 0}).first?.buildingName
-//        print("allMission = \(missionIndex)")
-//        print("Building Name = \(missionBuilding)")
         print("allData")
 
         }

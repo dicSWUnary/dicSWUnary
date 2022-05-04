@@ -79,10 +79,11 @@ class VerificationViewController: UIViewController {
         $0.setTitleColor(.gray, for: .disabled)
         $0.addTarget(self, action: #selector(verifyButtonTapped), for: .touchUpInside)
     }
-    fileprivate func getUserverified() {
-        let verified : Verified = CoreDataManager.shared.getVerified()
-        userVerified = verified.emailVerified
-    }
+    
+//    fileprivate func getUserverified() {
+//        let verified : Verified = CoreDataManager.shared.getVerified()
+//        userVerified = verified.emailVerified
+//    }
     
     
     @objc func dismissKeyboard() {
@@ -217,6 +218,17 @@ class VerificationViewController: UIViewController {
     }
     
     @objc func verifyButtonTapped(){
+        print("nono")
+        
+        print("emailTextField" , emailTextField.text)
+        
+        if emailTextField.text == "wndms9810@swu.ac.kr" { //test account
+            self.saveUserverified(verified: true)
+            let navi = UINavigationController(rootViewController: ViewController())
+            navi.modalPresentationStyle = .fullScreen
+            self.present(navi, animated: true, completion: nil)
+        }
+        
         guard let email = emailTextField.text,
               let link = UserDefaults.standard.string(forKey: "Link") else { return }
         Auth.auth().signIn(withEmail: email, link: link) { [weak self] result, error in
@@ -232,6 +244,10 @@ class VerificationViewController: UIViewController {
             navi.modalPresentationStyle = .fullScreen
             self!.present(navi, animated: true, completion: nil)
         }
+        
+        
+        
+        
     }
     
     func goTonextView(verified : Bool){

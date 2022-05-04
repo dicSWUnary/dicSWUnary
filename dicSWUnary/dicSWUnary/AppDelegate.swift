@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
 
+        UIApplication.shared.registerForRemoteNotifications()
         FirebaseApp.configure()
         
         return true

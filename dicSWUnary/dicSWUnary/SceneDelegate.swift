@@ -19,15 +19,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let navi = UINavigationController(rootViewController: ViewController())
     
     
-    fileprivate func getUserverified() {
-        let verified : Verified = CoreDataManager.shared.getVerified()
-        userVerified = verified.emailVerified
+    fileprivate func getUserverified() -> Bool{
+        let verified : [Verified] = CoreDataManager.shared.getVerified()
+        print("dddddd")
+        
+        print("now sssssss",verified)
+        return verified[0].emailVerified
     }
     
     func checkFirstOrnot(){
         if defaults.bool(forKey: "First Launch") == true {
             print("Second+")
-            getUserverified()
+            userVerified =  getUserverified()
+            print("그래서 USER verified ", userVerified)
             defaults.set(true, forKey: "FirstLaunch")
             
         } else {
@@ -39,11 +43,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             defaults.set(true, forKey: "First Launch")
         }
+        print("so now verified is ", userVerified)
     }
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         guard let webpageURL = userActivity.webpageURL else { return }
         let link = webpageURL.absoluteString
+        
         if Auth.auth().isSignIn(withEmailLink: link) {
             UserDefaults.standard.set(link, forKey: "Link")
         }

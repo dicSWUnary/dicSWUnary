@@ -13,7 +13,7 @@
 			<string>dicSWUnary</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>알쓸SWU잡</string>
+				<string>dicSWUnary</string>
 			</array>
 		</dict>
 	</array>
