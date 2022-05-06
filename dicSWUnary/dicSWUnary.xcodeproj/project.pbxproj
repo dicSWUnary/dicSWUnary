@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A112D27E4E53200E4CCFC /* VerificationViewController.swift */; };
 		3022961F281504F400A32078 /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022961E281504F400A32078 /* EmailViewModel.swift */; };
+		3046CD962824045600232048 /* dicswunary.mlkitmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3046CD952824045600232048 /* dicswunary.mlkitmodel */; };
 		306945C02803EE2100C1AA63 /* 온글잎 안될과학약체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */; };
 		306945C12803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */; };
 		306945C32805A17F00C1AA63 /* neodgm_code.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306945C22805A17E00C1AA63 /* neodgm_code.ttf */; };
@@ -48,6 +49,7 @@
 		0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dicSWUnary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		301A112D27E4E53200E4CCFC /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		3022961E281504F400A32078 /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
+		3046CD952824045600232048 /* dicswunary.mlkitmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = dicswunary.mlkitmodel; sourceTree = "<group>"; };
 		306945BE2803EE2100C1AA63 /* 온글잎 안될과학약체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학약체.ttf"; path = "Fonts/온글잎 안될과학약체.ttf"; sourceTree = SOURCE_ROOT; };
 		306945BF2803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "온글잎 안될과학유니랩장체.ttf"; path = "Fonts/온글잎 안될과학유니랩장체.ttf"; sourceTree = SOURCE_ROOT; };
 		306945C22805A17E00C1AA63 /* neodgm_code.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = neodgm_code.ttf; path = Fonts/neodgm_code.ttf; sourceTree = SOURCE_ROOT; };
@@ -155,6 +157,7 @@
 				3093FD9028226F2E00063F88 /* Verified+CoreDataClass.swift */,
 				3093FD9128226F2E00063F88 /* Verified+CoreDataProperties.swift */,
 				E18C92B827FD855800147CAA /* Quests.xcdatamodeld */,
+				3046CD952824045600232048 /* dicswunary.mlkitmodel */,
 			);
 			path = dicSWUnary;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				301A112E27E4E53200E4CCFC /* VerificationViewController.swift in Sources */,
 				30C462E927FBE5A3002F8323 /* Structs.swift in Sources */,
 				E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */,
+				3046CD962824045600232048 /* dicswunary.mlkitmodel in Sources */,
 				30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */,
 				30C4633A27FDAB92002F8323 /* myButton.swift in Sources */,
 				30C4633427FD9434002F8323 /* myButton.swift in Sources */,

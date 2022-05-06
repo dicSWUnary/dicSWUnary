@@ -12,6 +12,8 @@ import CodableFirebase
 import CoreData
 
 class MissionViewController: UIViewController{
+    let model = dicswunary()
+    
     private let ref: DatabaseReference! = Database.database().reference()
     
     var dbData =  [missions]()
@@ -370,6 +372,11 @@ extension MissionViewController: UIImagePickerControllerDelegate, UINavigationCo
             return
         }
         let nextVC = SubmitViewController()
+        let predictImage = image
+
+//        let predictedSpot = dicSWUnaryOutput.Element
+//        print(predictedSpot)
+
         nextVC.submittedImage = image
         nextVC.dbData = dbData
         nextVC.now = now
