@@ -12,7 +12,7 @@ import CodableFirebase
 import CoreData
 
 class MissionViewController: UIViewController{
-    let model = dicswunary()
+    
     
     private let ref: DatabaseReference! = Database.database().reference()
     
@@ -130,7 +130,6 @@ class MissionViewController: UIViewController{
     }
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
-        print("here data? : ", dbData)
         locationLabel.text = dbData[questNum].building_name
         detailLocationLabel.text = dbData[questNum].spot_name
     }

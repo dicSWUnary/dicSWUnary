@@ -8,9 +8,13 @@
 import UIKit
 import SnapKit
 import Then
+import Vision
 import CoreML
 
+
 class SubmitViewController: UIViewController {
+    let model = dicSWUnary()
+    
     var complete = true
     var now = Int()
     var dbData = [missions]()
@@ -23,6 +27,43 @@ class SubmitViewController: UIViewController {
         $0.addTarget(self, action: #selector(submitBtnTapped), for: .touchUpInside)
     }
     
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(origin: .zero, size: newSize)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
+    func modelFunc(){
+        let dicSWUnaryInput = submittedImage
+        print("submittedImage", submittedImage)
+        print("submittedImageView.image?", submittedImageView.image!)
+//        (UIImage(named: "IMG_5100").size?
+        guard let dicSWUnaryOutput = try? model.prediction(conv2d_166_input: resizeImage(image: submittedImage, targetSize: CGSize(width: 64, height: 64))!.convertToBuffer()!) else {
+            fatalError("Unexpected runtime error.")
+        }
+        let resultSpot = dicSWUnaryOutput.classLabel
+        print("resultSpot is ",resultSpot)
+    }
     var imageLength = Int()
     
     @objc func gotoNextVC(){
@@ -57,7 +98,9 @@ class SubmitViewController: UIViewController {
     
     @objc func submitBtnTapped(){
         testFunc(complete: complete)
+        modelFunc()
         self.perform(#selector(gotoNextVC), with: nil , afterDelay: 1)
+        
     }
     
     override func viewDidLoad() {
