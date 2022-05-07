@@ -15,8 +15,7 @@ import CoreML
 class SubmitViewController: UIViewController {
     let model = dicSWUnary()
 //    var matchDict = ["front_logo":
-    var matchDict = ["front_logo" : 0, "insa_kiosk" : 1, "gs25" : 2, "lib_kiosk" : 3 ,"lib_science" : 4,
-                     "gusia" : 5 , "post_office" : 6, "job" : 7]
+    var matchDict = ["front_logo" : 0, "insa_kiosk" : 1, "gs25" : 2, "lib_kiosk" : 3 ,"lib_science" : 4, "gusia" : 5 , "post_office" : 6, "job" : 7]
     var complete = true
     var now = Int()
     var dbData = [missions]()
@@ -57,14 +56,11 @@ class SubmitViewController: UIViewController {
     
     func modelFunc(){
         let dicSWUnaryInput = submittedImage
-        print("submittedImage", submittedImage)
-        print("submittedImageView.image?", submittedImageView.image!)
-//        (UIImage(named: "IMG_5100").size?
-        guard let dicSWUnaryOutput = try? model.prediction(conv2d_166_input: resizeImage(image: submittedImage, targetSize: CGSize(width: 64, height: 64))!.convertToBuffer()!) else {
+        guard let dicSWUnaryOutput = try? model.prediction(conv2d_166_input: resizeImage(image: submittedImage, targetSize: CGSize(width: 64, height: 64))!.convertToBuffer()!)else {
             fatalError("Unexpected runtime error.")
         }
         let resultSpot = dicSWUnaryOutput.classLabel
-        print("resultSpot is ",matchDict[resultSpot]!)
+        print("resultSpot is ",resultSpot)
         completeOrNot(result_idx: matchDict[resultSpot]!)
     }
     var imageLength = Int()
@@ -87,15 +83,15 @@ class SubmitViewController: UIViewController {
     
     func completeOrNot(result_idx : Int){
         if now == result_idx {
-            testFunc(complete: true)
+            determineComplete(complete: true)
             complete = true
         }else {
-            testFunc(complete: false)
+            determineComplete(complete: false)
             complete = false
         }
     }
     
-    func testFunc(complete: Bool){
+    func determineComplete(complete: Bool){
         if complete == true {
             dbData[now].succes_check = true
             CoreDataManager.shared.updateMission(index: now, newData: dbData[now])
