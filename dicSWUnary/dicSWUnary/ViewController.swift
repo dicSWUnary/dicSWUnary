@@ -18,13 +18,14 @@ class ViewController: UIViewController{
     }
 
     var initData = [missions(advise: "정문에 위치한 서울여대의 마크! 졸업 사진 스팟이에요!", building_name: "정문", floor: "건물 외부", guide_image: "guide0", hint: "정문을 통해서 50주년으로 가볼까요?", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
-                  missions(advise: "토익, 등본, 발표자료 등 프린트가 필요하다면 카피웍스를 이용해보세요.", building_name: "50주년 기념관", floor: "지하 1층", guide_image: "guide1", hint: "계단 옆 연못 옆을 볼까요?", index: 1, location_image: "location_1", spot_name: "카피웍스", succes_check: true),
-                  missions(advise: "50주년 기념관 1층에서는 빠르게 식사를 해결할 수 있어요. 또 제공되는 테이블에서 과제 등을 해도 괜찮아요.", building_name: "50주년 기념관", floor: "1층", guide_image: "guide_2", hint: "빵 냄새를 따라가다보면 만날 수 있을지도?", index: 2, location_image: "location_2", spot_name: "CU 편의점", succes_check: false),
-                  missions(advise: "재학증명서, 장학금 수혜증명서 등 다양한 증명서 출력이 저렴한 가격에 가능해요!", building_name: "인문사회관", floor: "1층", guide_image: "guide_3", hint: "인문사회관 내부에서 땅콩계단 방향을 바라보세요", index: 3, location_image: "location_3", spot_name: "키오스크", succes_check: false),
-                  missions(advise: "유일한 좌식 좌석. 온돌이 깔려있어서 뜨뜻하게 공부할 수 있어요.", building_name: "도서관", floor: "1층", guide_image: "guide_4", hint: "좌석번호 178-181를 찾아보세요.", index: 4, location_image: "location_4", spot_name: "슈니마루", succes_check: false),
-                  missions(advise: "학기 초에 한 학기 대여를 신청하면, 책 값을 아낄 수 있어요.", building_name: "도서관", floor: "4층", guide_image: "guide_5", hint: "엘리베이터는 비상계단 앞에 있어요! 그걸 타고 올라가볼까요?", index: 5, location_image: "location_5", spot_name: "자연과학 자료실", succes_check: false),
-                  missions(advise: "편지나 서류를 보내고 싶다면 서울여대 우체국을 이용해보세요", building_name: "학생누리관", floor: "1층", guide_image: "guide_6", hint: "누리관에서 우리은행을 지나 쭉 들어와보세요.", index: 6, location_image: "location_6", spot_name: "우체국", succes_check: false),
-                  missions(advise: "1학년부터 4학년 모두를 위한 취업 프로그램이 준비되어있으니, 저학년일 때부터 많이 이용해보세요.", building_name: "학생누리관", floor: "2층", guide_image: "guide_7", hint: "누리관 1층에 들어가자마자 오른쪽으로 꺾어보세요. 처음보는 비상계단이 나올거에요.", index: 7, location_image: "location_7", spot_name: "취업경력개발팀", succes_check: false)]
+                    missions(advise: "재학증명서, 장학금 수혜증명서 등 다양한 증명서 출력이 저렴한 가격에 가능해요!", building_name: "인문사회관", floor: "1층", guide_image: "guide_1", hint: "인문사회관 내부에서 땅콩계단 방향을 바라보세요" , index: 1, location_image: "location_1", spot_name: "키오스크", succes_check: true),
+                    missions(advise: "쉬는 시간에 빠르게 한 끼를 해결할 수 있어요" , building_name: "인문사회관" , floor: "1층", guide_image: "guide2", hint: "땅콩계단에서 인사관을 바라보면 보일거에요", index: 2, location_image: "location_2", spot_name: "GS25", succes_check: false),
+                    missions(advise: "좌석확정이 필요한 경우 이 키오스크를 사용해보세요.", building_name: "도서관", floor: "1층", guide_image: "guide_3", hint: "큰 계단바로 옆에 위치해있어요!", index: 3, location_image: "location_3", spot_name: "도서관 키오스크", succes_check: false),
+                    missions(advise: "학기 초에 한 학기 대여를 신청하면, 책 값을 아낄 수 있어요.", building_name: "도서관", floor: "4층", guide_image: "guide_4", hint: "엘리베이터는 비상계단 앞에 있어요! 그걸 타고 올라가볼까요?", index: 4, location_image: "location_4", spot_name: "자연과학 자료실", succes_check: false),
+                    missions(advise: "우리학교 식당들이 모여있는 곳, 많은 슈니들의 최애는 크림돈까스" , building_name: "학생누리관", floor: "지하 1층", guide_image: "guide5", hint: "도서관에서 누리관으로 이동한다면 금방 도착할 수 있어요.", index: 5, location_image: "location_5", spot_name: "구시아", succes_check:false),
+                    missions(advise: "편지나 서류를 보내고 싶다면 서울여대 우체국을 이용해보세요", building_name: "학생누리관", floor: "1층", guide_image: "guide_6", hint: "누리관에서 우리은행을 지나 쭉 들어와보세요.", index: 6, location_image: "location_6", spot_name: "우체국", succes_check: false),
+                    missions(advise: "1학년부터 4학년 모두를 위한 취업 프로그램이 준비되어있으니, 저학년일 때부터 많이 이용해보세요.", building_name: "학생누리관", floor: "2층", guide_image: "guide_7", hint: "누리관 1층에 들어가자마자 오른쪽으로 꺾어보세요. 처음보는 비상계단이 나올거에요.", index: 7, location_image: "location_7", spot_name: "취업경력개발팀", succes_check: false)]
+    
     var dbData = [missions]()
     var completeList = [missions]()
     var completeCheck = [Int]()
@@ -162,7 +163,12 @@ class ViewController: UIViewController{
         
         completeList = tempCompleteList
         completeCheck = tempCompleteCheck
+        if completeList.count == 0 {
+            now = 0
+        }
+        else {
         now = completeCheck.max()! + 1
+        }
         determineProgress()
         completeMissionCollectionView.reloadInputViews()
         completeMissionCollectionView.reloadData()
@@ -174,7 +180,7 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         checkFirstOrnot()
-        dbData = initData
+        
         getAllMission()
 //        navigationController?.delegate = true
 //        navigationController.
@@ -182,12 +188,18 @@ class ViewController: UIViewController{
         self.view.backgroundColor = UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
         
         //makeList
+        print("여기서 dbdata는? ", dbData)
         self.completeList = dbData.filter{$0.succes_check == true}
         
         for i in completeList{
             completeCheck.append(i.index)
         }
+        if completeList.count == 0 {
+            now = 0
+        }
+        else {
         now = completeCheck.max()! + 1
+        }
         determineProgress()
 
 
@@ -209,14 +221,14 @@ class ViewController: UIViewController{
 //MARK: - HELPER
     func checkFirstOrnot(){
         if defaults.bool(forKey: "getMissions") == true {
+            dbData = initData
             print("Second+")
             defaults.set(true, forKey: "getMissions")
         } else {
-
             for i in initData{
+                dbData = initData
                 saveNewMission(Int16(i.index), buildingName: i.building_name, spotName: i.spot_name, floor: i.floor, guideImage: i.guide_image, hint: i.hint, locationImage: i.location_image, advise: i.advise, complete: i.succes_check)
             }
-            
             print("getMissions")
             defaults.set(true, forKey: "getMissions")
         }
@@ -424,7 +436,7 @@ class ViewController: UIViewController{
         }
         let missionIndex: [Int16] = missions.map({$0.index})
         let missionBuilding: String? = missions.filter({$0.index == 0}).first?.buildingName
-        print("allData")
+        print("allData" , dbData)
 
         }
     

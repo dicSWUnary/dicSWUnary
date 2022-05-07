@@ -218,10 +218,8 @@ class VerificationViewController: UIViewController {
     }
     
     @objc func verifyButtonTapped(){
-        print("nono")
-        
         print("emailTextField" , emailTextField.text)
-        
+
         if emailTextField.text == "wndms9810@swu.ac.kr" { //test account
             self.saveUserverified(verified: true)
             let navi = UINavigationController(rootViewController: ViewController())
