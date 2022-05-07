@@ -26,7 +26,7 @@ class MissionViewController: UIViewController{
     var completeCheck = [Int]()
     var now = Int()
     var imageLength = Int()
-
+    var selected_idx = 0
     let degreeLabel = UILabel().then{
         $0.text = "ddddddddd"
         $0.textColor = .white
@@ -326,7 +326,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
                 missionImage.image = UIImage(named: String(format: "guideImage%d", indexPath.row))
                 locationLabel.text = dbData[indexPath.row].building_name
                 detailLocationLabel.text = dbData[indexPath.row].spot_name
-//                var selected_idx = indexPath.row
+                selected_idx = indexPath.row
             }
             else {
                 showAlert(style: .alert, title: "Caution", text: "차례로 미션을 수행해주세요")
@@ -334,10 +334,10 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         else if collectionView == bottomCollectionView {
             if indexPath.row == 0{
-                showAlert(style: .alert, title: "Hint",text: dbData[now].hint)
+                showAlert(style: .alert, title: "Hint",text: dbData[selected_idx].hint)
             }
             if indexPath.row == 1{
-                showAlert(style: .alert, title: "Location", text: dbData[now].floor + "에 위치하고 있어요.")
+                showAlert(style: .alert, title: "Location", text: dbData[selected_idx].floor + "에 위치하고 있어요.")
             }
             if indexPath.row == 2{
                 present(self.imagePickerController, animated: true, completion: nil)
