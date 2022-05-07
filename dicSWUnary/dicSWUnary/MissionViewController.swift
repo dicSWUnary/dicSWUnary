@@ -12,7 +12,7 @@ import CodableFirebase
 import CoreData
 
 class MissionViewController: UIViewController{
-    let model = dicswunary()
+    
     
     private let ref: DatabaseReference! = Database.database().reference()
     
@@ -103,6 +103,7 @@ class MissionViewController: UIViewController{
         if now == 8 {
             exit(0)
         }
+        print("here is completeCheck ", completeCheck)
         determineDegree(completeCnt: completeCheck.count)
         determineMission(questNum: now)
         questCollectionView.reloadData()
@@ -111,7 +112,7 @@ class MissionViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
-
+        print("here is the data ", dbData)
         imageLength = Int((self.view.safeAreaLayoutGuide.layoutFrame.width) - 100)
         subViews(thisView: self.view)
         determineDegree(completeCnt: completeCheck.count)
@@ -130,7 +131,6 @@ class MissionViewController: UIViewController{
     }
     func determineMission(questNum: Int){
         missionImage.image  = UIImage(named: String(format: "guideImage%d", questNum))
-        print("here data? : ", dbData)
         locationLabel.text = dbData[questNum].building_name
         detailLocationLabel.text = dbData[questNum].spot_name
     }
@@ -253,7 +253,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
             cell.stepBtn.setImage(UIImage(named: "notYetImage"), for: .normal)
         }
         
-        if completeCheck.max()! + 1 == index {
+        if now == index {
             cell.stepBtn.setImage(UIImage(named: "nowIndex"), for: .normal)
         }
         else {
@@ -322,11 +322,11 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == questCollectionView {
-            if completeCheck.contains(indexPath.row) || indexPath.row == completeCheck.max()! + 1 {
+            if completeCheck.contains(indexPath.row) || indexPath.row == now {
                 missionImage.image = UIImage(named: String(format: "guideImage%d", indexPath.row))
                 locationLabel.text = dbData[indexPath.row].building_name
                 detailLocationLabel.text = dbData[indexPath.row].spot_name
-                now = indexPath.row
+//                var selected_idx = indexPath.row
             }
             else {
                 showAlert(style: .alert, title: "Caution", text: "차례로 미션을 수행해주세요")
