@@ -9,16 +9,16 @@ import UIKit
 
 class BottomCollectionViewCell: UICollectionViewCell {
   
-    let bottomBtnLabel = UILabel().then{
-        $0.font = UIFont(name: "tway_sky", size: 12)
-        $0.textColor = .darkGray
-    }
+//    let bottomBtnLabel = UILabel().then{
+//        $0.font = UIFont(name: "tway_sky", size: 12)
+//        $0.textColor = .darkGray
+//    }
     
     let bottomBtn = UIButton().then{
         $0.isUserInteractionEnabled = false
     }
     func adds(view: UIView){
-        view.addSubview(bottomBtnLabel)
+//        view.addSubview(bottomBtnLabel)
         view.addSubview(bottomBtn)
     }
     
@@ -28,11 +28,11 @@ class BottomCollectionViewCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(8)
         }
-        bottomBtnLabel.snp.makeConstraints{
-            $0.centerX.equalToSuperview()
-            $0.top.equalTo(bottomBtn.snp.bottom).offset(8)
-            $0.bottom.equalToSuperview().offset(-8)
-        }
+//        bottomBtnLabel.snp.makeConstraints{
+//            $0.centerX.equalToSuperview()
+//            $0.top.equalTo(bottomBtn.snp.bottom).offset(8)
+//            $0.bottom.equalToSuperview().offset(-8)
+//        }
                             
     }
     

@@ -2,7 +2,7 @@
 //  myButton.swift
 //  dicSWUnary
 //
-//  Created by 이규빈 on 2022/03/29.
+//  Created by 이규빈 on 2022/03/29..
 //
 
 import Foundation
