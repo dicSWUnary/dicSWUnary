@@ -17,16 +17,4 @@ struct missions : Codable {
     var spot_name: String
     var succes_check: Bool
     
-//    enum CodingKeys: String, CodingKey {
-//        case building_name = "BUILDING_NAME"
-//        case advise = "ADVISE"
-//        case floor = "FLOOR"
-//        case guide_image = "GUIDE_IMAGE"
-//        case hint = "HINT"
-//        case index = "INDEX"
-//        case location_image = "LOCATION"
-//        case spot_name = "SPOT_NAME"
-//        case succes_check = "SUCwCES_CHECK"
-//    }
-    
 }

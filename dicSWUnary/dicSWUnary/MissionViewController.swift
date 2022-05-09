@@ -267,7 +267,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         cell.allFuncs()
         cell.bottomBtn.setBackgroundImage(UIImage(named: btnImageList[index]), for: .normal)
-        cell.bottomBtnLabel.text = btnLabelList[index]
+//        cell.bottomBtnLabel.text = btnLabelList[index]
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
