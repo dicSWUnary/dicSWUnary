@@ -35,7 +35,6 @@
 		30FAF9A827F9C66B00ED8EB5 /* BottomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FAF9A727F9C66B00ED8EB5 /* BottomCollectionViewCell.swift */; };
 		601FA6D18DDD8F4AC7A99F9D /* Pods_dicSWUnary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B821B0A17265786E843CEEB /* Pods_dicSWUnary.framework */; };
 		E17870A527E1C5A700A93524 /* MissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17870A427E1C5A700A93524 /* MissionViewController.swift */; };
-		E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E189CC6727F75374007ED67A /* ActivityCell.swift */; };
 		E18C92AD27FD6B0F00147CAA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92AC27FD6B0F00147CAA /* CoreDataManager.swift */; };
 		E18C92BA27FD855800147CAA /* Quests.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E18C92B827FD855800147CAA /* Quests.xcdatamodeld */; };
 		E18C92BD27FD860B00147CAA /* Quests+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */; };
@@ -77,7 +76,6 @@
 		30FAF9A727F9C66B00ED8EB5 /* BottomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCollectionViewCell.swift; sourceTree = "<group>"; };
 		7541B45201AFE9D5EDFB130D /* Pods-dicSWUnary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dicSWUnary.debug.xcconfig"; path = "Target Support Files/Pods-dicSWUnary/Pods-dicSWUnary.debug.xcconfig"; sourceTree = "<group>"; };
 		E17870A427E1C5A700A93524 /* MissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewController.swift; sourceTree = "<group>"; };
-		E189CC6727F75374007ED67A /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		E18C92AC27FD6B0F00147CAA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E18C92B927FD855800147CAA /* Quests.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quests.xcdatamodel; sourceTree = "<group>"; };
 		E18C92BB27FD860B00147CAA /* Quests+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				30B5473A27E1A53200F26AA0 /* SceneDelegate.swift */,
 				30700FE227E1CC36006736E5 /* FirstViewController.swift */,
 				30B5473C27E1A53200F26AA0 /* ViewController.swift */,
-				E189CC6727F75374007ED67A /* ActivityCell.swift */,
 				E17870A427E1C5A700A93524 /* MissionViewController.swift */,
 				306945C428066A9900C1AA63 /* CertificationViewController.swift */,
 				E18C92AC27FD6B0F00147CAA /* CoreDataManager.swift */,
@@ -339,7 +336,6 @@
 				306945C528066A9900C1AA63 /* CertificationViewController.swift in Sources */,
 				E18C92AD27FD6B0F00147CAA /* CoreDataManager.swift in Sources */,
 				30B5473B27E1A53200F26AA0 /* SceneDelegate.swift in Sources */,
-				E189CC6827F75374007ED67A /* ActivityCell.swift in Sources */,
 				3022961F281504F400A32078 /* EmailViewModel.swift in Sources */,
 				30700FE327E1CC36006736E5 /* FirstViewController.swift in Sources */,
 				3093FD9228226F2E00063F88 /* Verified+CoreDataClass.swift in Sources */,
