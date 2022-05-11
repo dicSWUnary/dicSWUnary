@@ -103,6 +103,14 @@ class MissionViewController: UIViewController{
         if now == 8 {
             exit(0)
         }
+        
+        if now == 0 {
+            selected_idx = 0
+        }else {
+            selected_idx = now
+        }
+        
+        
         print("here is completeCheck ", completeCheck)
         determineDegree(completeCnt: completeCheck.count)
         determineMission(questNum: now)

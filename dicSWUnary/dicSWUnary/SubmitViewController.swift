@@ -79,6 +79,7 @@ class SubmitViewController: UIViewController {
             a.completeCheck.append(now)
             a.now = now + 1
         }
+        a.selected_idx = now
         a.dbData = dbData
     }
     
