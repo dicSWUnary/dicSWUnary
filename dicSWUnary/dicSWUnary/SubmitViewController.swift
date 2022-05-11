@@ -61,7 +61,9 @@ class SubmitViewController: UIViewController {
         }
         let resultSpot = dicSWUnaryOutput.classLabel
         print("resultSpot is ",resultSpot)
-        completeOrNot(result_idx: matchDict[resultSpot]!)
+        
+        determineComplete(complete: now == matchDict[resultSpot]!)
+        complete = (now == matchDict[resultSpot]!)
     }
     var imageLength = Int()
     
@@ -81,15 +83,15 @@ class SubmitViewController: UIViewController {
     }
     
     
-    func completeOrNot(result_idx : Int){
-        if now == result_idx {
-            determineComplete(complete: true)
-            complete = true
-        }else {
-            determineComplete(complete: false)
-            complete = false
-        }
-    }
+//    func completeOrNot(result_idx : Int){
+//        if now == result_idx {
+//            determineComplete(complete: true)
+//            complete = true
+//        }else {
+//            determineComplete(complete: false)
+//            complete = false
+//        }
+//    }
     
     func determineComplete(complete: Bool){
         if complete == true {

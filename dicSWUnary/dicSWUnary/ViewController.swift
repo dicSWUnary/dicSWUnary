@@ -452,6 +452,7 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ActivityCell
         if (completeCheck.contains(indexPath.row)) {
             cell.backgroundView = UIImageView(image: UIImage(named: String(format: "guideImage%d", indexPath.row)))
+            cell.backgroundView?.setRounded(radius: 15)
         }
         return cell
     }
