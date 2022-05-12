@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Lottie
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var theVC = UIViewController()
     let navi = UINavigationController(rootViewController: ViewController())
+    
     
     
     fileprivate func getUserverified() -> Bool{
@@ -73,6 +75,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        navi.viewControllers = [ViewController(),MissionViewController()]
         
         //MARK: - CASE 2
+        
+  
+        
         if userVerified == true { //인증이 완료된 사용자 // 네비로 연결
             theVC =  navi
             print("verified")
