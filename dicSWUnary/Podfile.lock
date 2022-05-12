@@ -481,6 +481,7 @@ PODS:
   - GTMSessionFetcher/Core (1.7.1)
   - JGProgressHUD (2.0.4)
   - leveldb-library (1.22.1)
+  - lottie-ios (3.3.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -501,6 +502,7 @@ DEPENDENCIES:
   - Firebase/Database
   - FirebaseFirestore
   - JGProgressHUD (~> 2.0.3)
+  - lottie-ios
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - SnapKit (~> 5.0.0)
@@ -528,6 +530,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - JGProgressHUD
     - leveldb-library
+    - lottie-ios
     - nanopb
     - PromisesObjC
     - RxCocoa
@@ -556,6 +559,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 4577a4cc914a5a07c40a8a0ad0acc22080418c2d
   JGProgressHUD: 62658b14e72cccf179efc7a13bcb54d30b92fc22
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
@@ -564,6 +568,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
 
-PODFILE CHECKSUM: 91a877917490d882fd2ab92f09f36fb011e5fe4c
+PODFILE CHECKSUM: 6aa4fef5a5013745917b889040d73a7f5d801e6c
 
-COCOAPODS: 1.11.0
+COCOAPODS: 1.11.3

@@ -8,6 +8,8 @@ target 'dicSWUnary' do
   pod 'SnapKit', '~> 5.0.0'
 
   pod 'Then'
+
+  pod 'lottie-ios' 
   # Pods for dicSWUnary
 
   # Add the Firebase pod for Google Analytics
