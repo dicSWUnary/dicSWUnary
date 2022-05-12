@@ -48,6 +48,7 @@ class VerificationViewController: UIViewController {
     let emailTextField = UITextField().then{
         $0.allowsEditingTextAttributes = true
         $0.borderStyle = .none
+        $0.textColor = .white
         $0.font = UIFont(name: "NeoDunggeunmoCode-Regular", size: 20)
         $0.attributedPlaceholder = NSAttributedString(
             string: "웹 메일 주소를 입력하세요.",
@@ -221,6 +222,8 @@ class VerificationViewController: UIViewController {
         print("emailTextField" , emailTextField.text)
 
         if emailTextField.text == "wndms9810@swu.ac.kr" { //test account
+            defaults.set(emailTextField.text, forKey: "Email")
+//            emailTextField.text = UserDefaults.standard.value(forKey: "Email") as? String
             self.saveUserverified(verified: true)
             let navi = UINavigationController(rootViewController: ViewController())
             navi.modalPresentationStyle = .fullScreen
@@ -235,8 +238,8 @@ class VerificationViewController: UIViewController {
                 return
             }
             //auth 성공시
-            print("이거 get get get!!!!!!!!!! sibal")
             CoreDataManager.shared.getVerified()
+            self!.defaults.set(self!.emailTextField.text, forKey: "Email")
             self!.saveUserverified(verified: true)
             let navi = UINavigationController(rootViewController: ViewController())
             navi.modalPresentationStyle = .fullScreen
