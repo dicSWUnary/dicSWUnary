@@ -41,7 +41,7 @@
 		E18C92BE27FD860B00147CAA /* Quests+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */; };
 		E19BFB8327FB43980085F69E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19BFB8227FB43980085F69E /* GoogleService-Info.plist */; };
 		E1FC1508282D5E520051B083 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FC1507282D5E520051B083 /* ActivityCell.swift */; };
-		E1FC150A282D5F6B0051B083 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FC1509282D5F6B0051B083 /* data.json */; };
+		E1FC150E282D71960051B083 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = E1FC150D282D71960051B083 /* data.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,7 +84,7 @@
 		E18C92BC27FD860B00147CAA /* Quests+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E19BFB8227FB43980085F69E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1FC1507282D5E520051B083 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
-		E1FC1509282D5F6B0051B083 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		E1FC150D282D71960051B083 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,7 @@
 				30DC50E127EE19DE004363DA /* fonts */,
 				30F45E5727EB0D85009E157F /* reusable */,
 				30700FE427E1D303006736E5 /* help */,
-				E1FC1509282D5F6B0051B083 /* data.json */,
+				E1FC150D282D71960051B083 /* data.json */,
 				30B5473827E1A53200F26AA0 /* AppDelegate.swift */,
 				30B5473A27E1A53200F26AA0 /* SceneDelegate.swift */,
 				30700FE227E1CC36006736E5 /* FirstViewController.swift */,
@@ -276,7 +276,7 @@
 				30DC50E427EE1A24004363DA /* tway_air.ttf in Resources */,
 				30B5474527E1A53400F26AA0 /* LaunchScreen.storyboard in Resources */,
 				30B5474227E1A53400F26AA0 /* Assets.xcassets in Resources */,
-				E1FC150A282D5F6B0051B083 /* data.json in Resources */,
+				E1FC150E282D71960051B083 /* data.json in Resources */,
 				30DC50E527EE1A24004363DA /* tway_sky.ttf in Resources */,
 				30B5474027E1A53200F26AA0 /* Main.storyboard in Resources */,
 				306945C12803EE2100C1AA63 /* 온글잎 안될과학유니랩장체.ttf in Resources */,
