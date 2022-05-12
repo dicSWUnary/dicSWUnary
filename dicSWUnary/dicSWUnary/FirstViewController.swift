@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import Lottie
+import RxSwift
 
 class FirstViewController: UIViewController {
     
@@ -26,34 +27,33 @@ class FirstViewController: UIViewController {
         $0.setUnderline()
     }
     
-    let animation: AnimationView = {
-        let animationView = Lottie.AnimationView(name: "data")
-
-        animationView.frame = CGRect(x:0, y:200, width:400, height:400)
-        animationView.contentMode = .scaleAspectFill
-        animationView.isUserInteractionEnabled = false
-        
-        return animationView
-    }()
+//    let animation: AnimationView = {
+//        let animationView = Lottie.AnimationView(name: "data")
+//
+//        animationView.frame = CGRect(x:0, y:200, width:400, height:400)
+//        animationView.contentMode = .scaleAspectFill
+//        animationView.isUserInteractionEnabled = false
+//
+//        return animationView
+//    }()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.view.backgroundColor =  UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
-        self.view.addSubview(animation)
-        animation.play{ (finished) in
-            self.animation.removeFromSuperview()
-            
-            //lottie 끝나고 뷰 실행
-            
-            self.view.addSubview(self.dictionaryImage)
-            self.view.addSubview(self.webMailBtn)
-            self.allLayout()
-        }
 //        self.view.backgroundColor =  UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
-//        view.addSubview(dictionaryImage)
-//        view.addSubview(webMailBtn)
-//        allLayout()
+//        self.view.addSubview(animation)
+//        animation.play{ (finished) in
+//            self.animation.removeFromSuperview()
+//            //lottie 끝나고 뷰 실행
+//
+//            self.view.addSubview(self.dictionaryImage)
+//            self.view.addSubview(self.webMailBtn)
+//            self.allLayout()
+//        }
+        self.view.backgroundColor =  UIColor(red: 147/256, green: 123/256, blue: 167/256, alpha: 1)
+        view.addSubview(dictionaryImage)
+        view.addSubview(webMailBtn)
+        allLayout()
         
         
         
