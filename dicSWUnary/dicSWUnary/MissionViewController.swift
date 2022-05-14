@@ -97,6 +97,7 @@ class MissionViewController: UIViewController{
     let imagePickerController = UIImagePickerController().then{
         $0.sourceType = .camera
         $0.allowsEditing = true
+        $0.showsCameraControls = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -349,6 +350,7 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
             }
             if indexPath.row == 2{
                 present(self.imagePickerController, animated: true, completion: nil)
+                self.imagePickerController.allowsEditing = true
             }
         }
     }
@@ -393,7 +395,9 @@ extension MissionViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         picker.dismiss(animated: true, completion: nil)
+        
     }
 }
 
