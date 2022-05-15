@@ -44,7 +44,7 @@ Xcode (Version 13)
 
 ### 👩🏻‍💻 핵심기능 및 구현방법
 
-1. UI using Then, SnapKit ****🎨****
+1. UI using <Then>, <SnapKit>🎨
 2. passwordless authenticaiton 🔑
 3. emailValidation 📫
 4. showProgress_HomeVC 🏃🏻‍♀️
