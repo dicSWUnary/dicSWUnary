@@ -51,7 +51,9 @@ Xcode (Version 13)
 5. showQuest_MissionVC 📺
   
 ### 👩🏻‍💻 사용된 협업툴
-
+1. Notion
+2. Zeplin
+3. Figma
 ### 👭 TeamMembers
 
 | <IMG src="https://github.com/jubykim.png?size=100" width="150"> | <IMG src="https://github.com/9yubean2.png?size=100" width="150"> | 
