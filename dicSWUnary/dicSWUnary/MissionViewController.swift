@@ -97,7 +97,7 @@ class MissionViewController: UIViewController{
     let imagePickerController = UIImagePickerController().then{
         $0.sourceType = .camera
         $0.allowsEditing = true
-        $0.showsCameraControls = true
+//        $0.showsCameraControls = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -349,8 +349,8 @@ extension MissionViewController: UICollectionViewDelegate, UICollectionViewDataS
                 showAlert(style: .alert, title: "Location", text: dbData[selected_idx].floor + "에 위치하고 있어요.")
             }
             if indexPath.row == 2{
-                present(self.imagePickerController, animated: true, completion: nil)
                 self.imagePickerController.allowsEditing = true
+                present(self.imagePickerController, animated: true, completion: nil)
             }
         }
     }
