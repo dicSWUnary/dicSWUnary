@@ -6,6 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
+		<string></string>
 		<string>applinks:dicswunary.page.link/gnpR</string>
 	</array>
 </dict>
