@@ -17,11 +17,11 @@ class ViewController: UIViewController{
         $0.backgroundColor = UIColor(red: 38/256, green: 38/256, blue: 38/256, alpha: 1)
     }
 //    wndms9810@swu.ac.kr
-    var initData = [missions(advise: "정문에 위치한 서울여대의 마크! 졸업 사진 스팟이에요!", building_name: "정문", floor: "건물 외부", guide_image: "guide_0", hint: "정문을 통해서 50주년으로 가볼까요?", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: true),
+    var initData = [missions(advise: "정문에 위치한 서울여대의 마크! 졸업 사진 스팟이에요!", building_name: "정문", floor: "건물 외부", guide_image: "guide_0", hint: "정문을 통해서 50주년으로 가볼까요?", index: 0, location_image: "location_0", spot_name: "학교 마크", succes_check: false),
                     
-                    missions(advise: "재학증명서, 장학금 수혜증명서 등 다양한 증명서 출력이 저렴한 가격에 가능해요!", building_name: "인문사회관", floor: "1층", guide_image: "guide_1", hint: "인문사회관 내부에서 땅콩계단 방향을 바라보세요" , index: 1, location_image: "location_1", spot_name: "키오스크", succes_check: true),
+                    missions(advise: "재학증명서, 장학금 수혜증명서 등 다양한 증명서 출력이 저렴한 가격에 가능해요!", building_name: "인문사회관", floor: "1층", guide_image: "guide_1", hint: "인문사회관 내부에서 땅콩계단 방향을 바라보세요" , index: 1, location_image: "location_1", spot_name: "키오스크", succes_check: false),
                     
-                    missions(advise: "쉬는 시간에 빠르게 한 끼를 해결할 수 있어요" , building_name: "인문사회관" , floor: "1층", guide_image: "guide_2", hint: "땅콩계단에서 인사관을 바라보면 보일거에요", index: 2, location_image: "location_2", spot_name: "GS25", succes_check: true),
+                    missions(advise: "쉬는 시간에 빠르게 한 끼를 해결할 수 있어요" , building_name: "인문사회관" , floor: "1층", guide_image: "guide_2", hint: "땅콩계단에서 인사관을 바라보면 보일거에요", index: 2, location_image: "location_2", spot_name: "GS25", succes_check: false),
                     
                     missions(advise: "좌석확정이 필요한 경우 이 키오스크를 사용해보세요.", building_name: "도서관", floor: "1층", guide_image: "guide_3", hint: "큰 계단바로 옆에 위치해있어요!", index: 3, location_image: "location_3", spot_name: "도서관 키오스크", succes_check: false),
                     
