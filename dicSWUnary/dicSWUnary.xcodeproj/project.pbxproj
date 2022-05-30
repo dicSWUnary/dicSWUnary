@@ -516,7 +516,7 @@
 				DEVELOPMENT_TEAM = PD739GKFH2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dicSWUnary/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "\"미션 완료 여부 파악을 위한 이미지를 제출하기 위해 알쓸SWU잡이 카메라에 접근하려고 합니다\"";
+				INFOPLIST_KEY_NSCameraUsageDescription = "미션 완료 여부 파악을 위한 이미지를 제출하기 위해 알쓸SWU잡이 카메라에 접근하려고 합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -549,7 +549,7 @@
 				DEVELOPMENT_TEAM = PD739GKFH2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dicSWUnary/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "\"미션 완료 여부 파악을 위한 이미지를 제출하기 위해 알쓸SWU잡이 카메라에 접근하려고 합니다\"";
+				INFOPLIST_KEY_NSCameraUsageDescription = "미션 완료 여부 파악을 위한 이미지를 제출하기 위해 알쓸SWU잡이 카메라에 접근하려고 합니다";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
