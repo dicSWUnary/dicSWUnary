@@ -12,7 +12,7 @@
 ```
 
 <br/>
-[알쓸SWU잡 ](https://apps.apple.com/kr/app/%EC%95%8C%EC%93%B8swu%EC%9E%A1/id1621196203)
+[알쓸SWU잡](https://apps.apple.com/kr/app/%EC%95%8C%EC%93%B8swu%EC%9E%A1/id1621196203)
 
 ### 🖥️ ****개발환경 및 사용한 라이브러리****
 
