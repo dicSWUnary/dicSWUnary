@@ -2,9 +2,11 @@
 
 <img alt="dicswunary_icon" src="https://user-images.githubusercontent.com/70624771/166632399-2c22225d-a588-4b05-9a65-369c3d255e15.png" width="150" align="left">
 
+<a href="https://apps.apple.com/kr/app/%EC%95%8C%EC%93%B8swu%EC%9E%A1/id1621196203"> AppStore 알쓸SWU잡 다운로드</a>
+
 ```
 🍎 2022학년도 1학기 프로젝트 종합설계 🍎
-<a href="https://apps.apple.com/kr/app/%EC%95%8C%EC%93%B8swu%EC%9E%A1/id1621196203"> AppStore 알쓸SWU잡 다운로드</a>
+
 알쓸SWU잡 ( DicSWUnary )
 : 알고 보면 쓸모 있는 서울여자대학교 잡학사전
 : The easiest SWU guide for swunies
