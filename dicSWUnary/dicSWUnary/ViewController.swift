@@ -155,7 +155,7 @@ class ViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
 //        now = 8
-            if now == 8 {
+            if now == dbData.count {
                 let childVC = CertificationViewController()
                 childVC.modalPresentationStyle = .fullScreen
                 self.present(childVC, animated: false, completion: nil)

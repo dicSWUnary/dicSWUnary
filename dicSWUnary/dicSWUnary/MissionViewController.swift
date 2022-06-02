@@ -101,7 +101,7 @@ class MissionViewController: UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if now == 8 {
+        if now == dbData.count {
             exit(0)
         }
         
