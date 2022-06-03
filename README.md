@@ -51,6 +51,7 @@ Xcode (Version 13)
 3. emailValidation 📫
 4. showProgress_HomeVC 🏃🏻‍♀️
 5. showQuest_MissionVC 📺
+6. MVVM Design Pattern
   
 ### 👩🏻‍💻 사용된 협업툴
 1. Notion
