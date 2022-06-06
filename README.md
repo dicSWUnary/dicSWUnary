@@ -49,8 +49,8 @@ Xcode (Version 13)
 1. UI using <Then>, <SnapKit>🎨
 2. Passwordless authenticaiton 🔑
 3. emailValidation 📫
-4. showProgress_HomeVC 🏃🏻‍♀️
-5. showQuest_MissionVC 📺
+4. showProgress_HomeVC 🏃🏻‍♀️ - 규빈
+5. showQuest_MissionVC 📺 - 주은
 6. MVVM Design Pattern
   
 ### 👩🏻‍💻 사용된 협업툴
