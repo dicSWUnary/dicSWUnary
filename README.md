@@ -24,7 +24,6 @@ Xcode (Version 13)
 | 라이브러리 | 목적 |
 | --- | --- |
 | RxSwift | 비동기 |
-| Lottie | 애니메이션 동기 |
 | Firebase/Auth | 웹메일 인증 |
 
 ### 🌊 **서비스 workflow**
