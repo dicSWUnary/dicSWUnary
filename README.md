@@ -9,7 +9,7 @@
 
 알쓸SWU잡 ( DicSWUnary )
 : 알고 보면 쓸모 있는 서울여자대학교 잡학사전
-: A useful Seoul Women's University dictionary
+: A useful Seoul Women's University tour guide
 : The easiest SWU Guide For Swunies
 
 서울여자대학교 소프트웨어융합학과 김주은 / 이규빈
